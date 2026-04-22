@@ -1,200 +1,155 @@
-# ⚡️ SDD-RIPER: AI-Native Development Protocol
+# SDD-RIPER Light: AI Agent Harness
 
-> **The Constitution for Human-AI Collaboration.**
-> 像指挥军团一样指挥 AI，而不是像保姆一样修补代码。
-
----
-
-## 📖 30秒读懂 SDD-RIPER
-
-**SDD (Spec-Driven Development)** 是一套为大模型编程量身定制的研发协议。它将程序员的角色从“代码产出者”重定义为**“意图定义者”**。
-
-### 核心公式
-
-> **Spec (Truth) + AI (Execute) = Software 2.0**
-
-### ⚡️ 为什么你需要它？
-
-大模型有四个绕不开的工程痛点：
-
-- 🧠 **上下文腐烂**（大模型的阿喀琉斯之踵）：对话越长，AI 越容易遗忘前文约束，悄悄破坏已有逻辑——这是模型架构的固有局限，无法靠"更强的模型"解决
-- 👀 **审查瘫痪**：AI 秒生成 500 行代码，人根本 Review 不过来，质量失控
-- 🔌 **维护断层**：全是 AI 生成的陌生代码，两周后不敢动，改一行崩三处
-- 🤔 **代码不信任**：不知道 AI 为什么这么写，不敢上线、不敢重构——很多人因此根本不敢用大模型编程
-
-| 🚫 痛点 (Without SDD) | ✅ SDD 解法 |
-| --- | --- |
-| **上下文腐烂**：AI 聊着聊着就忘了前文约束，破坏旧逻辑。 | **Spec 锚点**：强制 AI 每次行动前读取 Protocol，状态永久"满血"。 |
-| **审查瘫痪**：AI 秒生成 500 行代码，人类根本 Review 不过在这里。 | **RIPER Loop**：先审 Plan 再写 Code。**审逻辑代替审代码**。 |
-| **不可维护**：全是 AI 生成的陌生代码，两周后不敢动。 | **文档即源码**：代码是消耗品，Spec 才是资产。修 Bug 先修文档。 |
-| **代码不信任**：不敢用大模型写的代码上线，怕有雷。 | **三角定位**：Spec + 执行日志 + 代码三方交叉验证，需求是否完成、Bug 出在哪里一目了然，**增强信心，让人敢用** |
+> 让大模型成为事件推进的主体，让人类成为控盘者。
+> 不再先挖好每一条水渠，而是让水先漫溢、找到河道；人类跟着水势调整位置，在关键处设闸、验收、开垦。
 
 ---
 
-## 🎯 一句话：这个项目解决了什么问题？
+## 30 秒读懂
 
-**AI 编程最大的坑不是"AI 不够聪明"，而是"人管不住 AI"。**
+**SDD-RIPER** 不是传统意义上的重型 SDD。
 
-你一定遇到过：AI 聊着聊着就忘了之前的约束，改着改着就把旧逻辑搞坏了，生成 500 行代码你根本审不过来，两周后再看全是"AI 写的陌生代码"不敢动……
+传统 SDD 往往把 Spec 当成模型的操作系统：先写完整蓝图，再要求模型按图施工。
+这里的 SDD 更轻，也更贴近大模型时代：**Spec 首先是给人看的最小真相源**，用于记录目标、边界、决策、验证和可恢复上下文。
 
-**SDD-RIPER** 就是为了解决这些问题而生的——一套**让 AI 围绕文档干活**的研发协议，配套**可一键安装的 Skill**，让你从"被 AI 带着跑"变成"指挥 AI 按图施工"。
+这个仓库的主推入口是 [`sdd-riper-one-light`](./skills/sdd-riper-one-light/SKILL.md)。
 
-### 虚构项目演练（以下场景与数据为教学示例，用于说明方法的适用范围）
+它不是“简化版”，而是面向强模型的日常 **AI Agent Harness**：
 
-- ✅ 在**百万行 Java 代码**的遗留系统上，用 Code Map 战术 **20 分钟梳理清楚核心链路**
-- ✅ **零 Java 经验**的情况下，靠 SDD 协议完成复杂业务需求开发
-- ✅ Bug 率显著下降：主语言 **-18%**，非主语言（Go/Python/Node.js）**-37%**
-- ✅ 日常需求周期：**1~2 周 → 3~4 天**；大型需求：**2 个月 → 1 个月**
-- ✅ 复杂交付场景的人力投入：**可显著下降**，团队协作效率同步提升
-- ✅ 30 天 **10.8 亿 Token** 重度实战，四窗口并行，核心人员只做阶段性 Review
+- 让模型自己分解、探索、试错和推进。
+- 让人类控制方向、边界、节奏和验收。
+- 用最小 Spec、Checkpoint、Approval、Validation、Reverse Sync 把非确定性模型纳入可观察、可回退、可接手的轨道。
 
-### 典型应用场景
+一句话：
 
-| 场景 | 痛点 | SDD-RIPER 怎么解 |
-| --- | --- | --- |
-| **老业务交接与持续维护** | 遗留系统无人敢动，交接靠口头、靠"看代码"；核心研发不应长期困在老需求里 | Code Map 20 分钟梳理核心链路，Spec 固化业务上下文，**低代码经验的同学也能接手老业务的日常迭代和维护**，释放核心研发投入新业务 |
-| **低经验人员交付核心业务** | 新人/跨团队支援不熟悉代码库，上手周期长 | 有 Spec + Code Map 就能按图施工，**零 Java 经验也能完成复杂需求** |
-| **人力紧张时的并行交付** | 核心研发不够用，但需求排不完 | 核心人员只写 Spec + 审 Plan，**执行交给 AI + 非核心研发人力**，一人指挥多路并行 |
-| **高敏感代码安全合规** | 核心代码不敢用外部模型 | 先在受控环境中整理抽象接口与约束 Spec，再让外部模型基于抽象 Spec 做设计，**原始代码不外发** |
-
-### 组织影响力
-
-- 📦 提供可复用的双版本 Skill（`sdd-riper-one-light` + `sdd-riper-one`）
-- 📚 提供配套协议、方法论文章与落地教程，形成完整学习路径
-- 🧩 支持从个人试用到团队推广的渐进式落地
-- 🔐 文档以仓库内可审阅内容为主，便于统一治理与示例维护
+> **AI 是事件主体，Human 是控盘者，Harness 是控制面。**
 
 ---
 
-## 🚀 快速开始
+## 思维转变
 
-### 方式一：使用 Skill（推荐 - 开箱即用）
+### 从挖水渠到跟着河道开垦
 
-**Skill 是什么？** 将 SDD-RIPER 协议封装为可执行命令的配置文件，让 AI 自动遵循相应工作流。
+非大模型时代，人类更像是在挖水渠：先设计路径，再把水引到自己的田地里。
 
-#### 先选版本
+大模型时代，水本身有了流动能力。更好的方式不是提前挖死每一条渠，而是让水先漫溢、探索、自己找到河道。人类要做的是跟着水势调整自己的方向和位置，在关键处设闸、筑堤、验收，并沿着已经形成的河道开垦田地。
 
-| Skill | 定位 | 适用场景 | 目录 |
+这就是 Light Harness 和传统重流程的区别：
+
+| 范式 | 人的角色 | 模型的角色 | 控制方式 |
 | --- | --- | --- | --- |
-| `sdd-riper-one-light` | **强模型优化版**：checkpoint-driven + 强控制内核 | `GPT-5.4`、高输入、多轮、高频 coding；核心工作流是先复述任务理解、再强调核心目标、持续总结进度，并保留 `No Spec, No Code` 与 `No Approval, No Execute` | [`skills/sdd-riper-one-light/`](./skills/sdd-riper-one-light/) |
-| `sdd-riper-one` | **标准版**：完整 RIPER 阶段门禁 | 架构设计、复杂重构、跨项目协作、复杂迁移、严格评审 | [`skills/sdd-riper-one/`](./skills/sdd-riper-one/) |
+| 传统软件工程 | 预设路径的人 | 工具 | 流程、规范、代码审查 |
+| 传统重 SDD | 写蓝图的人 | 按图施工者 | 大 Spec、阶段门禁 |
+| SDD-RIPER Light | 跟水势调整位置的控盘者 | 探索河道的主体 | Checkpoint、证据、回写 |
 
-- **默认推荐 `sdd-riper-one-light`**：适合强模型时代的主力工作流。
-- **复杂任务升级到 `sdd-riper-one`**：需要完整 `Research -> Innovate -> Plan -> Execute -> Review` 时使用。
+### 从助手到事件主体
 
-#### 安装步骤
+强模型不再只是“帮我补代码”的助手。它会提出方案、尝试路径、暴露风险、推动任务向前流动。
 
-1. **选择你的 AI 平台**
-   - **Claude Desktop / Claude.ai**：复制选定版本的 `SKILL.md` 到 Custom Instructions
-     - Light: [`skills/sdd-riper-one-light/SKILL.md`](./skills/sdd-riper-one-light/SKILL.md)
-     - Standard: [`skills/sdd-riper-one/SKILL.md`](./skills/sdd-riper-one/SKILL.md)
-   - **Cursor**：将选定版本的 `SKILL.md` 复制为项目根目录的 `.cursorrules` 文件
-   - **其他 AI Agent**：查看对应安装指南
-     - Light: [README](./skills/sdd-riper-one-light/README.md)
-     - Standard: [README](./skills/sdd-riper-one/README.md)
+这更像骑手和马的关系。马不是被动工具；在赛道上，马的速度、力量和判断才是主力。骑手不替马迈腿，骑手负责选赛道、控节奏、看风险、给信号、判输赢。
 
-2. **验证安装**
-
-   ```text
-   在 AI 对话中输入：create_codemap
-   或直接要求先复述任务理解，再建立/更新最小 spec，并输出 checkpoint。
-   如果 AI 识别并按协议执行，说明安装成功 ✅
-   ```
-
-3. **开始第一个任务**
-
-   `Light` 示例：
-
-   ```text
-   请启用 $sdd-riper-one-light，并先用你自己的话复述对任务的理解，明确核心目标、边界和暂不处理项；然后建立/更新最小 spec，给我 checkpoint；获批后再执行：
-   - task=用户登录功能
-   - goal=实现完整的登录流程
-   - requirement=docs/requirements/login.md
-   ```
-
-   `Standard` 示例：
-
-   ```text
-   create_codemap: mode=project, scope=my-project
-   build_context_bundle: ./docs/requirements/
-   sdd_bootstrap: task=用户登录功能, goal=实现完整的登录流程
-   ```
-
-#### 核心命令速查
-
-| 命令 | 用途 | 示例 |
-|------|------|------|
-| `create_codemap` | 生成代码地图（功能级/项目级） | `create_codemap: mode=feature, scope=登录模块` |
-| `build_context_bundle` | 整理需求上下文 | `build_context_bundle: ./docs/requirements/` |
-| `sdd_bootstrap` | 启动 SDD 任务 | `sdd_bootstrap: task=用户认证, goal=...` |
-| `FAST` | 快速修改（小改动） | `FAST: 修改按钮颜色为蓝色` |
-| `DEBUG` | 日志驱动排查 | `DEBUG: log_path=./logs/error.log` |
-
-📖 **完整文档**：[`Light` 使用指南](./skills/sdd-riper-one-light/README.md) ｜ [`Standard` 使用指南](./skills/sdd-riper-one/README.md)
+`sdd-riper-one-light` 承认这种主体性：让模型成为主力，让人类成为控盘者。Harness 不是把马绑在旧流程里，而是让人和模型在同一条赛道上协作，并且始终可观察、可设闸、可验收、可复用。
 
 ---
 
-### 方式二：手动遵循协议
+## 默认入口：sdd-riper-one-light
 
-如果你不想安装 Skill，也可以手动引导 AI 遵循 RIPER 流程：
+日常 coding / agentic coding，默认使用：
 
-1. **选择协议文件**（根据任务复杂度）
-   - 标准任务：[`SDD-RIPER-ONE.md`](./protocols/SDD-RIPER-ONE.md)
-   - 文档生成：[`RIPER-DOC.md`](./protocols/RIPER-DOC.md)
-   - 复杂重构：[`RIPER-5.md`](./protocols/RIPER-5.md)
+[`skills/sdd-riper-one-light/SKILL.md`](./skills/sdd-riper-one-light/SKILL.md)
 
-2. **在对话开始时发送**
+它保留的硬门禁很少，但都很关键：
 
-   ```text
-   请阅读并严格遵循以下协议：
-   [粘贴协议文件内容]
-   ```
+- **Restate First**：先复述任务理解，避免一开始就跑偏。
+- **Core Goal as Loop Anchor**：每一轮都有当前核心目标。
+- **No Spec, No Code**：先有最小真相源，再改代码。
+- **No Approval, No Execute**：执行前必须有 checkpoint 和批准。
+- **Done by Evidence**：完成不是模型自称完成，而是由测试、日志、人工验证等证据证明。
+- **Reverse Sync**：把已经验证的结论回写，留下下一轮可恢复的锚点。
 
-3. **手动推进阶段**
+最小启动模板：
 
-   ```text
-   现在进入 Research 阶段，请调研代码库现状...
-   现在进入 Plan 阶段，请输出详细的实施计划...
-   Plan Approved，现在进入 Execute 阶段...
-   ```
+```text
+请使用 sdd-riper-one-light 处理这个任务。
+先不要直接改代码。
 
----
+请先给我：
+- 你对任务的理解
+- 本轮核心目标
+- 最小 spec / summary
+- Done Contract：什么算完成、由什么证明
+- 下一步动作
+- 风险
+- 验证方式
 
-## 🔄 The RIPER Loop (标准作业流)
-
-我们强制 AI 遵循以下五步状态机，拒绝"一发入魂"的幻觉代码：
-
-```mermaid
-graph LR
-    R[🔍 Research<br>调研/事实锁定] --> I[💡 Innovate<br>方案设计]
-    I --> P[📝 Plan<br>原子级规划]
-    P -->|Human Sign-off| E[🚀 Execute<br>按图施工]
-    E --> V[👀 Review<br>反向验收]
-    V -->|Fix Spec| P
+我批准后再执行。
 ```
 
-1. **Research**: 拒绝瞎猜，先查代码库现状。
-2. **Innovate**: 审讯式设计，寻找最优解。
-3. **Plan**: **核心环节**。输出详细步骤，人类批准后才准动手。
-4. **Execute**: 无脑执行，不仅是 Coder，更是 Builder。
-5. **Review**: AI 自查 + 生成验收报告。
+---
+
+## 旧时代也能用：标准控盘入口
+
+[`sdd-riper-one`](./skills/sdd-riper-one/SKILL.md) 不是废弃版本。
+
+它更重、更显式，适合这些场景：
+
+- 团队刚开始建立 AI 编程纪律。
+- 模型能力不稳定，需要更强下限。
+- 复杂重构、跨项目联动、长期交接。
+- 需要完整 `Research -> Plan -> Execute -> Review` 阶段审计。
+- 组织还没有准备好直接把模型当事件主体来协作。
+
+换句话说：
+
+- **新时代的人**：默认用 `sdd-riper-one-light`，释放模型的探索能力。
+- **旧时代的人**：可以从 `sdd-riper-one` 进入，用更显式的流程获得安全感。
+- **高风险任务**：即使在新时代，也可以临时切回标准控盘协议。
 
 ---
 
-## 📂 协议资产清单
+## 这个仓库有什么
 
-| 协议文件 | 适用场景 | 对应模型建议 |
-| --- | --- | --- |
-| [`SDD-RIPER-ONE.md`](./protocols/SDD-RIPER-ONE.md)  | **标准版**：主力协议，包含完整闭环。 | Claude 4.5 / GPT-5.1 / Qwen3 |
-| [`RIPER-DOC.md`](./protocols/RIPER-DOC.md)  | **文档专家**：专门用于生成 README/API 文档。 | DeepSeek V3 / Gemini Pro |
-| [`RIPER-5.md`](./protocols/RIPER-5.md) | **严格版**：上一代状态机，适合复杂逻辑重构。 | o3 / o4-mini |
+| 资产 | 定位 |
+| --- | --- |
+| [`skills/sdd-riper-one-light`](./skills/sdd-riper-one-light/) | 主推 Light Harness，日常默认入口 |
+| [`skills/sdd-riper-one`](./skills/sdd-riper-one/) | 标准控盘协议，训练、审计、交接和复杂任务入口 |
+| [`protocols/SDD-RIPER-ONE.md`](./protocols/SDD-RIPER-ONE.md) | 标准协议原文 |
+| [`protocols/RIPER-DOC.md`](./protocols/RIPER-DOC.md) | 文档生成与维护协议 |
+| [`protocols/RIPER-5.md`](./protocols/RIPER-5.md) | 更早期、更严格的 RIPER 参考 |
+| [`docs/团队落地指南.md`](./docs/团队落地指南.md) | 团队推广与治理指南 |
+| [`docs/如何快速从零开始落地大模型编程 -- 手把手教程.md`](./docs/如何快速从零开始落地大模型编程%20--%20手把手教程.md) | 从零上手教程 |
 
 ---
 
-## 📚 深度阅读 (Deep Dive)
+## 读法建议
 
-| 文档 | 适合人群 | 核心内容 |
-|------|---------|---------|
-| 🧠 [从传统编程转向大模型编程](./docs/从传统编程转向大模型编程.md) | 个人开发者 | 思维转型：如何从工匠变为建筑师 |
-| 📜 [AI 原生研发范式](./docs/AI%20原生研发范式：从"代码中心"到"文档驱动"的演进.md) | 架构师/技术负责人 | 理论体系：为什么 Spec 是新时代的源代码 |
-| 🚀 [团队落地指南](./docs/团队落地指南.md) | TL/主管/团队负责人 | 实战指南：如何在一周内让团队跑通大模型编程 |
+如果你已经在使用强模型：
+
+1. 先读 [`sdd-riper-one-light`](./skills/sdd-riper-one-light/README.md)。
+2. 直接用最小启动模板跑一个真实任务。
+3. 遇到复杂任务，再补读 [`sdd-riper-one`](./skills/sdd-riper-one/README.md)。
+
+如果你在团队里推广：
+
+1. 先让团队默认安装 Light Harness。
+2. 给高风险任务保留标准控盘入口。
+3. 用 [团队落地指南](./docs/团队落地指南.md) 统一规则：代码修改前先 checkpoint，批准后再执行。
+
+如果你关心思想背景：
+
+| 文档 | 核心问题 |
+| --- | --- |
+| [从传统编程转向大模型编程](./docs/从传统编程转向大模型编程.md) | 为什么人的身份要迁移 |
+| [AI 原生研发范式](./docs/AI%20原生研发范式：从"代码中心"到"文档驱动"的演进.md) | 为什么 Spec 首先是给人看的工程资产 |
+| [团队落地指南](./docs/团队落地指南.md) | 如何让团队从个人技巧变成组织能力 |
+
+---
+
+## 核心判断
+
+大模型时代，真正重要的不是把 AI 管成一个更听话的代码助手。
+
+真正重要的是：**承认模型已经成为事件推进的主体，然后为这种主体性建立控制面。**
+
+`sdd-riper-one-light` 做的不是减少控制，而是把控制从“预设每一步”移动到“关键节点设闸”。
+这就是 Harness Engineering 的意义。

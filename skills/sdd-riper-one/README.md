@@ -1,14 +1,16 @@
 # sdd-riper-one
 
-SDD-RIPER ONE Skill（Spec 驱动研发）。
+SDD-RIPER ONE Skill（标准控盘协议）。
 
-该 Skill 用于约束大模型严格按以下流程执行研发任务：
+该 Skill 是比 `sdd-riper-one-light` 更重、更显式的入口，用于约束大模型严格按以下流程执行研发任务：
 
 `Research -> (Innovate, 可选) -> Plan -> (Plan Approved) -> Execute -> Review`
 
 ## 工作方式优先
 
-这个仓库更推荐把 `sdd-riper-one` 当成一种**工作方式**来使用，而不是当成一组必须死记硬背的显式命令。
+这个仓库更推荐把 `sdd-riper-one` 当成一种**标准控盘工作方式**来使用，而不是当成一组必须死记硬背的显式命令。
+
+它不是被 `sdd-riper-one-light` 淘汰的旧方案，而是给需要更强显式流程的人使用：团队训练、复杂任务、低模型能力环境、严格审计、跨人交接，都适合从这里进入。
 
 最重要的不是先记住 `create_codemap`、`build_context_bundle`、`sdd_bootstrap` 这些名字，而是先形成下面这套默认习惯：
 
@@ -31,7 +33,7 @@ SDD-RIPER ONE Skill（Spec 驱动研发）。
 
 ## 使用策略（团队标准）
 
-- **主入口**：`sdd-riper-one` Skill（必装）。
+- **稳态入口**：`sdd-riper-one` Skill（建议与 `sdd-riper-one-light` 同时安装）。
 - **Prompt**：可选增强（有则更稳，无也可用）。
 - **MCP**：可选提效，不是必需依赖。
 - **底线**：`No Spec, No Code` + `Plan Approved` 前不得改代码。

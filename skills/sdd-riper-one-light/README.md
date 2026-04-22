@@ -1,8 +1,12 @@
 # sdd-riper-one-light
 
-面向 `GPT-5.4` 等强模型的轻量 SDD / RIPER coding skill。
+面向 `GPT-5.4` 等强模型的轻量 SDD / RIPER coding skill，也是本仓库主推的日常 AI Agent Harness。
 
-它不是把原版弱化，而是把重点从“强制 phase 展开”切到“强制 checkpoint 校准”：
+它不是把原版弱化，也不是只给熟练用户的“进阶版”。它代表大模型时代的默认工作方式：承认模型已经从“助手”变成事件推进的主体，允许它自己分解、探索和执行；人类通过 Checkpoint、Approval、Validation 与 Reverse Sync 控制边界和节奏。
+
+如果说强模型是赛道上的主力，`sdd-riper-one-light` 就是让骑手和马协同工作的 Harness：模型负责速度、探索和推进，人类负责方向、风险、节奏和验收。
+
+它把重点从“强制 phase 展开”切到“强制 checkpoint 校准”：
 
 - `Spec is Truth`
 - `No Spec, No Code`
