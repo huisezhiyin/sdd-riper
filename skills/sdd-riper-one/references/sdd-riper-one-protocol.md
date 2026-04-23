@@ -586,7 +586,7 @@ Enable Agent to diagnose bugs or verify feature correctness using **logs + Spec 
 
 ---
 
-**Priority Order** (highest → lowest):  
+**Priority Order** (highest → lowest):
 `Batch Override` > `FAST` > `STOP-AND-WAIT`
 
 **Explicit Meanings**:
@@ -600,11 +600,11 @@ Enable Agent to diagnose bugs or verify feature correctness using **logs + Spec 
 * **"ARCHIVE / 归档 / 沉淀"** = Distill and persist reusable human/llm knowledge docs from intermediate artifacts.
 
 **Auto-switch to FAST (non-code tasks)**:
-If the user asks for **documents / summaries / descriptions / translations / formatting / templates / copywriting** (no code change required), immediately switch to `MODE 6: FAST` and skip RIPER flow.  
+If the user asks for **documents / summaries / descriptions / translations / formatting / templates / copywriting** (no code change required), immediately switch to `MODE 6: FAST` and skip RIPER flow.
 Examples: “生成接口文档”, “输出说明”, “整理摘要”, “翻译文档”.
 
 **Auto-exit SDD (non-development conversations)**:
-If the user asks for **general questions**, **status explanations**, **clarifications**, or **planning without any code action**, you may directly `EXIT SDD` to avoid unnecessary protocol overhead.  
+If the user asks for **general questions**, **status explanations**, **clarifications**, or **planning without any code action**, you may directly `EXIT SDD` to avoid unnecessary protocol overhead.
 Examples: “为什么这样设计”, “解释一下日志”, “下一步做什么”, “这个规则是什么意思”.
 
 ---
