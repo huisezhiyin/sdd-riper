@@ -86,6 +86,33 @@ First give me:
 Wait for my approval before execution.
 ```
 
+## Minimal Agent Setup
+
+For most agentic coding environments, the smallest setup that already works well is:
+
+```text
+<repo>/
+  AGENTS.md
+  skills/
+    sdd-riper-one-light/
+    sdd-riper-one/
+```
+
+- Put `AGENTS.md` at the repository root for workspace-level defaults.
+- Put `sdd-riper-one-light` and `sdd-riper-one` under `skills/`.
+- Use `sdd-riper-one-light` as the default daily entry.
+- Switch to `sdd-riper-one` for refactors, audit, handoff, and higher-risk work.
+
+This structure works well in Codex App, Claude Code, and many other agent setups that can read repository instructions plus local skill folders.
+
+In practice, this is usually enough:
+
+```text
+Please enable $sdd-riper-one-light.
+Do not change code yet.
+First give me your understanding, the core goal, a minimal spec / summary, risks, and validation method.
+```
+
 ---
 
 ## The Standard Entry Still Matters

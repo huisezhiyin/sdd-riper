@@ -87,6 +87,33 @@
 我批准后再执行。
 ```
 
+## Agent 最小接入方式
+
+如果你是在 Claude、Codex 或其他 agentic coding 环境里使用，最小但已经很好用的一套就是：
+
+```text
+<repo>/
+  AGENTS.md
+  skills/
+    sdd-riper-one-light/
+    sdd-riper-one/
+```
+
+- `AGENTS.md` 放在仓库根目录，承载工作区默认规则。
+- `sdd-riper-one-light` 和 `sdd-riper-one` 放在 `skills/` 目录。
+- 日常默认使用 `sdd-riper-one-light`。
+- 重构、审计、交接和高风险任务切到 `sdd-riper-one`。
+
+凡是能读取仓库内规则和本地 skill 目录的 agent 环境，基本都可以用这套结构；Codex 只是其中一种。
+
+实际使用时，通常一句话就够：
+
+```text
+请启用 $sdd-riper-one-light。
+先不要直接改代码。
+先给我任务理解、本轮核心目标、最小 spec / summary、风险和验证方式。
+```
+
 ---
 
 ## 旧时代也能用：标准控盘入口
