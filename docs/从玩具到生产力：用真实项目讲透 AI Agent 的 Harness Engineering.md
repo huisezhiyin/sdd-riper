@@ -244,8 +244,3 @@ AI Agent 时代的工程命题，不只是"让模型替我们写代码"。
 *   [Harness design for long-running application development (Anthropic Labs)](https://www.anthropic.com/engineering/harness-design-long-running-apps)
 
 *   [bytedance/deer-flow: An open-source long-horizon SuperAgent harness (GitHub)](https://github.com/bytedance/deer-flow)
-
-
-## 特别鸣谢
-
-$\color{#0089FF}{@司潘俊楠(四盘)}$$\color{#0089FF}{@王超(天辙)}$$\color{#0089FF}{@张竞之(工酉)}$
