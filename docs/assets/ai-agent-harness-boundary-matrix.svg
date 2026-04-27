@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">AI Agent 架构模式边界矩阵</title>
+  <desc id="desc">矩阵用执行流路由和状态与上下文两个维度区分无状态链、提示词驱动、传统管道和 Harness Engineering。</desc>
+  <defs>
+    <style>
+      text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans CJK SC", "Microsoft YaHei", sans-serif; fill: #172033; }
+      .label { font-size: 26px; font-weight: 700; }
+      .axis { font-size: 22px; font-weight: 650; }
+      .hint { font-size: 18px; fill: #5c667a; }
+      .card-title { font-size: 28px; font-weight: 750; }
+      .card-subtitle { font-size: 19px; fill: #364258; }
+      .small { font-size: 17px; fill: #566074; }
+    </style>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M 0 0 L 12 6 L 0 12 z" fill="#39445c"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="760" fill="#f7f8fb"/>
+  <text x="600" y="54" text-anchor="middle" class="label">AI Agent 架构模式边界矩阵</text>
+  <text x="600" y="86" text-anchor="middle" class="hint">执行流越向右越自主，状态越向上越外部化</text>
+
+  <line x1="145" y1="645" x2="1080" y2="645" stroke="#39445c" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="145" y1="645" x2="145" y2="125" stroke="#39445c" stroke-width="4" marker-end="url(#arrow)"/>
+  <text x="612" y="708" text-anchor="middle" class="axis">执行流路由</text>
+  <text x="220" y="690" text-anchor="middle" class="hint">静态预设</text>
+  <text x="1012" y="690" text-anchor="middle" class="hint">动态自主</text>
+  <text x="54" y="390" text-anchor="middle" class="axis" transform="rotate(-90 54 390)">状态与上下文</text>
+  <text x="92" y="620" text-anchor="middle" class="hint" transform="rotate(-90 92 620)">隐式内部</text>
+  <text x="92" y="178" text-anchor="middle" class="hint" transform="rotate(-90 92 178)">显式外部</text>
+
+  <line x1="590" y1="150" x2="590" y2="645" stroke="#c8ceda" stroke-width="2" stroke-dasharray="8 8"/>
+  <line x1="145" y1="395" x2="1080" y2="395" stroke="#c8ceda" stroke-width="2" stroke-dasharray="8 8"/>
+
+  <rect x="190" y="430" width="350" height="170" rx="10" fill="#ffffff" stroke="#d6dbe6" stroke-width="2"/>
+  <text x="365" y="482" text-anchor="middle" class="card-title">无状态链</text>
+  <text x="365" y="522" text-anchor="middle" class="card-subtitle">单次 API 调用 / LLM 纯函数</text>
+  <text x="365" y="562" text-anchor="middle" class="small">轻量、高并发、低状态成本</text>
+
+  <rect x="650" y="430" width="350" height="170" rx="10" fill="#fffaf1" stroke="#e1c47a" stroke-width="2"/>
+  <text x="825" y="482" text-anchor="middle" class="card-title">提示词驱动</text>
+  <text x="825" y="522" text-anchor="middle" class="card-subtitle">AutoGPT / ReAct 式探索</text>
+  <text x="825" y="562" text-anchor="middle" class="small">自主性高，状态堆在上下文里</text>
+
+  <rect x="190" y="190" width="350" height="170" rx="10" fill="#f2f7ff" stroke="#89aee6" stroke-width="2"/>
+  <text x="365" y="242" text-anchor="middle" class="card-title">传统管道</text>
+  <text x="365" y="282" text-anchor="middle" class="card-subtitle">顺序链 / 固定流程</text>
+  <text x="365" y="322" text-anchor="middle" class="small">外部状态严谨，模型被动处理</text>
+
+  <rect x="650" y="190" width="350" height="170" rx="10" fill="#f2fbf6" stroke="#75b98d" stroke-width="3"/>
+  <text x="825" y="242" text-anchor="middle" class="card-title">Harness Engineering</text>
+  <text x="825" y="282" text-anchor="middle" class="card-subtitle">模型给意图，Harness 管状态</text>
+  <text x="825" y="322" text-anchor="middle" class="small">可观测、可校验、可回退、可接手</text>
+</svg>
