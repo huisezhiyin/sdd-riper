@@ -114,6 +114,49 @@
 先给我任务理解、本轮核心目标、最小 spec / summary、风险和验证方式。
 ```
 
+## 仓库卫生
+
+这个仓库默认面向公开、可复用的 agent workspace。
+
+- 不要提交运行数据：`.agent-memory/`、`.expcap/`、SQLite 文件、Milvus Lite 数据、trace、episode、candidate 和 asset。
+- 使用 `expcap` 时默认采用 `EXPCAP_STORAGE_PROFILE=user-cache` 和 `EXPCAP_HOME="$HOME/.expcap"`。
+- 不要提交个人 home 目录等机器特定路径。
+- 文档提交前要脱敏：移除私有项目名、内部链接、凭据、日志、ID 和用户数据。
+- 下载副本文件如 `name (1).md` 提交前先改名；未改名时保持忽略。
+
+## 多仓库 / 临时 Workspace 怎么用
+
+微服务、前后端联动、多仓库临时 workspace 下，核心问题不是 chat 开在哪里，而是**上下文如何被切片、聚焦、切换和收束**。
+
+常见有三种方式：
+
+- **在主项目里开 chat**：如果任务主要落在一个仓库，比如 `order-service`，就在这个仓库里启动；其他仓库按需让 Agent 探索、读取接口契约或调用链，再把结论带回当前任务。
+- **在父目录开 chat**：如果任务天然跨仓，比如前后端接口一起改、多个微服务协议联动，就在父 workspace 启动，让 Agent 先生成 `Project Registry`，再按项目切片阅读和执行。
+- **拆成多个单仓任务**：如果各仓库改动边界清楚，只是发布或联调相关，可以拆成多个单仓任务，最后做契约对齐和回归。
+
+推荐规则：
+
+- 父目录可以作为入口，但不要让模型一次性吞掉所有仓库。
+- 单仓可以作为入口，但跨仓信息要显式引入。
+- 多仓任务先建立 `Project Registry`，记录项目路径、职责、相关性和当前 `active_project`。
+- 每轮默认 `change_scope=local`，只改当前项目。
+- 只有明确需要跨仓修改时，才进入 `CROSS / 跨项目`。
+- 每个相关项目都应该有自己的 CodeMap；跨项目时再补一层接口契约或链路摘要。
+
+最小启动示例：
+
+```text
+MULTI / 多项目
+
+当前 workspace 下有多个仓库。
+请先自动发现项目，生成 Project Registry。
+不要一次性读取所有代码。
+先判断本次任务的主项目、相关项目、active_project 和 change_scope。
+默认 local；需要跨项目修改时先 checkpoint，等我批准。
+```
+
+更完整的多项目规则见 [`skills/sdd-riper-one/references/multi-project.md`](./skills/sdd-riper-one/references/multi-project.md)。当前 `create_codemap` 已可承担 CodeMap 生成；后续也可以拆成独立 `codemap` skill，用固定模板统一不同模型的输出口径。
+
 ---
 
 ## 旧时代也能用：标准控盘入口
@@ -170,6 +213,9 @@
 | --- | --- |
 | [从传统编程转向大模型编程](./docs/从传统编程转向大模型编程.md) | 为什么人的身份要迁移 |
 | [AI 原生研发范式](./docs/AI%20原生研发范式：从%22代码中心%22到%22文档驱动%22的演进.md) | 为什么 Spec 首先是给人看的工程资产 |
+| [从玩具到生产力：Harness Engineering](./docs/从玩具到生产力：用真实项目讲透%20AI%20Agent%20的%20Harness%20Engineering.md) | 如何把 Agent 实验推进到生产力 |
+| [把工程任务交给 Agent](./docs/把工程任务交给%20Agent：大模型时代程序员的身份与能力往哪迁移.md) | 当 Agent 执行更多工作时，工程师应该抓住什么 |
+| [Claude Code 源码拆解](./docs/Claude%20Code%20源码拆解：从启动到多%20Agent%20扩展层.md) | 从真实 agent runtime 看 Harness 设计 |
 | [团队落地指南](./docs/团队落地指南.md) | 如何让团队从个人技巧变成组织能力 |
 
 ---

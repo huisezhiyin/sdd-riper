@@ -1,0 +1,46 @@
+# macOS
+.DS_Store
+
+# Local environment and secrets
+.env
+.env.*
+!.env.example
+
+# Agent/runtime local data
+.agent-memory/
+.expcap/
+.expcap-project.json
+*.sqlite
+*.sqlite3
+*.db
+milvus_lite/
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+dist/
+build/
+*.egg-info/
+
+# Node and frontend tooling
+node_modules/
+.next/
+.vite/
+coverage/
+
+# Logs and temporary files
+*.log
+tmp/
+temp/
+
+# Download/export duplicate artifacts
+* (1).md
+* (1).docx
+* (1).pptx
+* (1).pdf
+AGENTS.expcap.md
