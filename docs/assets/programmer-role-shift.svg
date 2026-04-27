@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="640" viewBox="0 0 1200 640" role="img" aria-labelledby="title desc">
+  <title id="title">程序员能力结构迁移</title>
+  <desc id="desc">图示程序员从亲手实现者迁移到任务设计者、系统控盘者和交付验收人。</desc>
+  <defs>
+    <style>
+      text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans CJK SC", "Microsoft YaHei", sans-serif; fill: #172033; }
+      .title { font-size: 34px; font-weight: 760; }
+      .subtitle { font-size: 20px; fill: #586479; }
+      .head { font-size: 28px; font-weight: 760; }
+      .body { font-size: 20px; fill: #3e4a60; }
+      .caption { font-size: 18px; fill: #5b6679; }
+    </style>
+    <marker id="arrow" markerWidth="14" markerHeight="14" refX="12" refY="7" orient="auto">
+      <path d="M 0 0 L 14 7 L 0 14 z" fill="#526076"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="640" fill="#f7f8fb"/>
+  <text x="600" y="58" text-anchor="middle" class="title">大模型时代，程序员的能力结构在迁移</text>
+  <text x="600" y="92" text-anchor="middle" class="subtitle">不是退出工程，而是从连续执行上移到任务设计、过程控盘和结果验收</text>
+
+  <rect x="80" y="170" width="330" height="300" rx="12" fill="#ffffff" stroke="#d7ddea" stroke-width="2"/>
+  <text x="245" y="225" text-anchor="middle" class="head">旧核心：实现者</text>
+  <text x="125" y="280" class="body">• 亲手写每一行</text>
+  <text x="125" y="320" class="body">• 记住所有细节</text>
+  <text x="125" y="360" class="body">• 单线程追 bug</text>
+  <text x="125" y="400" class="body">• 靠人工盯住过程</text>
+
+  <line x1="440" y1="320" x2="750" y2="320" stroke="#526076" stroke-width="5" marker-end="url(#arrow)"/>
+  <text x="595" y="285" text-anchor="middle" class="caption">Agent 承担更多执行</text>
+  <text x="595" y="365" text-anchor="middle" class="caption">人类职责上移</text>
+
+  <rect x="790" y="145" width="330" height="350" rx="12" fill="#f2fbf6" stroke="#75b98d" stroke-width="2"/>
+  <text x="955" y="200" text-anchor="middle" class="head">新核心：控盘者</text>
+  <text x="835" y="255" class="body">• 定义任务包</text>
+  <text x="835" y="295" class="body">• 组织上下文</text>
+  <text x="835" y="335" class="body">• 约束边界</text>
+  <text x="835" y="375" class="body">• 设计验证</text>
+  <text x="835" y="415" class="body">• 沉淀经验资产</text>
+
+  <rect x="235" y="530" width="730" height="46" rx="23" fill="#edf3ff" stroke="#c6d5f1"/>
+  <text x="600" y="560" text-anchor="middle" class="caption">代码能力仍然重要，但更常用于判断方向、风险、证据和交付质量</text>
+</svg>
