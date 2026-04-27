@@ -405,15 +405,17 @@ Agent 工程必须有 feedback surface。
 
 ## 10. 协作房间和经验资产，只是为了让放权更稳
 
+下面这一段先打个预防针：以下个人项目属于王婆卖瓜，大家有空可以赏脸试试看，但并不是必须使用的产品。它们都还在 pre 阶段，更适合当玩具、样例和思路参考，不建议直接带进生产环境。你完全可以用自己的脚本、文档、CI、review 流程，做出类似的承接层。这里放出来，只是为了说明我自己是怎么把“放权”落到工程里的。
+
 人类减少高频介入，不是靠忍住不说话。
 
 如果系统没有承接能力，人不介入只会变成失控。
 
-我做的几个项目，本质上都在补“放权之后的承接层”。它们不是这篇文章的核心目标，核心目标仍然是：把工程任务交给 Agent，让人从连续实现线程里抽出来，转向任务设计、过程控盘和交付验收。
+我做这些项目，本质上是在补“放权之后的承接层”。它们不是这篇文章的核心目标，核心目标仍然是：把工程任务交给 Agent，让人从连续实现线程里抽出来，转向任务设计、过程控盘和交付验收。
 
 所谓承接层，就是在人不持续盯着时，系统里要有别的东西帮忙接住任务，比如同伴审查、验证证据、历史经验和可回读的文档。
 
-[`adaptive-room-harness`](https://github.com/huisezhiyin/adaptive-room-harness) 解决的是复杂任务里的协作承接。
+比如 [`adaptive-room-harness`](https://github.com/huisezhiyin/adaptive-room-harness)，我用它处理复杂任务里的协作承接。
 
 主 Agent 仍然是任务 owner、final decider、writer、verifier。但当任务复杂、风险高、信息不确定时，它不一定每次都要等人类高频追问。它可以唤醒一个本地多 Agent 房间，让其他 Agent 做讨论、审查、挑战假设、补外部视角，最后沉淀成 `main_agent_reference.json` 这样的参考包。
 
@@ -421,7 +423,7 @@ Agent 工程必须有 feedback surface。
 
 它的关键是：主 Agent 仍然控盘，房间提供 advisory input。也就是让 Agent 系统内部多一些自我讨论和自我校验能力，减少人类在每个分岔点上的手动介入。
 
-[`agent-experience-capitalization`](https://github.com/huisezhiyin/agent-experience-capitalization) 解决的是经验承接。
+再比如 [`agent-experience-capitalization`](https://github.com/huisezhiyin/agent-experience-capitalization)，我用它处理经验承接。
 
 Agent 每次任务结束后，不一定都要沉淀资产。小任务做完就结束也很正常。只有当这次任务暴露了稳定规则、常见坑、测试入口、项目约定或反模式时，才值得把它沉淀成项目或团队拥有的工程资产。未来任务开始前，Agent 可以自动召回相关经验，再由当前模型结合上下文判断是否采用。
 
