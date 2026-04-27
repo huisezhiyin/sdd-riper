@@ -113,6 +113,49 @@ Do not change code yet.
 First give me your understanding, the core goal, a minimal spec / summary, risks, and validation method.
 ```
 
+## Repository Hygiene
+
+This repository is meant to be safe as a public, reusable agent workspace.
+
+- Keep generated runtime data out of the repo: `.agent-memory/`, `.expcap/`, SQLite files, Milvus Lite data, traces, episodes, candidates, and assets.
+- Prefer `EXPCAP_STORAGE_PROFILE=user-cache` with `EXPCAP_HOME="$HOME/.expcap"` when using `expcap`.
+- Do not commit machine-specific paths such as personal home directories.
+- Sanitize docs before committing: remove private project names, internal URLs, credentials, logs, IDs, and user data.
+- Rename downloaded duplicate files such as `name (1).md` before committing, or leave them ignored.
+
+## Multi-Repository / Temporary Workspace Usage
+
+For microservices, frontend/backend work, or temporary workspaces with several repositories, the core question is not where the chat starts. The real question is **how context is sliced, focused, switched, and closed**.
+
+There are three common modes:
+
+- **Start in the main repository**: if the task mainly belongs to one repo, such as `order-service`, start there. Let the agent inspect other repos only when it needs contracts, call chains, or related context, then bring back a concise summary.
+- **Start at the parent workspace**: if the task is naturally cross-repo, such as frontend/backend API changes or multiple service contracts, start at the parent workspace. The agent should first build a `Project Registry`, then read and act project by project.
+- **Split into multiple single-repo tasks**: if each repo has a clear local change and only release/integration ties them together, run separate repo tasks and do contract alignment at the end.
+
+Recommended rules:
+
+- The parent directory can be the entry point, but the model should not ingest every repository at once.
+- A single repo can be the entry point, but cross-repo context must be introduced explicitly.
+- Multi-repo work should start with a `Project Registry`: path, role, relevance, current `active_project`, and scope.
+- Default to `change_scope=local` for each loop.
+- Enter `CROSS / cross-project` only when cross-repo edits are explicitly needed.
+- Each relevant project should have its own CodeMap; cross-project work should add an interface contract or flow summary.
+
+Minimal start example:
+
+```text
+MULTI / multi-project
+
+This workspace contains multiple repositories.
+First auto-discover projects and create a Project Registry.
+Do not read all code at once.
+Identify the main project, related projects, active_project, and change_scope.
+Default to local. Before cross-project edits, stop at a checkpoint and wait for approval.
+```
+
+See [`skills/sdd-riper-one/references/multi-project.md`](./skills/sdd-riper-one/references/multi-project.md) for the fuller multi-project rules. Today `create_codemap` can generate CodeMaps inside `sdd-riper-one`; in the future it also makes sense to split a dedicated `codemap` skill with fixed templates to reduce model-to-model variation.
+
 ---
 
 ## The Standard Entry Still Matters
@@ -169,6 +212,9 @@ If you care about the underlying thinking:
 | --- | --- |
 | [From traditional programming to model-era programming](./docs/从传统编程转向大模型编程.md) | Why the human role must change |
 | [AI-native engineering paradigm](./docs/AI%20原生研发范式：从%22代码中心%22到%22文档驱动%22的演进.md) | Why spec is an engineering asset for humans first |
+| [Harness Engineering from toy to productivity](./docs/从玩具到生产力：用真实项目讲透%20AI%20Agent%20的%20Harness%20Engineering.md) | How to turn agent experiments into production workflows |
+| [Handing engineering tasks to agents](./docs/把工程任务交给%20Agent：大模型时代程序员的身份与能力往哪迁移.md) | What engineers should own when agents execute more work |
+| [Claude Code source walkthrough](./docs/Claude%20Code%20源码拆解：从启动到多%20Agent%20扩展层.md) | What a real agent runtime can teach about harness design |
 | [Team adoption guide](./docs/团队落地指南.md) | How a personal technique becomes organizational capability |
 
 ---
