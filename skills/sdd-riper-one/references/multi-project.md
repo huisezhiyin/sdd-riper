@@ -19,7 +19,7 @@
 
 ## 作用域隔离规则（必须）
 
-- 每轮先声明 `active_project` 与 `active_workdir`
+- 每次跨项目 checkpoint 或准备改文件前声明 `active_project` 与 `active_workdir`
 - 默认 `change_scope=local`，只允许修改 `active_project` 下的文件
 - 仅在显式 `change_scope=cross`（或触发词 `CROSS / 跨项目`）时允许跨项目改动
 - 始终 `codemap-first`：切换到任何项目前，必须先加载该项目的 codemap/context

@@ -7,6 +7,8 @@ spec 是持久化上下文与压缩记忆层；没有最小 spec，不进入代�
 
 ## Goal
 - 要解决什么问题：
+- 最终目标：
+- 本轮核心目标：
 - 验收结果：
 
 ## Done Contract
@@ -17,6 +19,8 @@ spec 是持久化上下文与压缩记忆层；没有最小 spec，不进入代�
 ## Scope
 - In:
 - Out:
+- 用户已切分的任务单元：
+- 轻量评估：足够小 / 需要升级 deep / 建议切到 sdd-riper-one
 
 ## Facts / Constraints
 - 已确认事实：
@@ -34,6 +38,8 @@ spec 是持久化上下文与压缩记忆层；没有最小 spec，不进入代�
 
 ## Goal Alignment Check
 - 当前动作是否仍服务于核心目标：
+- 模型当前路径是否仍在用户边界内：
+- 是否出现更适合代码地形的水流路径：
 - 若否，偏差在哪里：
 - 是否需要调整本轮目标或范围：
 
@@ -73,12 +79,14 @@ spec 是持久化上下文与压缩记忆层；没有最小 spec，不进入代�
 - `fast` 任务也至少保留 `Goal / Done Contract / Restated Understanding / Checkpoint Summary / Approval / Change Log / Validation / Resume / Handoff`。
 - `standard` 任务通常补齐全部区块即可。
 - `deep` 任务在此基础上扩展，但仍避免写成巨型 spec。
+- light 默认用户已切分任务；`Scope` 中的轻量评估只做 sanity check，不展开重度拆分。
 - spec 一旦形成或更新，应尽快落盘。
 - 用户输入任务后，先写 `Restated Understanding`，再进入后续动作。
 - `Done Contract` 保持 1-3 行，优先写“完成定义 + 证明来源”，不要写成长计划。
 - `Checkpoint Summary` 里要明确区分：`任务理解`、`核心目标`、`当前进度`，不要混写成一个概念。
 - `Goal Alignment Check` 用于记录“当前动作是否还在服务核心目标”；出现日志、测试或人工反馈后优先更新这里。
+- 如果模型提出与用户原设想不同的路径，先记录它是否仍在边界内、风险是什么、验证证据是什么，再决定接受或回炉。
 - `Validation` 优先记录外部证据，模型自检只能作为补充，不能替代测试、运行结果或人工确认。
 - 执行前先把 `Execution Approval` 置为 `Pending`，获批后再改为 `Approved`。
 - 暂停、切换任务点或准备交接前，更新 `Resume / Handoff`，确保下一轮可以快速恢复。
-- 编码前、切换任务点前、收尾前，回读当前相关区块，不整份重载。
+- 编码前、切换任务点前、收尾前，先做 checkpoint 自总结；若仍有不确定、冲突或需要证据，再回读当前相关区块，不整份重载。

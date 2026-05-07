@@ -139,7 +139,7 @@
 - 父目录可以作为入口，但不要让模型一次性吞掉所有仓库。
 - 单仓可以作为入口，但跨仓信息要显式引入。
 - 多仓任务先建立 `Project Registry`，记录项目路径、职责、相关性和当前 `active_project`。
-- 每轮默认 `change_scope=local`，只改当前项目。
+- 默认 `change_scope=local`；跨项目 checkpoint 或准备跨仓改文件前，先声明 `active_project` / `active_workdir` 并等待确认。
 - 只有明确需要跨仓修改时，才进入 `CROSS / 跨项目`。
 - 每个相关项目都应该有自己的 CodeMap；跨项目时再补一层接口契约或链路摘要。
 
@@ -159,7 +159,7 @@ MULTI / 多项目
 
 ---
 
-## 旧时代也能用：标准控盘入口
+## 需要显式流程时：标准控盘入口
 
 [`sdd-riper-one`](./skills/sdd-riper-one/SKILL.md) 不是废弃版本。
 
@@ -173,9 +173,9 @@ MULTI / 多项目
 
 换句话说：
 
-- **新时代的人**：默认用 `sdd-riper-one-light`，释放模型的探索能力。
-- **旧时代的人**：可以从 `sdd-riper-one` 进入，用更显式的流程获得安全感。
-- **高风险任务**：即使在新时代，也可以临时切回标准控盘协议。
+- **熟练用户 / 强模型日常任务**：默认用 `sdd-riper-one-light`，释放模型的探索能力。
+- **新手、训练、审计、交接或低质量模型场景**：从 `sdd-riper-one` 进入，用更显式的流程获得下限。
+- **高风险任务**：即使熟练用户也可以临时切回标准控盘协议。
 
 ---
 
@@ -213,6 +213,7 @@ MULTI / 多项目
 | --- | --- |
 | [从传统编程转向大模型编程](./docs/从传统编程转向大模型编程.md) | 为什么人的身份要迁移 |
 | [AI 原生研发范式](./docs/AI%20原生研发范式：从%22代码中心%22到%22文档驱动%22的演进.md) | 为什么 Spec 首先是给人看的工程资产 |
+| [Harness 大道至简：最小混沌单元与水流理论](./docs/Harness%20大道至简：从最小混沌单元到%20sdd-riper-one-light.md) | 如何切任务边界、顺着模型协作，以及用 Skill 生成 codemap、context、spec、checkpoint、validation 和 archive |
 | [从玩具到生产力：Harness Engineering](./docs/从玩具到生产力：用真实项目讲透%20AI%20Agent%20的%20Harness%20Engineering.md) | 如何把 Agent 实验推进到生产力 |
 | [把工程任务交给 Agent](./docs/把工程任务交给%20Agent：大模型时代程序员的身份与能力往哪迁移.md) | 当 Agent 执行更多工作时，工程师应该抓住什么 |
 | [Claude Code 源码拆解](./docs/Claude%20Code%20源码拆解：从启动到多%20Agent%20扩展层.md) | 从真实 agent runtime 看 Harness 设计 |

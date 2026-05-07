@@ -84,7 +84,7 @@
 
 ### 多项目门禁
 
-- 每轮必须声明 `active_project` + `active_workdir`
+- 跨项目 checkpoint 或准备改文件前必须声明 `active_project` + `active_workdir`
 - 默认 `change_scope=local`，仅改当前项目
 - `change_scope=cross` 需显式触发，且必须：加载目标项目 codemap → 检查目标 Spec 冲突 → 记录 Contract Interfaces → 记录 Touched Projects
 - 切换项目前必须先加载目标项目 codemap（codemap-first）

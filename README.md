@@ -138,7 +138,7 @@ Recommended rules:
 - The parent directory can be the entry point, but the model should not ingest every repository at once.
 - A single repo can be the entry point, but cross-repo context must be introduced explicitly.
 - Multi-repo work should start with a `Project Registry`: path, role, relevance, current `active_project`, and scope.
-- Default to `change_scope=local` for each loop.
+- Default to `change_scope=local`. Before a cross-project checkpoint or cross-repo file change, declare `active_project` / `active_workdir` and wait for confirmation.
 - Enter `CROSS / cross-project` only when cross-repo edits are explicitly needed.
 - Each relevant project should have its own CodeMap; cross-project work should add an interface contract or flow summary.
 
@@ -158,7 +158,7 @@ See [`skills/sdd-riper-one/references/multi-project.md`](./skills/sdd-riper-one/
 
 ---
 
-## The Standard Entry Still Matters
+## When Explicit Control Is Needed
 
 [`sdd-riper-one`](./skills/sdd-riper-one/SKILL.md) is not obsolete.
 
@@ -172,9 +172,9 @@ It is heavier and more explicit, which makes it useful when:
 
 In practice:
 
-- **New-era users** default to `sdd-riper-one-light` to release the model's exploration ability.
-- **Old-era users** can start with `sdd-riper-one` for a more explicit workflow.
-- **High-risk tasks** can temporarily switch back to the standard control protocol.
+- **Experienced users / strong-model daily work** default to `sdd-riper-one-light` to release the model's exploration ability.
+- **Beginners, training, audit, handoff, or weaker-model scenarios** start with `sdd-riper-one` for a stronger floor.
+- **High-risk tasks** can temporarily switch back to the standard control protocol even for experienced users.
 
 ---
 
@@ -212,6 +212,7 @@ If you care about the underlying thinking:
 | --- | --- |
 | [From traditional programming to model-era programming](./docs/从传统编程转向大模型编程.md) | Why the human role must change |
 | [AI-native engineering paradigm](./docs/AI%20原生研发范式：从%22代码中心%22到%22文档驱动%22的演进.md) | Why spec is an engineering asset for humans first |
+| [Harness minimalism: minimum chaos unit and water-flow theory](./docs/Harness%20大道至简：从最小混沌单元到%20sdd-riper-one-light.md) | How to slice task boundaries, collaborate with model flow, and use skills for spec, checkpoint, validation, handoff, and archive |
 | [Harness Engineering from toy to productivity](./docs/从玩具到生产力：用真实项目讲透%20AI%20Agent%20的%20Harness%20Engineering.md) | How to turn agent experiments into production workflows |
 | [Handing engineering tasks to agents](./docs/把工程任务交给%20Agent：大模型时代程序员的身份与能力往哪迁移.md) | What engineers should own when agents execute more work |
 | [Claude Code source walkthrough](./docs/Claude%20Code%20源码拆解：从启动到多%20Agent%20扩展层.md) | What a real agent runtime can teach about harness design |

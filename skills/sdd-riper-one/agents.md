@@ -1,6 +1,6 @@
 ## 快速信息
 
-先阅读 AGENTS.local.md 作为 AGENTS.md 的基底 然后添加本文件的其他内容。
+这是公开版 skill 的项目说明。使用时遵守当前仓库的 `AGENTS.md` / 项目规则；不要依赖本机私有的 `AGENTS.local.md`。
 
 ## 此项目重点
 

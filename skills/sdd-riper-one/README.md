@@ -1,8 +1,8 @@
 # sdd-riper-one
 
-SDD-RIPER ONE Skill（标准控盘协议）。
+SDD-RIPER ONE Skill（重型 Harness 教练 / 标准控盘协议）。
 
-该 Skill 是比 `sdd-riper-one-light` 更重、更显式的入口，用于约束大模型严格按以下流程执行研发任务：
+该 Skill 是比 `sdd-riper-one-light` 更重、更显式的入口，用于帮助用户、模型和任务从混沌状态收敛到可执行状态：澄清最终目标、生成 codemap/context、拆分最小混沌单元、维护完整 spec、设置阻塞点，并严格按以下流程执行研发任务：
 
 `Research -> (Innovate, 可选) -> Plan -> (Plan Approved) -> Execute -> Review`
 
@@ -18,6 +18,8 @@ SDD-RIPER ONE Skill（标准控盘协议）。
 - `No Approval, No Execute`
 - `Spec is Truth`
 - 先形成最小 spec / summary / checkpoint，再进入执行
+- 先澄清最终目标，再拆分当前最小混沌单元
+- 先把目标、进度、偏差、验证和用户决策写进本地 spec，支持 new chat 恢复
 - 复杂任务走完整阶段门禁，小任务也不能裸改
 
 显式命令是能力接口，不是唯一入口。真正该让团队先学会的，是**先收敛任务，再批准执行**。
@@ -26,7 +28,7 @@ SDD-RIPER ONE Skill（标准控盘协议）。
 
 - 总纲：`Pre-Research -> RIPER`，全程遵循 SDD 并维护 Spec。
 - 先记住三句话：`No Spec, No Code`、`No Approval, No Execute`、`Spec is Truth`。
-- 不要一开始就要求直接改代码；先让模型形成最小 spec、summary 或 checkpoint。
+- 不要一开始就要求直接改代码；先让模型澄清最终目标、生成或引用 codemap/context、评估最小混沌单元。
 - 中大型任务默认走完整阶段门禁；小任务也先收敛目标、范围、约束与验证方式。
 - 显式命令是补充接口，不是主入口；你给口述需求、文档、聊天记录都可以启动。
 - 只要你没明确回复 `Plan Approved`，就不应该进入 `Execute`。
@@ -37,6 +39,8 @@ SDD-RIPER ONE Skill（标准控盘协议）。
 - **Prompt**：可选增强（有则更稳，无也可用）。
 - **MCP**：可选提效，不是必需依赖。
 - **底线**：`No Spec, No Code` + `Plan Approved` 前不得改代码。
+- **定位**：one 负责把不清楚的大任务收敛成可 Harness 的任务单元；light 负责在任务已清楚时快速推进。
+- **默认注入**：进入 new chat 或新项目会话时，先检查可见的项目/系统提示词入口是否包含 skill 路由；缺失时询问是否新建或补充 `AGENTS.md`、`CLAUDE.md`、`.github/copilot-instructions.md`、`.cursorrules` 等默认 prompt 文档。
 
 ### 推荐的最小启动方式
 
@@ -50,6 +54,8 @@ SDD-RIPER ONE Skill（标准控盘协议）。
 然后要求它：
 
 - 先收敛任务理解
+- 先讨论最终目标是否清晰
+- 先评估当前任务是否是最小混沌单元
 - 先建立最小 spec / summary
 - 先给下一步计划与风险
 - 等你批准后再进入执行
@@ -64,8 +70,19 @@ SDD-RIPER ONE Skill（标准控盘协议）。
   - `sdd_bootstrap -> （按需补）create_codemap/build_context_bundle -> Research -> Plan -> Execute -> Review`
 - 关键门禁：
   - 首版 spec 落盘前，不进入后续实现阶段。
+  - 最终目标和当前任务单元未写清前，不进入 Plan。
   - 未收到精确字样 `Plan Approved`，禁止进入 `Execute`。
   - `Review` 不通过，必须回到 `Research/Plan` 闭环修正。
+
+## 轻重分层
+
+| 维度 | `sdd-riper-one` | `sdd-riper-one-light` |
+|---|---|---|
+| 默认用户 | 新手、实习生、低质量模型、需要训练的人 | 深度用户、强模型、高频日常任务 |
+| 任务状态 | 大、乱、不清楚、风险高 | 已经被用户拆得基本可执行 |
+| 主要动作 | 澄清目标、codemap/context、拆分最小混沌单元、重度留痕、频繁阻塞 | 目标复述、checkpoint、中度留痕、进度汇报、验证闭环 |
+| 自动化 | 按风险降低自动化，按清晰度释放自动化 | 默认自动推进，只在硬风险处阻塞 |
+| Spec | 大而完整，记录目标、过程、选择、偏差和验证 | 小而够用，记录目标、证据和恢复点 |
 
 ## Multi-Project Collaboration（自动发现 + 作用域隔离）
 
@@ -99,6 +116,8 @@ SDD-RIPER ONE Skill（标准控盘协议）。
 - `archive`：归档沉淀命令，对 spec/codemap 做总结、合并、精炼，支持 `human/llm` 双视角输出并附来源追踪。
 - `debug`：日志驱动的排查与功能验证——指定日志路径 + 问题描述进行 Bug 三角定位，或指定日志 + Spec 逐条验证功能是否正常。
 - 定位：`create_codemap`、`build_context_bundle` 做 Pre-Research 输入准备；`sdd_bootstrap` 负责启动 RIPER；`review_spec` 负责执行前建议性预审；`review_execute` 负责执行后质量门禁；`archive` 负责任务收口后的知识沉淀；`debug` 是独立的旁路模式，需要改代码时自动衔接 RIPER。
+
+这些动作的共同目标不是制造仪式，而是降低混沌：看清代码地形、清洗需求上下文、把任务切到可执行大小，并把过程留在本地真相源里。
 
 ## Pre-Research 说明
 
@@ -177,6 +196,10 @@ SDD-RIPER ONE Skill（标准控盘协议）。
 
 - README 负责说明默认工作方式与常见启动路径。
 - `create_codemap`、`build_context_bundle`、`sdd_bootstrap`、`review_spec`、`review_execute` 等名字，是 skill 提供的能力接口。
+- `SKILL.md` 只放常驻运行内核；模式选择、最小混沌单元、水流理论、上下文防腐烂、注入诊断等教学内容在 `references/` 中按需加载。
+- 默认 prompt 文档只写路由和底线，不复制完整 skill；具体写法见 `references/default-prompt-setup.md`。
+- 默认 prompt 检查优先调用 `scripts/default_prompt_check.py`，脚本入口见 `references/script-map.md`。
+- 不确定该读哪份 reference 或调用哪个脚本时，先看 `references/routing-map.md`。
 - 推荐先让团队掌握“如何工作”，再去记忆“具体叫什么”。
 
 ## archive 自动化（脚本）

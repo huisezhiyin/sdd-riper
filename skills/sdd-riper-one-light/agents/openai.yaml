@@ -1,4 +1,4 @@
 interface:
   display_name: "SDD RIPER Light"
-  short_description: "面向强模型的轻量 AI Agent Harness：让模型探索和推进，人类通过 spec、checkpoint、批准、证据验证与回写控盘。"
-  default_prompt: "用中文按轻量 checkpoint-driven SDD/RIPER Harness 处理当前编码任务：承认模型负责分解、探索和推进，人类负责方向、边界、节奏、风险与验收；先用自己的话复述当前理解，并明确本轮阶段性核心目标；建立或更新最小 spec 并落盘；在 spec 中用 1-3 行写清 Done Contract，说明什么算完成、由什么证明；默认由模型自行分解任务，但实现前必须给一次短 checkpoint，说明当前理解、核心目标、下一步、风险和验证方式；测试、日志或人工反馈出现后，先重新判断核心目标是否已完成、还差什么，再决定是否继续执行；未获明确批准前不要执行代码修改；执行后回写 spec 中的 Change Log、Validation、Resume/Handoff，并写明下一轮核心目标或收尾结论。"
+  short_description: "面向强模型和熟练用户的轻量 AI Agent Harness：默认任务已拆好，模型自主推进，人类通过 goal、spec、checkpoint、验证与回写低干扰控盘。"
+  default_prompt: "用中文按 $sdd-riper-one-light 处理任务：默认用户已拆好任务，模型自主推进，人类控目标、边界、风险和验收。new chat/新项目先检查可见 prompt 文件是否有 light/one 路由，缺失则询问是否补最小 AGENTS.md/CLAUDE.md。先复述目标，轻量检查是否过大/越界/高风险；维护最小 spec、Done Contract、checkpoint、validation 和 handoff。高影响修改前需明确批准；完成由证据证明。"
