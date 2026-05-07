@@ -7,7 +7,26 @@
 
 ---
 
-## 30 秒读懂
+## 30 秒读懂 Harness
+
+**Harness** 不是一套要求模型逐步照做的律令，而是把一个可验证的任务单元交给大模型自主推进；人类只维护目标、边界、权限、上下文、checkpoint 和验收证据。
+
+它要解决的不是“怎么写一个神奇 Prompt”，而是四个工程问题：
+
+| 问题 | Harness 的回答 |
+| --- | --- |
+| 任务怎么交出去 | 切成模型能独立推进的最小混沌单元 |
+| 过程怎么不失控 | 人在关键节点 checkpoint，而不是逐行遥控 |
+| 完成怎么判断 | 用测试、日志、截图、人工验收等证据证明 |
+| 下次怎么接上 | 用最小 spec / summary / handoff 留下可恢复上下文 |
+
+所以这里的核心很简单：
+
+```text
+人负责目标、边界、节奏、风险和验收；
+模型负责探索、实现、修复和推进；
+spec 是持久化真相源，不是反复塞满上下文的大 prompt。
+```
 
 **SDD-RIPER** 不是传统意义上的重型 SDD。
 
@@ -25,6 +44,10 @@
 一句话：
 
 > **AI 是事件主体，Human 是控盘者，Harness 是控制面。**
+
+日常任务用 `sdd-riper-one-light`：轻提示、中度留痕、checkpoint、validation、reverse sync。
+
+复杂任务、高风险任务、新手训练、审计交接用 `sdd-riper-one`：更明确的阶段门禁、codemap / context、完整 spec、更多问询与阻塞。
 
 ---
 
@@ -188,6 +211,8 @@ MULTI / 多项目
 | [`protocols/SDD-RIPER-ONE.md`](./protocols/SDD-RIPER-ONE.md) | 标准协议原文 |
 | [`protocols/RIPER-DOC.md`](./protocols/RIPER-DOC.md) | 文档生成与维护协议 |
 | [`protocols/RIPER-5.md`](./protocols/RIPER-5.md) | 更早期、更严格的 RIPER 参考 |
+| [`docs/README.md`](./docs/README.md) | 文档阅读地图：当前主线与归档文章 |
+| [`docs/Harness 大道至简：从最小混沌单元到 sdd-riper-one-light.md`](./docs/Harness%20大道至简：从最小混沌单元到%20sdd-riper-one-light.md) | Harness 核心文章：最小混沌单元、水流理论、轻重 skill 用法 |
 | [`docs/团队落地指南.md`](./docs/团队落地指南.md) | 团队推广与治理指南 |
 | [`docs/如何快速从零开始落地大模型编程 -- 手把手教程.md`](./docs/如何快速从零开始落地大模型编程%20--%20手把手教程.md) | 从零上手教程 |
 
@@ -207,17 +232,17 @@ MULTI / 多项目
 2. 给高风险任务保留标准控盘入口。
 3. 用 [团队落地指南](./docs/团队落地指南.md) 统一规则：代码修改前先 checkpoint，批准后再执行。
 
-如果你关心思想背景：
+如果你关心思想背景，先从文档地图进入，不需要把所有历史长文都读一遍：
 
 | 文档 | 核心问题 |
 | --- | --- |
-| [从传统编程转向大模型编程](./docs/从传统编程转向大模型编程.md) | 为什么人的身份要迁移 |
-| [AI 原生研发范式](./docs/AI%20原生研发范式：从%22代码中心%22到%22文档驱动%22的演进.md) | 为什么 Spec 首先是给人看的工程资产 |
+| [文档阅读地图](./docs/README.md) | 哪些是当前主线，哪些是历史归档 |
 | [Harness 大道至简：最小混沌单元与水流理论](./docs/Harness%20大道至简：从最小混沌单元到%20sdd-riper-one-light.md) | 如何切任务边界、顺着模型协作，以及用 Skill 生成 codemap、context、spec、checkpoint、validation 和 archive |
-| [从玩具到生产力：Harness Engineering](./docs/从玩具到生产力：用真实项目讲透%20AI%20Agent%20的%20Harness%20Engineering.md) | 如何把 Agent 实验推进到生产力 |
-| [把工程任务交给 Agent](./docs/把工程任务交给%20Agent：大模型时代程序员的身份与能力往哪迁移.md) | 当 Agent 执行更多工作时，工程师应该抓住什么 |
-| [Claude Code 源码拆解](./docs/Claude%20Code%20源码拆解：从启动到多%20Agent%20扩展层.md) | 从真实 agent runtime 看 Harness 设计 |
+| [从零上手教程](./docs/如何快速从零开始落地大模型编程%20--%20手把手教程.md) | 怎么跑通第一个可用闭环 |
 | [团队落地指南](./docs/团队落地指南.md) | 如何让团队从个人技巧变成组织能力 |
+| [Claude Code 源码拆解](./docs/Claude%20Code%20源码拆解：从启动到多%20Agent%20扩展层.md) | 从真实 agent runtime 看 Harness 设计 |
+
+更早期的长文已经集中放到 [`docs/archive/`](./docs/archive/)，作为历史思考和写作素材保留。
 
 ---
 

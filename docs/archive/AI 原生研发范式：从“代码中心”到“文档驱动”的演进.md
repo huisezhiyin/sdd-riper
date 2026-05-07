@@ -41,7 +41,7 @@
 
 目标：30 分钟跑通一次“文档 → 实现 → 复核 → 留痕”，产出 `docs/specs/feature-xxx/` 。
 
-> 命令大模型一键进入单 Spec 的傻瓜交互模式：[《SDD-RIPER-ONE》](../protocols/SDD-RIPER-ONE.md)
+> 命令大模型一键进入单 Spec 的傻瓜交互模式：[《SDD-RIPER-ONE》](../../protocols/SDD-RIPER-ONE.md)
 
 1. 0–3min（Initialization）：给 AI 一份“家规/约束/口径”，让它复述确认。
 
@@ -57,7 +57,7 @@
 
 如果你希望先“照着跑一次完整闭环”（Spec → 实现 → 测试 → 交付留痕），可以先做一个开源项目的小练习：
 
-[《如何快速从零开始落地大模型编程 -- 手把手教程》](<如何快速从零开始落地大模型编程 -- 手把手教程.md>)
+[《如何快速从零开始落地大模型编程 -- 手把手教程》](<../如何快速从零开始落地大模型编程 -- 手把手教程.md>)
 
 ---
 
@@ -187,7 +187,7 @@ SDD 不是让所有人都写同一种文档，而是让协作关系“各看各�
 
 > 但重生成的前提是：**Spec 是准确的**。否则重生成就是抽奖。
 
-> 一键进入单 Spec 的傻瓜互动模式：[《SDD-RIPER-ONE》](../protocols/SDD-RIPER-ONE.md)
+> 一键进入单 Spec 的傻瓜互动模式：[《SDD-RIPER-ONE》](../../protocols/SDD-RIPER-ONE.md)
 
 在这个单元，我们将深入“单兵作战”的细节。
 
@@ -957,8 +957,8 @@ Success (already checked-in):
 
 中大型功能：
 
-- [《RIPER-5》](../protocols/RIPER-5.md)
-- [《SDD-RIPER-ONE》](../protocols/SDD-RIPER-ONE.md)
+- [《RIPER-5》](../../protocols/RIPER-5.md)
+- [《SDD-RIPER-ONE》](../../protocols/SDD-RIPER-ONE.md)
 
 网上也有很多很优秀的模版，比如：
 

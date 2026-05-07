@@ -8,7 +8,7 @@
 >
 > 任务包、checkpoint、反馈和经验沉淀，都是为这件事服务的。它们不是最终目标，最终目标是让人能把工程任务交给 Agent，同时仍然守住方向、风险和质量。
 
-![大模型时代，程序员的能力结构在迁移](assets/programmer-role-shift.png)
+![大模型时代，程序员的能力结构在迁移](../assets/programmer-role-shift.png)
 
 ## 1. 很多人不是不会用 Agent，而是不敢放权
 
@@ -87,7 +87,7 @@ Agent 负责推进。
 工程系统负责提供地形、边界、反馈和记忆。
 ```
 
-![马与骑手：Agent 时代的人机协作关系](assets/agent-rider-horse.png)
+![马与骑手：Agent 时代的人机协作关系](../assets/agent-rider-horse.png)
 
 放权不是人的价值下降，而是人的职责上移。
 
@@ -163,7 +163,7 @@ Agent 负责推进。
 而是设计地形、边界、反馈和收束方式。
 ```
 
-![地形与水流：把任务交给 Agent 之后，工程协作如何变化](assets/agent-terrain-flow.png)
+![地形与水流：把任务交给 Agent 之后，工程协作如何变化](../assets/agent-terrain-flow.png)
 
 Agent 先流动，人才看得见它的能力边界，也看得见任务真实的复杂度。
 
@@ -221,7 +221,7 @@ Prompt 解决的是“这一次模型怎么理解”。
 
 如果要让别人真的学会，不能只讲“放权”，还要把放权拆成可执行动作。
 
-![从“帮我修一下”到 Agent 可自主推进的任务包](assets/agent-task-package.png)
+![从“帮我修一下”到 Agent 可自主推进的任务包](../assets/agent-task-package.png)
 
 我通常会把一个工程任务包装成五件东西：
 
@@ -498,7 +498,7 @@ Agent 说完成之后，我不会只看“完成了”三个字。我看 diff，
 
 不建议一上来就自己发明流程。更简单的方式，是先用已经整理好的 Skill。
 
-这些 Skill 已经整理在 GitHub 仓库里：[huisezhiyin/sdd-riper](https://github.com/huisezhiyin/sdd-riper)。仓库根目录也放了一个脱敏后的 [`AGENTS.md`](../AGENTS.md)，可以直接看项目级行为边界应该怎么写。
+这些 Skill 已经整理在 GitHub 仓库里：[huisezhiyin/sdd-riper](https://github.com/huisezhiyin/sdd-riper)。仓库根目录也放了一个脱敏后的 [`AGENTS.md`](../../AGENTS.md)，可以直接看项目级行为边界应该怎么写。
 
 这套工作法有两个入口：
 

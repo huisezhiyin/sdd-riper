@@ -7,7 +7,26 @@
 
 ---
 
-## In 30 Seconds
+## Harness in 30 Seconds
+
+**Harness** is not a rigid law that forces the model to follow a fixed step-by-step ritual. It means handing a verifiable task unit to the model for autonomous progress, while the human owns goals, boundaries, permissions, context, checkpoints, and acceptance evidence.
+
+It does not try to solve "how to write a magic prompt." It solves four engineering problems:
+
+| Problem | Harness answer |
+| --- | --- |
+| How to hand work to the model | Slice the work into a minimum chaos unit the model can carry forward |
+| How to keep the process under control | Checkpoint at critical moments instead of micromanaging every line |
+| How to know it is done | Require evidence: tests, logs, screenshots, manual acceptance, or equivalent proof |
+| How to resume later | Keep a minimal spec / summary / handoff as recoverable context |
+
+The core is simple:
+
+```text
+Human owns goals, boundaries, pace, risk, and acceptance.
+Model owns exploration, implementation, repair, and progress.
+Spec is a persistent source of truth, not a giant prompt repeatedly stuffed into context.
+```
 
 **SDD-RIPER** is not traditional heavyweight spec-driven development.
 
@@ -24,6 +43,10 @@ It is not a weaker version. It is a daily **AI Agent Harness** for strong coding
 In one sentence:
 
 > **AI is the event actor. Human owns the control plane. Harness is how the two cooperate.**
+
+Use `sdd-riper-one-light` for daily work: light prompting, medium trace, checkpoints, validation, and reverse sync.
+
+Use `sdd-riper-one` for complex work, high risk, beginner training, audit, and handoff: explicit phase gates, codemap / context, fuller specs, more questions, and more blocking.
 
 ---
 
@@ -187,6 +210,8 @@ In practice:
 | [`protocols/SDD-RIPER-ONE.md`](./protocols/SDD-RIPER-ONE.md) | Standard protocol text |
 | [`protocols/RIPER-DOC.md`](./protocols/RIPER-DOC.md) | Document generation and maintenance protocol |
 | [`protocols/RIPER-5.md`](./protocols/RIPER-5.md) | Earlier and stricter RIPER reference |
+| [`docs/README.md`](./docs/README.md) | Canonical docs map: active reading path plus archive |
+| [`docs/Harness 大道至简：从最小混沌单元到 sdd-riper-one-light.md`](./docs/Harness%20大道至简：从最小混沌单元到%20sdd-riper-one-light.md) | Core Harness thinking: minimum chaos unit, water-flow theory, light/heavy skill usage |
 | [`docs/团队落地指南.md`](./docs/团队落地指南.md) | Team adoption and governance guide |
 | [`docs/如何快速从零开始落地大模型编程 -- 手把手教程.md`](./docs/如何快速从零开始落地大模型编程%20--%20手把手教程.md) | Step-by-step onboarding guide |
 
@@ -206,17 +231,17 @@ If you are adopting this in a team:
 2. Keep the standard control protocol for high-risk work.
 3. Use the [team adoption guide](./docs/团队落地指南.md) to align on checkpoints, approval, and evidence.
 
-If you care about the underlying thinking:
+If you care about the underlying thinking, start from the docs map and keep the reading path short:
 
 | Document | Core question |
 | --- | --- |
-| [From traditional programming to model-era programming](./docs/从传统编程转向大模型编程.md) | Why the human role must change |
-| [AI-native engineering paradigm](./docs/AI%20原生研发范式：从%22代码中心%22到%22文档驱动%22的演进.md) | Why spec is an engineering asset for humans first |
+| [Docs map](./docs/README.md) | Which documents are active, and which are historical archive |
 | [Harness minimalism: minimum chaos unit and water-flow theory](./docs/Harness%20大道至简：从最小混沌单元到%20sdd-riper-one-light.md) | How to slice task boundaries, collaborate with model flow, and use skills for spec, checkpoint, validation, handoff, and archive |
-| [Harness Engineering from toy to productivity](./docs/从玩具到生产力：用真实项目讲透%20AI%20Agent%20的%20Harness%20Engineering.md) | How to turn agent experiments into production workflows |
-| [Handing engineering tasks to agents](./docs/把工程任务交给%20Agent：大模型时代程序员的身份与能力往哪迁移.md) | What engineers should own when agents execute more work |
-| [Claude Code source walkthrough](./docs/Claude%20Code%20源码拆解：从启动到多%20Agent%20扩展层.md) | What a real agent runtime can teach about harness design |
+| [Quickstart](./docs/如何快速从零开始落地大模型编程%20--%20手把手教程.md) | How to run the first usable loop |
 | [Team adoption guide](./docs/团队落地指南.md) | How a personal technique becomes organizational capability |
+| [Claude Code source walkthrough](./docs/Claude%20Code%20源码拆解：从启动到多%20Agent%20扩展层.md) | What a real agent runtime can teach about harness design |
+
+Older long-form essays are kept under [`docs/archive/`](./docs/archive/) as historical thinking and writing material.
 
 ---
 

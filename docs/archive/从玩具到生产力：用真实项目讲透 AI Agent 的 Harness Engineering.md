@@ -43,7 +43,7 @@ Harness 不是某条提示词、某个工具，也不是多写几份文档。
 
 基于这两个维度，可以画出 **AI Agent 架构模式边界矩阵**：
 
-![AI Agent 架构模式边界矩阵](./assets/ai-agent-harness-boundary-matrix.svg)
+![AI Agent 架构模式边界矩阵](../assets/ai-agent-harness-boundary-matrix.svg)
 
 **四个象限没有绝对优劣，只有场景适配。**
 
