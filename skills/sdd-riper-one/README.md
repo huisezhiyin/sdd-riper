@@ -108,7 +108,7 @@ SDD-RIPER ONE Skill（重型 Harness 教练 / 标准控盘协议）。
 
 ## 原生命令动作（Skill 内置）
 
-- `create_codemap`：代码库的**索引与上下文切片**——把庞大代码库压缩为可按需加载的局部上下文，支持功能级 (`feature`) 和项目级 (`project`)；用于后续对话精准定位与节约 token。
+- `create_codemap`：代码库的**索引与上下文切片**——把庞大代码库组织成可按需展开的代码地形树，支持功能级 (`feature`) 和项目级 (`project`)；用于后续对话精准定位与节约上下文注意力。若仓库中存在独立 [`codemap`](../codemap/SKILL.md) skill，按其原则和模板生成。
 - `build_context_bundle`：输入目录路径，读取并提炼需求上下文（支持文本、文档、图片等多类型文件）；支持轻量输出与迭代补全。
 - `sdd_bootstrap`：RIPER 启动命令（进入 Research 第一步，同时完成 Pre-Research 收口并产出第一版 spec）。
 - `review_spec`：Execute 前的建议性评审命令，按当前阶段检查 spec/plan 并输出 `GO/NO-GO` 建议（不强制阻塞执行）。

@@ -1,0 +1,4 @@
+interface:
+  display_name: "CodeMap"
+  short_description: "Generate agent-facing progressive code terrain maps."
+  default_prompt: "Use the codemap skill to create a task-scoped CodeMap that routes agent context progressively from project or feature scope down to source-linked evidence."

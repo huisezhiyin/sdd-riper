@@ -5,14 +5,17 @@
 ## 1) `create_codemap`
 
 - 用途：生成代码索引地图，支持 `feature` / `project`（默认 `feature`）
-- 本质：CodeMap 是代码上下文索引，用于后续按需加载，而不是每轮全仓扫描。
+- 本质：CodeMap 是面向 Agent 的渐进式代码地形索引，用于后续按需加载；它节约的是上下文注意力，不是把源码压缩成二手文档。
+- 路由：若仓库中存在 `skills/codemap/`，按独立 `codemap` skill 的原则与模板生成；`create_codemap` 保留为 SDD-RIPER 的 Pre-Research 命令入口。
 - 输入：`scope`（建议明确）；`mode` 可选；`goal` 可选
 - 输出：
   - `feature`：`mydocs/codemap/YYYY-MM-DD_hh-mm_<feature>功能.md`
   - `project`：`mydocs/codemap/YYYY-MM-DD_hh-mm_<project>项目总图.md`
 - 要点：
-  - `feature` 关注入口、核心链路、依赖、风险
-  - `project` 关注架构层、核心模块、跨模块流程、外部依赖；图示建议优先 Mermaid（受限可降级为结构化文字图）
+  - `feature`：能力/功能地形图，深度优先，围绕一个能力闭环追踪入口、主链路、关键分支、依赖、效果、风险与验证入口
+  - `project`：项目/系统地形图，广度优先，建立能力索引、模块边界、入口索引、依赖索引、验证索引，并指向后续 feature codemap
+  - 不要把 CodeMap 写成 CodeWiki；不要粘贴大段源码；重要关系需标记 `confirmed` / `inferred` / `unknown`
+  - 图示可用 Mermaid，但不能替代 source-linked file/function/class index
 
 ## 2) `build_context_bundle`
 
