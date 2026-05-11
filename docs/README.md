@@ -6,8 +6,7 @@
 
 | 文档 | 适合谁 | 读完应该获得什么 |
 | --- | --- | --- |
-| [Harness 大道至简：最小混沌单元与水流理论](./Harness%20大道至简：从最小混沌单元到%20sdd-riper-one-light.md) | 想理解核心方法的人 | 知道怎么切任务边界、顺着模型水流协作、用 light / heavy skill 控制风险 |
-| [如何快速从零开始落地大模型编程](<./如何快速从零开始落地大模型编程 -- 手把手教程.md>) | 新手、第一次跑通流程的人 | 用一个最小闭环开始做 spec、checkpoint、validation |
+| [手把手学会 AI Coding Harness：从任务拆分到上下文控盘](<./手把手学会 AI Coding Harness：从任务拆分到上下文控盘.md>) | 公众号读者、工程师、架构师 | 用直播平台 case 学会任务拆分、上下文控盘、目标驱动执行、验收和留痕 |
 | [团队落地指南](./团队落地指南.md) | TL、主管、团队推广者 | 设计团队默认入口、试点路径、检查点、验收与效果指标 |
 | [Claude Code 源码拆解：从启动到多 Agent 扩展层](./Claude%20Code%20源码拆解：从启动到多%20Agent%20扩展层.md) | 想看真实 agent runtime 的人 | 理解工具、权限、任务、多 agent 与 skill 扩展层如何支撑 Harness |
 
@@ -34,6 +33,8 @@ spec 作为持久化真相源，不作为反复塞满上下文的巨大 prompt�
 | [从玩具到生产力：Harness Engineering](<./archive/从玩具到生产力：用真实项目讲透 AI Agent 的 Harness Engineering.md>) | Harness 工程化案例素材 |
 | [把工程任务交给 Agent](<./archive/把工程任务交给 Agent：大模型时代程序员的身份与能力往哪迁移.md>) | 工程师身份迁移素材 |
 | [大模型时代的超级个体：不是 Prompt，而是 Harness 能力](<./archive/大模型时代的超级个体：真正拉开差距的不是 Prompt，而是 Harness 能力.md>) | 短篇观点稿素材 |
+| [Harness 大道至简：最小混沌单元与水流理论](./archive/Harness%20大道至简：从最小混沌单元到%20sdd-riper-one-light.md) | 已被主文吸收的进阶理论素材 |
+| [如何快速从零开始落地大模型编程](<./archive/如何快速从零开始落地大模型编程 -- 手把手教程.md>) | 已被主文和团队指南吸收的早期上手教程 |
 
 ## 维护原则
 

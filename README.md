@@ -212,9 +212,8 @@ In practice:
 | [`protocols/RIPER-DOC.md`](./protocols/RIPER-DOC.md) | Document generation and maintenance protocol |
 | [`protocols/RIPER-5.md`](./protocols/RIPER-5.md) | Earlier and stricter RIPER reference |
 | [`docs/README.md`](./docs/README.md) | Canonical docs map: active reading path plus archive |
-| [`docs/Harness 大道至简：从最小混沌单元到 sdd-riper-one-light.md`](./docs/Harness%20大道至简：从最小混沌单元到%20sdd-riper-one-light.md) | Core Harness thinking: minimum chaos unit, water-flow theory, light/heavy skill usage |
+| [`docs/手把手学会 AI Coding Harness：从任务拆分到上下文控盘.md`](./docs/手把手学会%20AI%20Coding%20Harness：从任务拆分到上下文控盘.md) | Main public Harness guide: task slicing, context control, target-driven execution, validation |
 | [`docs/团队落地指南.md`](./docs/团队落地指南.md) | Team adoption and governance guide |
-| [`docs/如何快速从零开始落地大模型编程 -- 手把手教程.md`](./docs/如何快速从零开始落地大模型编程%20--%20手把手教程.md) | Step-by-step onboarding guide |
 
 ---
 
@@ -237,8 +236,7 @@ If you care about the underlying thinking, start from the docs map and keep the 
 | Document | Core question |
 | --- | --- |
 | [Docs map](./docs/README.md) | Which documents are active, and which are historical archive |
-| [Harness minimalism: minimum chaos unit and water-flow theory](./docs/Harness%20大道至简：从最小混沌单元到%20sdd-riper-one-light.md) | How to slice task boundaries, collaborate with model flow, and use skills for spec, checkpoint, validation, handoff, and archive |
-| [Quickstart](./docs/如何快速从零开始落地大模型编程%20--%20手把手教程.md) | How to run the first usable loop |
+| [Hands-on AI Coding Harness](./docs/手把手学会%20AI%20Coding%20Harness：从任务拆分到上下文控盘.md) | How to slice tasks, control context, guide the model, validate output, and turn SDD-RIPER into a default skill |
 | [Team adoption guide](./docs/团队落地指南.md) | How a personal technique becomes organizational capability |
 | [Claude Code source walkthrough](./docs/Claude%20Code%20源码拆解：从启动到多%20Agent%20扩展层.md) | What a real agent runtime can teach about harness design |
 
