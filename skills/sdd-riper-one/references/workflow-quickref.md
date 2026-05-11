@@ -11,7 +11,7 @@
 
 ## 六个动作的定位
 
-- `create_codemap`：Pre-Research 代码索引动作（`feature` 功能级 / `project` 项目级），用于加速后续对话并节约 token
+- `create_codemap`：Pre-Research 代码地形索引动作（`feature` 能力/功能图 / `project` 项目/系统图），用于渐进式披露上下文并节约模型注意力；若存在 `skills/codemap/`，按独立 `codemap` skill 的原则和模板生成
 - `build_context_bundle`：Pre-Research 需求整理动作（目录输入 -> 全模态需求汇总），支持 Lite/Standard 两种输出粒度与 best-effort 解析
 - `sdd_bootstrap`：RIPER 启动命令（进入 Research 第一步，完成 Pre-Research 收口并产首版 spec）
 - `review_spec`：Plan 后的建议性预审动作，按当前阶段评审并输出 `Spec Review Matrix + Readiness Verdict(GO/NO-GO)`（不阻塞执行）

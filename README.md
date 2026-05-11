@@ -117,6 +117,7 @@ For most agentic coding environments, the smallest setup that already works well
 <repo>/
   AGENTS.md
   skills/
+    codemap/
     sdd-riper-one-light/
     sdd-riper-one/
 ```
@@ -177,7 +178,7 @@ Identify the main project, related projects, active_project, and change_scope.
 Default to local. Before cross-project edits, stop at a checkpoint and wait for approval.
 ```
 
-See [`skills/sdd-riper-one/references/multi-project.md`](./skills/sdd-riper-one/references/multi-project.md) for the fuller multi-project rules. Today `create_codemap` can generate CodeMaps inside `sdd-riper-one`; in the future it also makes sense to split a dedicated `codemap` skill with fixed templates to reduce model-to-model variation.
+See [`skills/sdd-riper-one/references/multi-project.md`](./skills/sdd-riper-one/references/multi-project.md) for the fuller multi-project rules. Today `create_codemap` remains the SDD-RIPER Pre-Research entrypoint, while the dedicated [`codemap`](./skills/codemap/SKILL.md) skill provides the fixed templates and principles that reduce model-to-model variation.
 
 ---
 

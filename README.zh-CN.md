@@ -118,6 +118,7 @@ spec 是持久化真相源，不是反复塞满上下文的大 prompt。
 <repo>/
   AGENTS.md
   skills/
+    codemap/
     sdd-riper-one-light/
     sdd-riper-one/
 ```
@@ -178,7 +179,7 @@ MULTI / 多项目
 默认 local；需要跨项目修改时先 checkpoint，等我批准。
 ```
 
-更完整的多项目规则见 [`skills/sdd-riper-one/references/multi-project.md`](./skills/sdd-riper-one/references/multi-project.md)。当前 `create_codemap` 已可承担 CodeMap 生成；后续也可以拆成独立 `codemap` skill，用固定模板统一不同模型的输出口径。
+更完整的多项目规则见 [`skills/sdd-riper-one/references/multi-project.md`](./skills/sdd-riper-one/references/multi-project.md)。当前 `create_codemap` 可作为 SDD-RIPER 的 Pre-Research 入口；独立 [`codemap`](./skills/codemap/SKILL.md) skill 负责用固定模板统一不同模型的 CodeMap 输出口径。
 
 ---
 
