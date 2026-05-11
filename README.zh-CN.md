@@ -213,9 +213,8 @@ MULTI / 多项目
 | [`protocols/RIPER-DOC.md`](./protocols/RIPER-DOC.md) | 文档生成与维护协议 |
 | [`protocols/RIPER-5.md`](./protocols/RIPER-5.md) | 更早期、更严格的 RIPER 参考 |
 | [`docs/README.md`](./docs/README.md) | 文档阅读地图：当前主线与归档文章 |
-| [`docs/Harness 大道至简：从最小混沌单元到 sdd-riper-one-light.md`](./docs/Harness%20大道至简：从最小混沌单元到%20sdd-riper-one-light.md) | Harness 核心文章：最小混沌单元、水流理论、轻重 skill 用法 |
+| [`docs/手把手学会 AI Coding Harness：从任务拆分到上下文控盘.md`](./docs/手把手学会%20AI%20Coding%20Harness：从任务拆分到上下文控盘.md) | 对外主文：任务拆分、上下文控盘、目标驱动执行、验收与留痕 |
 | [`docs/团队落地指南.md`](./docs/团队落地指南.md) | 团队推广与治理指南 |
-| [`docs/如何快速从零开始落地大模型编程 -- 手把手教程.md`](./docs/如何快速从零开始落地大模型编程%20--%20手把手教程.md) | 从零上手教程 |
 
 ---
 
@@ -238,8 +237,7 @@ MULTI / 多项目
 | 文档 | 核心问题 |
 | --- | --- |
 | [文档阅读地图](./docs/README.md) | 哪些是当前主线，哪些是历史归档 |
-| [Harness 大道至简：最小混沌单元与水流理论](./docs/Harness%20大道至简：从最小混沌单元到%20sdd-riper-one-light.md) | 如何切任务边界、顺着模型协作，以及用 Skill 生成 codemap、context、spec、checkpoint、validation 和 archive |
-| [从零上手教程](./docs/如何快速从零开始落地大模型编程%20--%20手把手教程.md) | 怎么跑通第一个可用闭环 |
+| [手把手学会 AI Coding Harness](./docs/手把手学会%20AI%20Coding%20Harness：从任务拆分到上下文控盘.md) | 如何切任务、控上下文、引导模型、验收结果，并把 SDD-RIPER 变成默认 skill |
 | [团队落地指南](./docs/团队落地指南.md) | 如何让团队从个人技巧变成组织能力 |
 | [Claude Code 源码拆解](./docs/Claude%20Code%20源码拆解：从启动到多%20Agent%20扩展层.md) | 从真实 agent runtime 看 Harness 设计 |
 
