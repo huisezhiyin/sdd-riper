@@ -49,6 +49,8 @@ spec 是持久化真相源，不是反复塞满上下文的大 prompt。
 
 复杂任务、高风险任务、新手训练、审计交接用 `sdd-riper-one`：更明确的阶段门禁、codemap / context、完整 spec、更多问询与阻塞。
 
+陌生项目、老项目、大模块或跨仓任务，先用 [`codemap`](./skills/codemap/SKILL.md) 建代码地形索引。它的目的不是写一份给人看的架构长文，而是让 Agent 知道入口、调用链、风险点、验证入口和下一步该回读哪一小片代码。
+
 ---
 
 ## 思维转变
@@ -125,6 +127,7 @@ spec 是持久化真相源，不是反复塞满上下文的大 prompt。
 
 - `AGENTS.md` 放在仓库根目录，承载工作区默认规则。
 - `sdd-riper-one-light` 和 `sdd-riper-one` 放在 `skills/` 目录。
+- `codemap` 作为代码地形索引 Skill，优先用于陌生代码库、老项目、大模块和跨仓任务。
 - 日常默认使用 `sdd-riper-one-light`。
 - 重构、审计、交接和高风险任务切到 `sdd-riper-one`。
 
@@ -209,11 +212,12 @@ MULTI / 多项目
 | --- | --- |
 | [`skills/sdd-riper-one-light`](./skills/sdd-riper-one-light/) | 主推 Light Harness，日常默认入口 |
 | [`skills/sdd-riper-one`](./skills/sdd-riper-one/) | 标准控盘协议，训练、审计、交接和复杂任务入口 |
+| [`skills/codemap`](./skills/codemap/) | 代码地形索引 Skill，用 feature / project CodeMap 节约上下文注意力 |
 | [`protocols/SDD-RIPER-ONE.md`](./protocols/SDD-RIPER-ONE.md) | 标准协议原文 |
 | [`protocols/RIPER-DOC.md`](./protocols/RIPER-DOC.md) | 文档生成与维护协议 |
 | [`protocols/RIPER-5.md`](./protocols/RIPER-5.md) | 更早期、更严格的 RIPER 参考 |
 | [`docs/README.md`](./docs/README.md) | 文档阅读地图：当前主线与归档文章 |
-| [`docs/手把手学会 AI Coding Harness：从任务拆分到上下文控盘.md`](./docs/手把手学会%20AI%20Coding%20Harness：从任务拆分到上下文控盘.md) | 对外主文：任务拆分、上下文控盘、目标驱动执行、验收与留痕 |
+| [`docs/手把手学会 AI Coding Harness：从任务拆分到上下文控盘.md`](./docs/手把手学会%20AI%20Coding%20Harness：从任务拆分到上下文控盘.md) | 对外主文：用两个真实开源项目讲任务拆分、上下文控盘、codemap、目标驱动执行、验收与留痕 |
 | [`docs/团队落地指南.md`](./docs/团队落地指南.md) | 团队推广与治理指南 |
 
 ---
@@ -224,7 +228,8 @@ MULTI / 多项目
 
 1. 先读 [`sdd-riper-one-light`](./skills/sdd-riper-one-light/README.md)。
 2. 直接用最小启动模板跑一个真实任务。
-3. 遇到复杂任务，再补读 [`sdd-riper-one`](./skills/sdd-riper-one/README.md)。
+3. 遇到陌生老项目或大模块，先用 [`codemap`](./skills/codemap/SKILL.md) 建代码地形索引。
+4. 遇到复杂任务，再补读 [`sdd-riper-one`](./skills/sdd-riper-one/README.md)。
 
 如果你在团队里推广：
 
@@ -237,7 +242,7 @@ MULTI / 多项目
 | 文档 | 核心问题 |
 | --- | --- |
 | [文档阅读地图](./docs/README.md) | 哪些是当前主线，哪些是历史归档 |
-| [手把手学会 AI Coding Harness](./docs/手把手学会%20AI%20Coding%20Harness：从任务拆分到上下文控盘.md) | 如何切任务、控上下文、引导模型、验收结果，并把 SDD-RIPER 变成默认 skill |
+| [手把手学会 AI Coding Harness](./docs/手把手学会%20AI%20Coding%20Harness：从任务拆分到上下文控盘.md) | 如何用真实项目学会切任务、控上下文、使用 codemap、引导模型、验收结果，并把 SDD-RIPER 变成默认 skill |
 | [团队落地指南](./docs/团队落地指南.md) | 如何让团队从个人技巧变成组织能力 |
 | [Claude Code 源码拆解](./docs/Claude%20Code%20源码拆解：从启动到多%20Agent%20扩展层.md) | 从真实 agent runtime 看 Harness 设计 |
 

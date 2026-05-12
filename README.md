@@ -48,6 +48,8 @@ Use `sdd-riper-one-light` for daily work: light prompting, medium trace, checkpo
 
 Use `sdd-riper-one` for complex work, high risk, beginner training, audit, and handoff: explicit phase gates, codemap / context, fuller specs, more questions, and more blocking.
 
+Use [`codemap`](./skills/codemap/SKILL.md) before unfamiliar codebases, legacy systems, large modules, or cross-repo tasks. It is not a human-facing architecture essay. It is an agent-facing terrain index: entries, call chains, risk points, validation entry points, and the smallest code slice to read next.
+
 ---
 
 ## The Mindset Shift
@@ -124,6 +126,7 @@ For most agentic coding environments, the smallest setup that already works well
 
 - Put `AGENTS.md` at the repository root for workspace-level defaults.
 - Put `sdd-riper-one-light` and `sdd-riper-one` under `skills/`.
+- Use `codemap` as the code-terrain skill for unfamiliar codebases, legacy systems, large modules, and cross-repo work.
 - Use `sdd-riper-one-light` as the default daily entry.
 - Switch to `sdd-riper-one` for refactors, audit, handoff, and higher-risk work.
 
@@ -208,11 +211,12 @@ In practice:
 | --- | --- |
 | [`skills/sdd-riper-one-light`](./skills/sdd-riper-one-light/) | Main Light Harness; the default daily entry |
 | [`skills/sdd-riper-one`](./skills/sdd-riper-one/) | Standard control protocol for training, audit, handoff, and complex tasks |
+| [`skills/codemap`](./skills/codemap/) | Code-terrain indexing skill; uses feature / project CodeMaps to save context attention |
 | [`protocols/SDD-RIPER-ONE.md`](./protocols/SDD-RIPER-ONE.md) | Standard protocol text |
 | [`protocols/RIPER-DOC.md`](./protocols/RIPER-DOC.md) | Document generation and maintenance protocol |
 | [`protocols/RIPER-5.md`](./protocols/RIPER-5.md) | Earlier and stricter RIPER reference |
 | [`docs/README.md`](./docs/README.md) | Canonical docs map: active reading path plus archive |
-| [`docs/手把手学会 AI Coding Harness：从任务拆分到上下文控盘.md`](./docs/手把手学会%20AI%20Coding%20Harness：从任务拆分到上下文控盘.md) | Main public Harness guide: task slicing, context control, target-driven execution, validation |
+| [`docs/手把手学会 AI Coding Harness：从任务拆分到上下文控盘.md`](./docs/手把手学会%20AI%20Coding%20Harness：从任务拆分到上下文控盘.md) | Main public Harness guide grounded in two real open-source projects: task slicing, context control, codemap, target-driven execution, validation |
 | [`docs/团队落地指南.md`](./docs/团队落地指南.md) | Team adoption and governance guide |
 
 ---
@@ -223,7 +227,8 @@ If you already use strong coding models:
 
 1. Read [`sdd-riper-one-light`](./skills/sdd-riper-one-light/README.md).
 2. Run one real task with the minimal start template.
-3. For complex work, read [`sdd-riper-one`](./skills/sdd-riper-one/README.md).
+3. For unfamiliar legacy code or large modules, create a CodeMap with [`codemap`](./skills/codemap/SKILL.md).
+4. For complex work, read [`sdd-riper-one`](./skills/sdd-riper-one/README.md).
 
 If you are adopting this in a team:
 
@@ -236,7 +241,7 @@ If you care about the underlying thinking, start from the docs map and keep the 
 | Document | Core question |
 | --- | --- |
 | [Docs map](./docs/README.md) | Which documents are active, and which are historical archive |
-| [Hands-on AI Coding Harness](./docs/手把手学会%20AI%20Coding%20Harness：从任务拆分到上下文控盘.md) | How to slice tasks, control context, guide the model, validate output, and turn SDD-RIPER into a default skill |
+| [Hands-on AI Coding Harness](./docs/手把手学会%20AI%20Coding%20Harness：从任务拆分到上下文控盘.md) | How to learn from real projects, slice tasks, control context, use codemap, guide the model, validate output, and turn SDD-RIPER into a default skill |
 | [Team adoption guide](./docs/团队落地指南.md) | How a personal technique becomes organizational capability |
 | [Claude Code source walkthrough](./docs/Claude%20Code%20源码拆解：从启动到多%20Agent%20扩展层.md) | What a real agent runtime can teach about harness design |
 
