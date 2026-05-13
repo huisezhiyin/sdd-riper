@@ -39,8 +39,8 @@ tmp/
 temp/
 
 # Download/export duplicate artifacts
-* (1).md
-* (1).docx
-* (1).pptx
-* (1).pdf
 AGENTS.expcap.md
+tmps/
+.room/
+.agents/
+mydocs/
