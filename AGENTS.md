@@ -85,6 +85,9 @@ The goal is to turn useful one-time agent work into reusable project terrain.
 - `skills/sdd-riper-one/`
   - More explicit control protocol.
   - Best for complex, high-risk, cross-module, audit, training, or handoff-heavy work.
+- `skills/new-chat-ready/`
+  - Cross-cutting handoff layer for fresh chats, resume packs, and paste-ready continuation prompts.
+  - Best when context is long, a task pauses, or another agent/session must continue without losing state.
 
 ## Safety And Hygiene
 

@@ -27,6 +27,24 @@
   - `Lite`：`Source Index`、`Requirement Snapshot`、`Open Questions`、`Next Actions`
   - `Standard`：`Requirement Facts`、`Business Rules`、`Acceptance Criteria`、`Constraints`、`Conflicts & Ambiguities` 等
 
+## New Chat Ready: `new_chat_ready` / `handoff` / `resume_pack`
+
+- 用途：为新对话、上下文压缩、暂停恢复或跨 agent 交接生成可执行续接包。
+- 本质：调用独立 `$new-chat-ready` skill；SDD-RIPER 只保留命令入口和 spec 同步责任，不内嵌交接模板。
+- 输入：
+  - `scope`：当前任务或需要交接的子任务
+  - `spec`：当前活跃 spec（可选，但 SDD 任务中应优先提供）
+  - `target`：新 chat / 另一个 agent / 暂停恢复（可选）
+- 输出：
+  - 更新当前 spec 的 `Resume / Handoff` 区块
+  - 必要时生成 `mydocs/handoff/YYYY-MM-DD_hh-mm_<task>_new-chat.md`
+  - 生成一段可直接粘贴到新对话的 prompt
+- 要点：
+  - 交接包必须区分 `confirmed` / `inferred` / `unknown`
+  - 必须列出 dirty state、已验证证据、未覆盖风险和下一步最小动作
+  - 不要把长日志、凭据、`.env`、隐私数据或整份 spec 原样塞进 prompt
+  - 与 spec 冲突时以 spec 为准；若 spec 过期，先标记冲突再给下一步建议
+
 ## 3) `sdd_bootstrap`
 
 - 用途：RIPER 启动命令（进入 Research 第一步，并产出第一版 spec）

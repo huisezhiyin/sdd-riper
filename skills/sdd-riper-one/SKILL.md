@@ -121,6 +121,7 @@ description: 将 SDD-RIPER 方法论落地为严格可执行流程的重型 Harn
 - 多项目：触发 `MULTI / 多项目 / CROSS / SWITCH` 时读 `references/multi-project.md`。
 - 原生命令：触发 `create_codemap / build_context_bundle / sdd_bootstrap / review_spec / review_execute / archive` 时读 `references/commands.md`。
 - Debug：触发 `DEBUG / 排查 / 日志分析 / 验证功能` 时读 `references/sdd-riper-one-protocol.md` 的 Debug 段或 `references/usage-examples.md` 的 Debug 示例。
+- New Chat Ready：触发 `new chat / 换对话 / handoff / resume_pack / 续接 prompt / 上下文压缩` 时调用 `$new-chat-ready`，并同步当前 spec 的 `Resume / Handoff` 区块。
 - 触发词、命名规则、阶段 DoD：需要时读 `references/workflow-quickref.md`。
 - 归档脚本：需要执行 archive 时读 `references/script-map.md` 和 `references/archive-template.md`。
 
@@ -147,3 +148,4 @@ description: 将 SDD-RIPER 方法论落地为严格可执行流程的重型 Harn
 - `references/multi-project.md`（多项目协作详细规则）
 - `references/commands.md`（原生命令动作详细参数）
 - `references/script-map.md`（可调用脚本入口）
+- `$new-chat-ready`（跨对话交接包与续接 prompt）

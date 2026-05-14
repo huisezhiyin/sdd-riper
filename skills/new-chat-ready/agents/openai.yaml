@@ -1,0 +1,6 @@
+interface:
+  display_name: "New Chat Ready"
+  short_description: "生成可落盘、可续接的新对话交接包。"
+  default_prompt: "Use $new-chat-ready to create a durable handoff document and a paste-ready prompt for continuing this task in a fresh chat."
+policy:
+  allow_implicit_invocation: true

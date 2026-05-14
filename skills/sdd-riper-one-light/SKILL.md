@@ -30,7 +30,7 @@ description: 面向 GPT-5.4 等强模型和熟练用户的轻量 AI Agent Harnes
 - `Checkpoint Before Execute`：实现前必须给一次短 checkpoint，确认理解、目标、下一步、风险与验证方式。
 - `Done by Evidence`：完成应由验证结果与外部反馈证明，而不是由模型自行宣布。
 - `Reverse Sync`：执行后必须把结果、偏差、验证结论回写 spec。
-- `Resume Ready`：长任务或暂停前，应在 spec 中留下最小恢复锚点，支持重启与交接。
+- `Resume Ready`：长任务或暂停前，应在 spec 中留下最小恢复锚点，支持重启与交接；用户触发 new chat / handoff / resume pack 时，调用 `$new-chat-ready` 生成落盘交接包和可直接粘贴的续接 prompt。
 
 ## 默认假设
 
@@ -107,6 +107,7 @@ description: 面向 GPT-5.4 等强模型和熟练用户的轻量 AI Agent Harnes
 - `references/script-map.md`：可直接调用的脚本入口，包含默认 prompt 检查/写入脚本。
 - `references/modules.md`：`Deep Planning` / `Debug` / `Review` / `Multi-project`。
 - `references/conventions.md`：落盘目录、命名规则、`micro-spec` 与正式 spec 的分流规则。
+- `$new-chat-ready`：跨对话交接能力；触发 new chat / 换对话 / handoff / resume pack / 上下文压缩时使用，light 只维护 spec 锚点，不内嵌交接模板。
 
 ## 输出风格
 

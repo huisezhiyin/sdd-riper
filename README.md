@@ -120,6 +120,7 @@ For most agentic coding environments, the smallest setup that already works well
   AGENTS.md
   skills/
     codemap/
+    new-chat-ready/
     sdd-riper-one-light/
     sdd-riper-one/
 ```
@@ -127,6 +128,7 @@ For most agentic coding environments, the smallest setup that already works well
 - Put `AGENTS.md` at the repository root for workspace-level defaults.
 - Put `sdd-riper-one-light` and `sdd-riper-one` under `skills/`.
 - Use `codemap` as the code-terrain skill for unfamiliar codebases, legacy systems, large modules, and cross-repo work.
+- Use `new-chat-ready` when a task needs a fresh-chat handoff, resume pack, or paste-ready continuation prompt.
 - Use `sdd-riper-one-light` as the default daily entry.
 - Switch to `sdd-riper-one` for refactors, audit, handoff, and higher-risk work.
 
@@ -212,6 +214,7 @@ In practice:
 | [`skills/sdd-riper-one-light`](./skills/sdd-riper-one-light/) | Main Light Harness; the default daily entry |
 | [`skills/sdd-riper-one`](./skills/sdd-riper-one/) | Standard control protocol for training, audit, handoff, and complex tasks |
 | [`skills/codemap`](./skills/codemap/) | Code-terrain indexing skill; uses feature / project CodeMaps to save context attention |
+| [`skills/new-chat-ready`](./skills/new-chat-ready/) | Fresh-chat handoff skill; creates durable resume packs and paste-ready continuation prompts |
 | [`protocols/SDD-RIPER-ONE.md`](./protocols/SDD-RIPER-ONE.md) | Standard protocol text |
 | [`protocols/RIPER-DOC.md`](./protocols/RIPER-DOC.md) | Document generation and maintenance protocol |
 | [`protocols/RIPER-5.md`](./protocols/RIPER-5.md) | Earlier and stricter RIPER reference |
