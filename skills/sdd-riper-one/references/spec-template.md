@@ -1,4 +1,8 @@
-# SDD Spec Template (Workflow-aligned)
+# SDD Feature Spec Template (Workflow-aligned)
+
+本模板是 `Feature Spec`：当前任务真相源。它只维护本次功能、bug、重构、文档或跨项目任务的目标、边界、进度、计划、验证和恢复点。
+
+`Project Spec` / `Project Memory` 是另一类产物，只记录稳定、可复用、跨任务会影响判断的项目事实。不要把任务执行流水写进 Project Spec，也不要把项目长期记忆混进 Feature Spec；可复用事实先进入本模板的 `Project Sync Candidates`。
 
 本模板包含两个版本：**单项目模板**（默认）和 **多项目模板**（`mode=multi_project` 时使用）。Agent 根据启动模式自动选择对应模板。
 
@@ -130,6 +134,16 @@
   - `mydocs/archive/YYYY-MM-DD_hh-mm_<topic>_human.md`
   - `mydocs/archive/YYYY-MM-DD_hh-mm_<topic>_llm.md`
 - Key Distilled Knowledge: ...
+
+## 9. Project Sync Candidates
+- Stable project facts discovered:
+  - ...
+- Suggested destination:
+  - `mydocs/project/PROJECT_SPEC.md`
+  - `mydocs/project/PROJECT_MEMORY.md`
+- Sync decision: Not synced / Synced / Skipped
+- Reason:
+  - ...
 ```
 
 ---
@@ -306,9 +320,39 @@
   - `mydocs/archive/YYYY-MM-DD_hh-mm_<topic>_human.md`
   - `mydocs/archive/YYYY-MM-DD_hh-mm_<topic>_llm.md`
 - Key Distilled Knowledge: ...
+
+## 9. Project Sync Candidates
+- Stable per-project facts discovered:
+  - `project_id`: ...
+- Cross-project reusable facts:
+  - ...
+- Suggested destination:
+  - `mydocs/project/PROJECT_SPEC.md`
+  - `mydocs/project/PROJECT_MEMORY.md`
+- Sync decision: Not synced / Synced / Skipped
 ```
 
 ---
+
+## Project Spec / Project Memory Boundary
+
+Use `mydocs/project/PROJECT_SPEC.md` for stable project truth:
+
+- domain concepts and business invariants;
+- module boundaries and ownership;
+- architecture conventions;
+- core links to project / feature codemaps;
+- build, test, release, and validation entry points.
+
+Use `mydocs/project/PROJECT_MEMORY.md` for reusable experience:
+
+- common pitfalls;
+- verified debugging paths;
+- known flaky areas;
+- project-specific agent heuristics;
+- decisions that future tasks should remember.
+
+Do not write task execution logs, one-off commands, temporary dirty state, or unverified assumptions into project-level files. Keep those in the active Feature Spec.
 
 ## 使用要求
 

@@ -1,6 +1,8 @@
-# Spec Lite Template
+# Feature Spec Lite Template
 
-spec 是持久化上下文与压缩记忆层；没有最小 spec，不进入代码实现。
+Feature Spec 是本次任务真相源，用来维护当前功能、bug、重构或文档任务的目标、边界、进度、验证和恢复点；没有最小 Feature Spec，不进入代码实现。
+
+不要把项目长期记忆混进 Feature Spec。可复用事实只先写进 `Project Sync Candidates`，经确认后再同步到 Project Spec / Project Memory。
 
 ```markdown
 # Spec: <Task Name>
@@ -72,6 +74,15 @@ spec 是持久化上下文与压缩记忆层；没有最小 spec，不进入代�
 - 当前卡点：
 - 下一步唯一动作：
 - 下一轮核心目标：
+
+## Project Sync Candidates
+- 是否发现可复用项目事实：No / Yes
+- 候选事实：
+  - <稳定、可复用、跨任务会再次影响判断的事实>
+- 建议同步位置：
+  - `mydocs/project/PROJECT_SPEC.md`
+  - `mydocs/project/PROJECT_MEMORY.md`
+- 同步状态：Not synced / Synced / Skipped
 ```
 
 建议：
@@ -90,3 +101,4 @@ spec 是持久化上下文与压缩记忆层；没有最小 spec，不进入代�
 - 执行前先把 `Execution Approval` 置为 `Pending`，获批后再改为 `Approved`。
 - 暂停、切换任务点或准备交接前，更新 `Resume / Handoff`，确保下一轮可以快速恢复。
 - 编码前、切换任务点前、收尾前，先做 checkpoint 自总结；若仍有不确定、冲突或需要证据，再回读当前相关区块，不整份重载。
+- `Project Sync Candidates` 只放候选，不直接替代 Project Spec；同步前确认该事实不是一次性任务流水。

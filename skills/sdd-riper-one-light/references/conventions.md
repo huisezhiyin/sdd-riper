@@ -10,14 +10,44 @@
 ## 目录约定
 
 - `micro-spec`：`mydocs/micro_specs/`
-- `standard spec`：`mydocs/specs/`
+- `feature spec / standard spec`：`mydocs/specs/`
+- `project spec / project memory`：`mydocs/project/`
 - `codemap`：`mydocs/codemap/`
 
 ## 文件命名
 
 - `micro-spec`：`mydocs/micro_specs/YYYY-MM-DD_hh-mm_<TaskName>.md`
-- `standard spec`：`mydocs/specs/YYYY-MM-DD_hh-mm_<TaskName>.md`
+- `feature spec / standard spec`：`mydocs/specs/YYYY-MM-DD_hh-mm_<TaskName>.md`
+- `project spec`：`mydocs/project/PROJECT_SPEC.md`
+- `project memory`：`mydocs/project/PROJECT_MEMORY.md`
 - `codemap`：`mydocs/codemap/YYYY-MM-DD_hh-mm_<ProjectOrFeature>.md`
+
+## Spec 分层边界
+
+- `Feature Spec`：当前任务真相源，记录本次目标、边界、Done Contract、recap checkpoint、计划、改动、验证、剩余风险和 handoff。
+- `Project Spec`：项目长期真相源，记录稳定业务概念、模块边界、架构约定、核心链路、测试/构建入口和跨任务会复用的事实。
+- `Project Memory`：项目经验层，记录常见坑点、已验证排查路径、经验模式和后续 agent 进入项目时应知道的注意事项。
+
+硬边界：
+
+- Feature Spec 不承载项目长期记忆。
+- Project Spec 不承载任务执行流水。
+- Codemap 不承载任务决策，只做代码地形索引。
+- Archive 不替代当前真相源，只做完成后的沉淀视图。
+
+## Project Spec 同步规则
+
+从 Feature Spec 反向同步到 Project Spec / Project Memory 前，必须满足至少一条：
+
+- 该事实稳定存在于代码、配置、测试或业务规则中。
+- 后续多个任务会再次依赖它。
+- 它能减少未来 agent 的重复探索或误判。
+- 它是已验证的坑点、约定、入口或测试方法。
+
+不得同步：
+
+- 本次临时命令、一次性执行流水、未验证假设、短期 workaround。
+- 只对当前任务有效的计划、进度、approval、dirty state。
 
 ## 何时优先用 `micro-spec`
 
@@ -43,5 +73,6 @@
 ## 使用原则
 
 - spec 是真相源，不是聊天记录转储
+- 先判断当前写入属于 Feature Spec 还是 Project Spec，不能混写
 - codemap 是索引，不是源码拷贝
 - 默认优先 `micro-spec`

@@ -28,6 +28,7 @@ description: 将 SDD-RIPER 方法论落地为严格可执行流程的重型 Harn
 - 不要在每轮对话里重载整份 Skill / Spec；spec 是可回查的真相源，不是反复塞入上下文的 prompt 包。教学、诊断、模板和长规则放在 references 按需加载。
 - 默认 prompt 文档只写最小路由、边界、禁止项和恢复规则；不要把完整 Skill 复制进项目 prompt，避免把长期上下文变成噪音。
 - **Spec 受众分层与上下文保护**：Spec 的第一受众是人类（持久化的任务上下文与组织记忆），第二受众才是模型。协议对模型的核心价值是四件事：**注意力聚焦**（让模型在当前阶段只关注该关注的）、**信息索引**（需要时按路径回读，而非全量常驻）、**防止上下文腐烂**（用落盘的 Spec 对抗长对话中的遗忘与漂移）、**辅助 Review**（提供 Spec vs 代码的交叉验证基准）。协议绝不应导致上下文被塞满挤爆——RIPER 管流程，Spec 管记录，模型按需取用。
+- **Spec 分层边界**：默认活跃 spec 是 `Feature Spec`，只记录本次任务；`Project Spec` / `Project Memory` 只记录稳定、可复用、跨任务会影响判断的项目事实。禁止把任务流水写进 Project Spec，也禁止把项目长期记忆塞进 Feature Spec。
 
 ## Harness 教练职责
 
@@ -92,6 +93,7 @@ description: 将 SDD-RIPER 方法论落地为严格可执行流程的重型 Harn
 
 - 没有 spec，不进入代码实现
 - spec 未记录最终目标、当前任务单元、边界和验证方式，不进入 Plan
+- spec 必须声明层级：`Feature Spec` / `Project Spec`。普通开发任务默认只能维护 Feature Spec；Project Spec 更新必须来自已确认的 Project Sync Candidate。
 - `phase` 与 `approval status` 必须是显式状态，不允许根据语气、倾向或不完整表述推断
 - 没有精确字样 `Plan Approved`，不进入 `Execute`
 - phase 切换前，先做 checkpoint 自总结；若摘要缺字段、不确定、与 spec 可能冲突，或下一阶段依赖具体条款，再回读对应 spec 区块

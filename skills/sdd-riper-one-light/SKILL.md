@@ -19,11 +19,13 @@ description: 面向 GPT-5.4 等强模型和熟练用户的轻量 AI Agent Harnes
 - 控制方式不是预设每一步，而是在关键节点设闸：Restate、Recap Checkpoint、Approval、Validation、Reverse Sync。
 - `Recap Checkpoint` 是比 spec 更轻的持久化上下文：用 1-6 行记录“当前目标 / 已完成 / 关键决策 / 当前边界 / 下一步 / 验证风险”，防止长对话和暂停后的上下文腐烂；它不替代 spec，只负责让当前 loop 不断知道“我在哪”。
 - **Spec 受众分层与上下文保护**：Spec 的第一受众是人类（持久化的任务上下文与组织记忆），第二受众才是模型。协议对模型的核心价值是四件事：**注意力聚焦**（让模型只关注当前该关注的）、**信息索引**（需要时按路径回读，而非全量常驻）、**防止上下文腐烂**（用落盘的 Spec 对抗长对话中的遗忘与漂移）、**辅助 Review**（提供 Spec vs 代码的交叉验证基准）。协议绝不应导致上下文被塞满挤爆——RIPER 管流程，Spec 管记录，模型按需取用。
+- **Spec 分层边界**：`Feature Spec` 是本次任务真相源；`Project Spec` 是项目长期真相源。Feature Spec 不承载项目长期记忆，Project Spec 不承载任务执行流水；经验只能经确认后从 Feature Spec 反向同步到 Project Spec / Project Memory。
 
 ## 硬约束
 
 - `Spec is Truth`：spec 是持久化上下文、压缩记忆与协作真相源。
 - `No Spec, No Code`：未形成或更新最小 spec 前，不进入代码实现。
+- `Spec Boundary`：写 spec 前先判断是 `Feature Spec` 还是 `Project Spec`；默认任务落 Feature Spec，只有稳定、可复用、跨任务会再次影响判断的事实才进入 Project Spec。
 - `No Approval, No Execute`：未得到明确执行许可，不进入实现或高影响变更。
 - `Restate First`：用户输入任务后，先用模型自己的话复述理解，再进入 spec 或计划。
 - `Core Goal as Loop Anchor`：阶段性核心目标是当前 loop 的唯一锚点；进入执行前、发生偏差后、完成验证时，都必须重新对齐该锚点。
@@ -84,6 +86,7 @@ description: 面向 GPT-5.4 等强模型和熟练用户的轻量 AI Agent Harnes
 - 若测试、日志、人工反馈暴露出偏差，先基于外部证据重述“当前核心目标是否变化、还差什么”，再决定继续执行还是调整方案。
 - 用户明确批准后执行；若范围或方案变化，先更新 spec 再重新请求批准。
 - 执行后回写 `Change Log / Validation / Resume or Handoff`，并说明“当前核心目标是否已由证据证明完成；若未完成，下一轮核心目标是什么”。
+- 收尾时做一次 spec 分层检查：本次过程留在 Feature Spec；可复用项目事实列为 Project Sync Candidate，经确认后才同步到 Project Spec / Project Memory。
 
 ## 何时暂停
 
