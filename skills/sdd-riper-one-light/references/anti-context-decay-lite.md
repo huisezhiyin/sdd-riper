@@ -2,18 +2,36 @@
 
 Light 的目标不是节约 token，而是节约上下文注意力。不要把长协议、长模板、长历史常驻进模型上下文；用 spec 和按需回读对抗长对话腐烂。
 
-## Checkpoint 热摘要
+## Recap Checkpoint / 热摘要
 
-不要每轮把 spec 摘要或完整 spec 塞回上下文。到执行前 checkpoint、偏差暴露、阶段收尾、暂停交接或 new chat 恢复时，先让模型自总结这些最小锚点：
+不要每轮把 spec 摘要或完整 spec 塞回上下文。到执行前 checkpoint、偏差暴露、阶段收尾、暂停交接、离开后返回、用户问“现在到哪了”或 new chat 恢复时，先让模型生成一段短 recap。
+
+`Recap Checkpoint` 是介于聊天流和 spec 之间的轻量持久化上下文：比普通总结更结构化，比 spec 更短。它的目标是让当前 loop 不腐烂，而不是记录全部过程。
+
+最小形态可以是一行：
+
+```text
+recap: <当前目标>；已完成 <进度/证据>；关键决策 <决策>；下一步 <动作>；风险/验证 <状态>。
+```
+
+需要更清楚时，用这些最小锚点：
 
 - 当前最终目标 / 本轮核心目标
 - 当前 spec / micro-spec 路径
+- 已完成进度和关键决策
 - 当前 In / Out
 - 当前 checkpoint 或下一步动作
 - 当前 validation 状态
 - 剩余风险和下一轮入口
 
-这组摘要用于当前轮聚焦；它不是新的真相源，也不需要机械复读。
+这组摘要用于当前轮聚焦；它不是新的真相源，也不需要机械复读。若 recap 与 spec 冲突，以 spec 为准，并把冲突标出来。
+
+## Recap 落盘规则
+
+- 单轮小任务：recap 可以只留在回复里。
+- 多步任务：把最新 recap 写进 micro-spec / spec 的 `Checkpoint Summary` 或 `Resume / Handoff`。
+- 暂停、new chat、交接：先用 recap 收口，再调用 `$new-chat-ready` 生成可续接 prompt。
+- 验证失败或目标变化：先更新 recap，再决定是否回读 spec 或调整任务边界。
 
 ## 何时回读 spec
 

@@ -16,7 +16,8 @@ description: 面向 GPT-5.4 等强模型和熟练用户的轻量 AI Agent Harnes
 - 目标不是减少控制力，而是减少低价值常驻 token。
 - 不节约有效 token，但节约上下文：常驻只保留运行内核，模板、教学、诊断与长规则按需加载。
 - `New Chat Startup Check`：进入 new chat 或新项目会话时，先检查可见的项目/系统提示词入口是否存在、是否包含本 skill 路由；缺失时询问用户是否需要新建或补充默认 prompt 文件。若用户拒绝或任务很急，继续当前任务但不静默写配置。
-- 控制方式不是预设每一步，而是在关键节点设闸：Restate、Checkpoint、Approval、Validation、Reverse Sync。
+- 控制方式不是预设每一步，而是在关键节点设闸：Restate、Recap Checkpoint、Approval、Validation、Reverse Sync。
+- `Recap Checkpoint` 是比 spec 更轻的持久化上下文：用 1-6 行记录“当前目标 / 已完成 / 关键决策 / 当前边界 / 下一步 / 验证风险”，防止长对话和暂停后的上下文腐烂；它不替代 spec，只负责让当前 loop 不断知道“我在哪”。
 - **Spec 受众分层与上下文保护**：Spec 的第一受众是人类（持久化的任务上下文与组织记忆），第二受众才是模型。协议对模型的核心价值是四件事：**注意力聚焦**（让模型只关注当前该关注的）、**信息索引**（需要时按路径回读，而非全量常驻）、**防止上下文腐烂**（用落盘的 Spec 对抗长对话中的遗忘与漂移）、**辅助 Review**（提供 Spec vs 代码的交叉验证基准）。协议绝不应导致上下文被塞满挤爆——RIPER 管流程，Spec 管记录，模型按需取用。
 
 ## 硬约束
@@ -26,6 +27,7 @@ description: 面向 GPT-5.4 等强模型和熟练用户的轻量 AI Agent Harnes
 - `No Approval, No Execute`：未得到明确执行许可，不进入实现或高影响变更。
 - `Restate First`：用户输入任务后，先用模型自己的话复述理解，再进入 spec 或计划。
 - `Core Goal as Loop Anchor`：阶段性核心目标是当前 loop 的唯一锚点；进入执行前、发生偏差后、完成验证时，都必须重新对齐该锚点。
+- `Recap Checkpoint`：长任务、暂停返回、执行前、阶段收尾或用户问“现在到哪了”时，输出并按需落盘一段短 recap；它应比 spec 短得多，但必须包含下一步和验证/风险。
 - `Minimal Chaos Sanity Check`：只做轻量 sanity check。若任务明显太大、边界明显不清或风险明显升高，提醒用户并建议升级 `deep` 或切到 `sdd-riper-one`；否则默认相信用户拆分。
 - `Checkpoint Before Execute`：实现前必须给一次短 checkpoint，确认理解、目标、下一步、风险与验证方式。
 - `Done by Evidence`：完成应由验证结果与外部反馈证明，而不是由模型自行宣布。
@@ -38,8 +40,9 @@ description: 面向 GPT-5.4 等强模型和熟练用户的轻量 AI Agent Harnes
 - 用户默认已经完成主要任务拆分；light 只辅助检查，不替用户重新拆任务。
 - 默认 prompt 文档只放最小路由和边界，不复制完整 skill，避免污染长期上下文。
 - 小任务不为了协议而拆；大任务也不为了仪式感写长计划。
-- 真正必须保留的，是最小 spec、先复述理解、执行前 checkpoint、明确批准、执行后回写。
+- 真正必须保留的，是最小 spec、先复述理解、recap checkpoint、执行前 checkpoint、明确批准、执行后回写。
 - 默认不反复喂 spec；checkpoint 时先让模型自总结当前目标、进度、风险和验证状态，再按需回读当前相关 spec 区块。
+- 如果任务还没重到需要完整 spec，recap checkpoint 可以作为临时上下文锚点；一旦进入多文件实现、跨轮恢复或需要验收证据，应把 recap 回写到 micro-spec / spec / handoff。
 - 如果长对话后行为漂移、忘记 spec/checkpoint/validation、新 chat 继续旧任务、或用户质疑 skill 是否生效，按需回读 `references/anti-context-decay-lite.md` 和 `references/skill-injection-check.md`。
 
 ## 任务深度
@@ -77,7 +80,7 @@ description: 面向 GPT-5.4 等强模型和熟练用户的轻量 AI Agent Harnes
 - 轻量确认任务是否明显不是最小混沌单元；若没有明显问题，直接进入最小 spec 和 checkpoint。
 - 用最小 spec 固化目标、边界、事实、计划与结论，并尽快落盘。
 - 在 spec 中用 1-3 行写清 `Done Contract`：什么算完成、由什么证明、哪些情况算仍未完成。
-- 实现前给一次短 checkpoint：`当前理解`、`核心目标`、`下一步 1-3 个动作`、`风险`、`验证方式`。
+- 实现前给一次短 checkpoint：`当前理解`、`核心目标`、`recap`、`下一步 1-3 个动作`、`风险`、`验证方式`。
 - 若测试、日志、人工反馈暴露出偏差，先基于外部证据重述“当前核心目标是否变化、还差什么”，再决定继续执行还是调整方案。
 - 用户明确批准后执行；若范围或方案变化，先更新 spec 再重新请求批准。
 - 执行后回写 `Change Log / Validation / Resume or Handoff`，并说明“当前核心目标是否已由证据证明完成；若未完成，下一轮核心目标是什么”。
@@ -113,7 +116,7 @@ description: 面向 GPT-5.4 等强模型和熟练用户的轻量 AI Agent Harnes
 
 - 默认中文。
 - 默认短输出，不复述完整协议。
-- 优先给“当前理解 + 核心目标 + checkpoint 摘要 + 下一步 + 必要风险”；只有不确定或需要证据时才补相关 spec 锚点。
+- 优先给“当前理解 + 核心目标 + recap checkpoint + 下一步 + 必要风险”；只有不确定或需要证据时才补相关 spec 锚点。
 - 不强制打印阶段状态机。
 - 核心目标采用“事件触发式复述”：阶段开始、执行前 checkpoint、偏差暴露后、阶段收尾时必须重对齐；其他轮次不机械复读。
 - 需要长链路推进时，优先给最小 `Done Contract` 与 `Resume/Handoff`，而不是扩写长计划。

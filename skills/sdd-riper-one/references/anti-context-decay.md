@@ -5,25 +5,27 @@
 ## 持久化分层
 
 - Spec：任务真相源，记录目标、边界、阶段、决策、计划、验证、偏差、handoff。
+- Recap Checkpoint：比 spec 更轻的热摘要，记录当前目标、进度、关键决策、下一步和验证/风险；用于防止当前 loop 腐烂，不替代 spec。
 - Codemap：代码地形索引，按需回读，不常驻全量。
 - Context bundle：需求输入的清洗结果，按需回读，不常驻全量。
 - Archive：任务完成后的经验沉淀，用于复用和汇报。
 
 ## Checkpoint 热摘要
 
-不要每轮把 spec 摘要或完整 spec 塞回上下文。到 checkpoint、执行前、阶段收尾、偏差暴露或 new chat 恢复时，先让模型自总结：
+不要每轮把 spec 摘要或完整 spec 塞回上下文。到 checkpoint、执行前、阶段收尾、偏差暴露、离开后返回、用户问“现在到哪了”或 new chat 恢复时，先让模型自总结：
 
 - phase
 - approval status
 - spec path
 - Final Goal
 - Current Task Unit
+- Done / Key Decisions
 - In / Out
 - active checklist / next action
 - open questions
 - current risks
 
-这组摘要是当前轮的工作记忆，不是新的真相源；如果它和 spec 冲突，以 spec 为准。
+这组摘要是当前轮的工作记忆，不是新的真相源；如果它和 spec 冲突，以 spec 为准。长任务暂停、切阶段或交接前，把最新 recap 回写到 spec 的 `Checkpoint Summary` 或 `Resume / Handoff`。
 
 ## 惰性回读触发
 

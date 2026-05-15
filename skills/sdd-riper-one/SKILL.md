@@ -64,12 +64,13 @@ description: 将 SDD-RIPER 方法论落地为严格可执行流程的重型 Harn
 - 当前 `approval status`
 - 当前 `spec path`
 - 当前 `Goal`
+- 当前 `Done / Key Decisions`
 - 当前 `In Scope / Out of Scope`
 - 当前活跃 `Checklist`
 - 当前 `Open Questions`
 - 当前风险与 `Next Action`
 
-热摘要只用于当前轮聚焦，不替代 spec；与 spec 冲突时，永远以 spec 为准。除 checkpoint/恢复/高风险节点外，不机械重复这组字段。
+热摘要只用于当前轮聚焦，不替代 spec；与 spec 冲突时，永远以 spec 为准。它是比完整 spec 更轻的 recap checkpoint，用来防止当前 loop 上下文腐烂；除 checkpoint/恢复/高风险节点外，不机械重复这组字段。
 
 ### 温上下文（切阶段或高风险动作前加载）
 
