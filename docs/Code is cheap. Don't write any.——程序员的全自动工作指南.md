@@ -10,13 +10,13 @@
 
 如果你觉得这只是我们的特例，看几个外部的——
 
-**Bun runtime 重写**：2026 年 5 月，Bun 把核心代码从 Zig 全量迁到 Rust。**百万行级别，6755 个 commits，从 PR 提交到合并主线只用了 6 天**。分支名直接叫 `claude/phase-a-port`——AI 写的，不是人写的。Bun 不是玩具项目，是 runtime 级别的核心代码。
+**Bun runtime 重写**：2026 年 5 月，Bun 把核心代码从 Zig 全量迁到 Rust（见 `oven-sh/bun` GitHub，分支 `claude/phase-a-port`）。**百万行级别，6755 个 commits，从 PR 提交到合并主线只用了 6 天**。分支名直接显示是 AI 写的，不是人写的——这次是 phase A 主干迁移，仍有后续 cleanup，但主体工程已经跑通。Bun 不是玩具项目，是 runtime 级别的核心代码。
 
-**AI 公司在用 AI 开发 AI**：Anthropic 在多个公开场合提到，他们的工程师在用 Claude Code 开发 Claude Code 自身——一个 AI 在写另一个 AI。OpenAI、xAI 内部据报道也是大量代码自身生成。**AI 写 AI 的正反馈环已经形成——越强的 AI，开发 AI 的速度就越快**。这意味着 AI 能力的迭代速度，从此和人类的开发速度脱钩了。
+**AI 公司在用 AI 开发 AI**：Anthropic 在公开博客 [Claude Code: Best practices for agentic coding] 和多次 Dario Amodei 访谈中提到，他们的工程师用 Claude Code 开发 Claude Code 自身——一个 AI 在写另一个 AI。OpenAI、xAI 内部据 The Information / TechCrunch 等多家媒体报道，也是大量代码自身生成。**AI 写 AI 的正反馈环已经形成——越强的 AI，开发 AI 的速度就越快**。这意味着 AI 能力的迭代速度，从此和人类的开发速度脱钩了。
 
-**大厂的 hiring 在变化**：Google CEO Sundar Pichai 在 2024 年 Q3 财报会议上公开说，**超过 25% 的新代码是 AI 生成的**。2025 年起，硅谷多家大厂明显缩减软件工程师招聘，Salesforce 甚至公开宣布 2025 年不再扩招软件工程师。这不是"未来会发生"，是**已经在发生，并且不会反向**。
+**大厂的 hiring 在变化**：Google CEO Sundar Pichai 在 **Alphabet 2024 Q3 财报会议**上公开说，**"超过 25% 的新代码是 AI 生成的，再由工程师 review 和 accept"**（The Verge / CNBC 等多家报道）。Salesforce CEO Marc Benioff 在 2025 年初多场公开访谈中明确表示，因为 Agentforce 等 AI 产品的产出，**Salesforce 在 2025 年不再扩招软件工程师**（Bloomberg / CNBC 报道）。Microsoft、Meta 等大厂也都在 2024-2025 年明显调整 SWE 招聘策略。**这不是"未来会发生"，是已经在发生**。
 
-**创业公司的规模在塌缩**：传统需要几百人的产品规模，现在十几个人的 AI-first 团队就能做出来。从概念到上线，几年前要几个月，现在最快一周。
+**创业公司的规模在塌缩**：典型代表是 Cursor、Cognition Labs（Devin）、Magic 等 AI-first 团队——用十几个人就做出了传统需要几百人的产品规模和估值。从概念到上线，几年前要几个月，现在最快一周。
 
 把这些信号并到一起，**真正要警觉的不是"AI 越来越强"**——这件事大家都已经接受了。
 
