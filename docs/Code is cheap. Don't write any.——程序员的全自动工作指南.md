@@ -14,13 +14,15 @@
 
 **AI 公司在用 AI 开发 AI**：Anthropic 在公开博客 [Claude Code: Best practices for agentic coding] 和多次 Dario Amodei 访谈中提到，他们的工程师用 Claude Code 开发 Claude Code 自身——一个 AI 在写另一个 AI。OpenAI、xAI 内部据 The Information / TechCrunch 等多家媒体报道，也是大量代码自身生成。**AI 写 AI 的正反馈环已经形成——越强的 AI，开发 AI 的速度就越快**。这意味着 AI 能力的迭代速度，从此和人类的开发速度脱钩了。
 
+**普通工程师的日常工具在迁移**：GitHub Copilot 官方数据，**88% 用户感受 productivity 提升，开发者编辑器里 30%+ 的代码由 AI 建议直接接受**（GitHub Engineering Blog 报告）。与此同时，Stack Overflow 流量从 2023 年开始持续下降，2023 年公司因此裁员 28%（Reuters / TechCrunch 报道）——开发者越来越多直接问 ChatGPT / Claude 而不是搜索人写的答案。**"问 AI 替代了问人"是工程师日常工作方式已经系统性改变的硬指标**。
+
 **大厂的 hiring 在变化**：Google CEO Sundar Pichai 在 **Alphabet 2024 Q3 财报会议**上公开说，**"超过 25% 的新代码是 AI 生成的，再由工程师 review 和 accept"**（The Verge / CNBC 等多家报道）。Salesforce CEO Marc Benioff 在 2025 年初多场公开访谈中明确表示，因为 Agentforce 等 AI 产品的产出，**Salesforce 在 2025 年不再扩招软件工程师**（Bloomberg / CNBC 报道）。Microsoft、Meta 等大厂也都在 2024-2025 年明显调整 SWE 招聘策略。**这不是"未来会发生"，是已经在发生**。
 
-**创业公司的规模在塌缩**：典型代表是 Cursor、Cognition Labs（Devin）、Magic 等 AI-first 团队——用十几个人就做出了传统需要几百人的产品规模和估值。从概念到上线，几年前要几个月，现在最快一周。
+**创业公司的规模在塌缩**：典型代表是 Cursor、Cognition Labs（Devin）、Magic 等 AI-first 团队——**十几个人做出了传统需要几百人的产品规模和估值**（Cursor ARR 公开报道已突破 $100M，Cognition Labs 估值在 2024 年达到约 $2B）。从概念到上线，几年前要几个月，现在最快一周。
 
-把这些信号并到一起，**真正要警觉的不是"AI 越来越强"**——这件事大家都已经接受了。
+5 类信号同时发生——**个人产能跃升 + AI 公司用 AI 加速 AI + 工程师工具迁移 + 大厂缩招 + 创业团队塌缩**——指向同一件事。
 
-而是另一件事：
+**真正要警觉的不是"AI 越来越强"**——这件事大家都已经接受了。而是另一件事：
 
 **代码本身，正在变得非常便宜。**
 
