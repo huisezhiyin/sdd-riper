@@ -15,6 +15,9 @@ Active instructions to read first:
 - <active spec / handoff / codemap path>
 - <other essential source path>
 
+Recovered context sources:
+- <current chat or local log/session path, if recovery was used>
+
 Current goal:
 <one-sentence goal>
 

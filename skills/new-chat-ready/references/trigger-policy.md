@@ -6,6 +6,7 @@ Create a handoff pack when the user explicitly says to:
 
 - start or prepare a `new chat`;
 - generate a `handoff`, `resume pack`, or `续接 prompt`;
+- recover a lost Codex / Claude Code conversation before making a handoff;
 - summarize the current work for another agent or future session;
 - pause a task and leave recoverable context.
 

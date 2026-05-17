@@ -3,6 +3,7 @@
 - Created: <YYYY-MM-DD HH:mm timezone>
 - Workspace: `<absolute path>`
 - Active Skill / Workflow: `<skill or workflow>`
+- Recovery Sources: `<current chat | local logs | mixed>` with source paths if recovered
 - Current Goal: <one sentence>
 - Status: `<not-started | in-progress | blocked | validating | complete>`
 - Confidence: `<high | medium | low>` with reason
