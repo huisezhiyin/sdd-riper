@@ -39,7 +39,9 @@ For detailed trigger boundaries, read `references/trigger-policy.md`.
    - unresolved decisions, blockers, and explicit user constraints.
 3. If the active conversation is unavailable, stale, or incomplete, enter `Recovery Mode`:
    - read `references/recovery-from-local-logs.md`;
-   - search local Codex / Claude Code logs by workspace, time window, task keywords, touched files, branch, and session id if available;
+   - translate the user's natural-language recovery request into search anchors;
+   - search local Codex / Claude Code logs and show a short candidate list first;
+   - wait for the user to choose candidate session(s) before reading deeply, unless there is exactly one obvious high-confidence match;
    - extract only continuity facts needed for the handoff, not the full transcript.
 4. Choose where to persist:
    - If an SDD spec is active, update its `Resume / Handoff` area and optionally create a separate handoff file.
