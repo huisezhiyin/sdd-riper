@@ -1,12 +1,14 @@
-# Code is cheap. Don't write any.——程序员的全自动工作指南
+# Code is cheap. Don't write any.——程序员如何提升五倍coding效率
 
 > **关于"全自动"**：本文说的"全自动"，不是指人完全不在场——是指代码生成、测试、修复、验证这些**实施动作**全部由 AI 跑完；人的角色不消失，而是上移到设边界、看 checkpoint、转向、验收。下文会展开。
 
 ## 一、Code is cheap
 
-**最近 20 天，AI 帮我提交了 30 万行代码，五个项目，同时并行。**
+**最近 20 天，AI 帮我提交了 70 万行代码，10 个项目，同时并行。**
 
 不是 IDE 补全那种"AI 占 100%"。是把一个完整任务整包交出去——读地形、定方案、写实现、跑验证、修 bug——AI 自己全套跑完，我只在关键节点拽一下方向。
+
+![AI Coding 工作流示意图](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/mPdnpEbgpak3eqw9/img/57d1d442-001d-42e2-88c9-c79abfd55b0c.png)
 
 如果你觉得这只是我们的特例，看几个外部的——
 
