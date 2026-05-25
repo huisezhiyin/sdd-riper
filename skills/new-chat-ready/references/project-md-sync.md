@@ -1,8 +1,17 @@
 # Project Markdown Sync
 
-Use this when a handoff reveals durable knowledge that future agents or humans should not have to rediscover.
+Use this for every `new-chat-ready` handoff. Every handoff must scan for durable knowledge that future agents or humans should not have to rediscover.
 
 This is not a transcript archive. It is a small, reviewable sync from the current conversation, recovered logs, active spec, codemap, validation evidence, and diff into project-level Markdown.
+
+Core rule:
+
+```text
+Project MD Sync Scan is mandatory.
+Project MD Sync Write is conditional.
+```
+
+Even when nothing is written, report `Synced`, `Candidates not synced`, and `Skipped` so the next chat knows the scan happened.
 
 ## What Belongs Here
 
@@ -57,15 +66,26 @@ Write directly only when:
 
 Otherwise propose candidates and ask before editing.
 
+If no reusable knowledge is found, still report the scan:
+
+```text
+Project MD Sync:
+- Synced: none
+- Candidates not synced: none
+- Skipped:
+  - No durable project-level knowledge found in this handoff.
+```
+
 ## Workflow
 
-1. Collect durable candidates from the handoff, recovered logs, spec, codemap, diff, validation, and explicit user corrections.
-2. Filter out task-local facts that belong in Feature Spec / handoff.
-3. Pick target files by content type.
-4. Read existing target sections before editing.
-5. Patch only the smallest relevant section; preserve existing style and headings.
-6. Add source links or evidence notes when useful, but do not paste long transcripts.
-7. Report what was synced, skipped, and left as candidate.
+1. Always scan the handoff, recovered logs, spec, codemap, diff, validation, and explicit user corrections.
+2. Collect durable candidates.
+3. Filter out task-local facts that belong in Feature Spec / handoff.
+4. Pick target files by content type.
+5. Read existing target sections before editing.
+6. Patch only the smallest relevant section; preserve existing style and headings.
+7. Add source links or evidence notes when useful, but do not paste long transcripts.
+8. Report what was synced, skipped, and left as candidate.
 
 ## Output Shape
 

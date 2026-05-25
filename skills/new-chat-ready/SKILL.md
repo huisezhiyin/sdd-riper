@@ -49,9 +49,10 @@ For detailed trigger boundaries, read `references/trigger-policy.md`.
    - Otherwise write `mydocs/handoff/YYYY-MM-DD_hh-mm_<task>_new-chat.md` when the user wants a durable artifact and the workspace is writable.
    - If there is no suitable workspace, output the handoff inline.
 5. Start from a short recap checkpoint, then write the handoff using `references/handoff-template.md`.
-6. Check whether reusable project knowledge should be preserved:
-   - read `references/project-md-sync.md` when the handoff reveals repeated corrections, stable project rules, setup/test commands, pitfalls, agent routing, reusable patch patterns, or project-level decisions;
-   - propose `Project MD Sync Candidates` before editing durable project docs unless the user explicitly asked to update them;
+6. Always run `Project MD Sync Scan` before finishing a handoff:
+   - read `references/project-md-sync.md` to classify reusable project knowledge from this conversation, recovered logs, spec, codemap, validation, and diff;
+   - report `Synced`, `Candidates not synced`, and `Skipped` even when no files are updated;
+   - propose `Project MD Sync Candidates` before editing durable project docs unless the user explicitly asked to update them or current approval includes reverse sync;
    - update only scoped sections in project-level Markdown, not task execution logs.
 7. Produce a paste-ready next-chat prompt using `references/new-chat-prompt-template.md`.
 8. If expcap is available and the project asks for durable experience capture, run the appropriate finish/save step after the handoff is correct. Do not make expcap a dependency for the handoff.
@@ -67,7 +68,7 @@ For detailed trigger boundaries, read `references/trigger-policy.md`.
 - Do not claim a task is done unless the handoff includes validation evidence.
 - Preserve dirty-work awareness: list existing uncommitted changes, and mark which ones were made by the current agent if known.
 - Prefer recap-first handoff: begin with the shortest accurate state summary, then expand only the details needed for continuity.
-- When syncing project Markdown, separate durable project knowledge from task-specific state; keep edits small, cited, and reviewable.
+- Project MD Sync scan is mandatory for every handoff; Project MD Sync write is conditional. Separate durable project knowledge from task-specific state; keep edits small, cited, and reviewable.
 - The final next-chat prompt must be directly pasteable. It should tell the next agent what to read first and what to do next.
 
 ## References
