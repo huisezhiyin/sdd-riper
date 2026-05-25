@@ -1,17 +1,17 @@
 ---
 name: new-chat-ready
-description: Prepare seamless new-chat handoff packs when a user wants to start a fresh chat, continue elsewhere, pause a long task, recover from context decay, recover a lost conversation from local Codex or Claude Code logs, or hand work to another agent. Generates a durable handoff document and a paste-ready next-chat prompt grounded in current task state, local conversation records, source files, specs, codemaps, validation evidence, open risks, and constraints.
+description: Prepare seamless new-chat handoff packs when a user wants to start a fresh chat, continue elsewhere, pause a long task, recover from context decay, recover a lost conversation from local Codex or Claude Code logs, preserve reusable project knowledge in Markdown, or hand work to another agent. Generates a durable handoff document, optional project-level Markdown updates such as AGENTS.md/README.md/PROJECT_SPEC.md/PROJECT_MEMORY.md, and a paste-ready next-chat prompt grounded in current task state, local conversation records, source files, specs, codemaps, validation evidence, open risks, and constraints.
 ---
 
 # New Chat Ready
 
 ## Core Position
 
-This skill turns an active or recoverable past conversation into an execution handoff.
+This skill turns an active or recoverable past conversation into an execution handoff and a chance to preserve durable project knowledge.
 
 It is not a generic chat summary. It should preserve the next agent's operating context: the current goal, latest recap checkpoint, workspace, decisions, files, validation evidence, risks, constraints, and the exact next action.
 
-Use it as a cross-cutting handoff layer with SDD-RIPER, CodeMap, expcap, ordinary coding tasks, and local conversation recovery. SDD skills may route to this skill, but the handoff and recovery format lives here.
+Use it as a cross-cutting handoff layer with SDD-RIPER, CodeMap, expcap, ordinary coding tasks, local conversation recovery, and project-level Markdown sync. SDD skills may route to this skill, but the handoff, recovery, and project sync format lives here.
 
 ## Trigger
 
@@ -21,6 +21,7 @@ Use this skill when the user asks for or implies:
 - `handoff`, `resume pack`, `交接`, `接着做`, `无缝续接`
 - `上下文快满`, `压缩上下文`, `总结给下个 chat`
 - `对话丢了`, `恢复对话`, `找回上次对话`, `从 Codex/Claude 日志恢复`
+- `沉淀到项目文档`, `更新 AGENTS/README`, `避免反复踩坑`, `把经验写进项目 memory`
 - a durable pause point for a long or risky task
 
 If the user only asks whether this capability is a good idea, answer the design question first. Create a handoff only after the user asks to do it, or when a running task clearly needs a pause/resume artifact.
@@ -48,8 +49,12 @@ For detailed trigger boundaries, read `references/trigger-policy.md`.
    - Otherwise write `mydocs/handoff/YYYY-MM-DD_hh-mm_<task>_new-chat.md` when the user wants a durable artifact and the workspace is writable.
    - If there is no suitable workspace, output the handoff inline.
 5. Start from a short recap checkpoint, then write the handoff using `references/handoff-template.md`.
-6. Produce a paste-ready next-chat prompt using `references/new-chat-prompt-template.md`.
-7. If expcap is available and the project asks for durable experience capture, run the appropriate finish/save step after the handoff is correct. Do not make expcap a dependency for the handoff.
+6. Check whether reusable project knowledge should be preserved:
+   - read `references/project-md-sync.md` when the handoff reveals repeated corrections, stable project rules, setup/test commands, pitfalls, agent routing, reusable patch patterns, or project-level decisions;
+   - propose `Project MD Sync Candidates` before editing durable project docs unless the user explicitly asked to update them;
+   - update only scoped sections in project-level Markdown, not task execution logs.
+7. Produce a paste-ready next-chat prompt using `references/new-chat-prompt-template.md`.
+8. If expcap is available and the project asks for durable experience capture, run the appropriate finish/save step after the handoff is correct. Do not make expcap a dependency for the handoff.
 
 ## Output Rules
 
@@ -62,11 +67,13 @@ For detailed trigger boundaries, read `references/trigger-policy.md`.
 - Do not claim a task is done unless the handoff includes validation evidence.
 - Preserve dirty-work awareness: list existing uncommitted changes, and mark which ones were made by the current agent if known.
 - Prefer recap-first handoff: begin with the shortest accurate state summary, then expand only the details needed for continuity.
+- When syncing project Markdown, separate durable project knowledge from task-specific state; keep edits small, cited, and reviewable.
 - The final next-chat prompt must be directly pasteable. It should tell the next agent what to read first and what to do next.
 
 ## References
 
 - `references/trigger-policy.md`: when to proactively offer or create a new-chat handoff.
 - `references/recovery-from-local-logs.md`: how to recover a lost or stale conversation from local Codex / Claude Code records.
+- `references/project-md-sync.md`: how to update project-level Markdown so future chats avoid repeated learning and repeated correction.
 - `references/handoff-template.md`: durable handoff document shape.
 - `references/new-chat-prompt-template.md`: paste-ready prompt for the next chat.

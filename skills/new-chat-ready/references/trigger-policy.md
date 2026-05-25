@@ -8,6 +8,7 @@ Create a handoff pack when the user explicitly says to:
 - generate a `handoff`, `resume pack`, or `续接 prompt`;
 - recover a lost Codex / Claude Code conversation before making a handoff;
 - summarize the current work for another agent or future session;
+- preserve reusable knowledge in project-level Markdown so future chats avoid repeated learning or repeated corrections;
 - pause a task and leave recoverable context.
 
 ## Offer Proactively

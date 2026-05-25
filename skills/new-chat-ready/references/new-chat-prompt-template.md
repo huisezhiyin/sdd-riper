@@ -12,6 +12,7 @@ Workspace:
 
 Active instructions to read first:
 - <AGENTS.md or equivalent>
+- <README.md or project-level docs if relevant>
 - <active spec / handoff / codemap path>
 - <other essential source path>
 
@@ -34,6 +35,9 @@ Validation so far:
 
 Constraints:
 - <approval, safety, privacy, non-goals, files not to touch>
+
+Project memory:
+- <project-level markdown updated or recommended during handoff>
 
 Next action:
 1. <first concrete action>

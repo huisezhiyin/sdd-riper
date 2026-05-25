@@ -58,6 +58,12 @@ List only sources the next agent should trust or read first.
 2. <second step if needed>
 3. <validation or checkpoint step>
 
-## 8. Paste-Ready New Chat Prompt
+## 8. Project MD Sync
+
+| Candidate | Target | Status | Evidence |
+| --- | --- | --- | --- |
+| `<durable knowledge>` | `<AGENTS.md / README.md / PROJECT_SPEC.md / PROJECT_MEMORY.md / PROJECT_INDEX.md>` | `<synced | proposed | skipped>` | `<source>` |
+
+## 9. Paste-Ready New Chat Prompt
 
 Paste the final prompt here, or link to the generated prompt section/file if it is stored separately.
