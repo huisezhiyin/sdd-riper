@@ -132,6 +132,7 @@ spec 是持久化真相源，不是反复塞满上下文的大 prompt。
 - `new-chat-ready` 用于新对话交接、resume pack、可直接粘贴的续接 prompt，以及必要的项目级 Markdown 记忆同步。
 - 日常默认使用 `sdd-riper-one-light`。
 - 重构、审计、交接和高风险任务切到 `sdd-riper-one`。
+- 系统级 / 个人级默认规则可参考 [`examples/global-agents.md`](./examples/global-agents.md)。
 
 凡是能读取仓库内规则和本地 skill 目录的 agent 环境，基本都可以用这套结构；Codex 只是其中一种。
 
@@ -216,6 +217,7 @@ MULTI / 多项目
 | [`skills/sdd-riper-one`](./skills/sdd-riper-one/) | 标准控盘协议，训练、审计、交接和复杂任务入口 |
 | [`skills/codemap`](./skills/codemap/) | 代码地形索引 Skill，用 feature / project CodeMap 节约上下文注意力 |
 | [`skills/new-chat-ready`](./skills/new-chat-ready/) | 新对话交接 Skill，生成可恢复 handoff、续接 prompt，并按需同步项目级 Markdown 记忆 |
+| [`examples/global-agents.md`](./examples/global-agents.md) | 系统级 / 个人级 `AGENTS.md` 模板，包含默认 skill 路由和安全边界 |
 | [`protocols/SDD-RIPER-ONE.md`](./protocols/SDD-RIPER-ONE.md) | 标准协议原文 |
 | [`protocols/RIPER-DOC.md`](./protocols/RIPER-DOC.md) | 文档生成与维护协议 |
 | [`protocols/RIPER-5.md`](./protocols/RIPER-5.md) | 更早期、更严格的 RIPER 参考 |

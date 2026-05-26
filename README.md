@@ -131,6 +131,7 @@ For most agentic coding environments, the smallest setup that already works well
 - Use `new-chat-ready` when a task needs a fresh-chat handoff, resume pack, paste-ready continuation prompt, or project-level Markdown memory sync.
 - Use `sdd-riper-one-light` as the default daily entry.
 - Switch to `sdd-riper-one` for refactors, audit, handoff, and higher-risk work.
+- For system-level / personal defaults, see [`examples/global-agents.md`](./examples/global-agents.md).
 
 This structure works well in Codex App, Claude Code, and many other agent setups that can read repository instructions plus local skill folders.
 
@@ -215,6 +216,7 @@ In practice:
 | [`skills/sdd-riper-one`](./skills/sdd-riper-one/) | Standard control protocol for training, audit, handoff, and complex tasks |
 | [`skills/codemap`](./skills/codemap/) | Code-terrain indexing skill; uses feature / project CodeMaps to save context attention |
 | [`skills/new-chat-ready`](./skills/new-chat-ready/) | Fresh-chat handoff skill; creates durable resume packs, paste-ready continuation prompts, and project-level Markdown memory sync |
+| [`examples/global-agents.md`](./examples/global-agents.md) | System-level / personal `AGENTS.md` template for default skill routing and safety boundaries |
 | [`protocols/SDD-RIPER-ONE.md`](./protocols/SDD-RIPER-ONE.md) | Standard protocol text |
 | [`protocols/RIPER-DOC.md`](./protocols/RIPER-DOC.md) | Document generation and maintenance protocol |
 | [`protocols/RIPER-5.md`](./protocols/RIPER-5.md) | Earlier and stricter RIPER reference |
