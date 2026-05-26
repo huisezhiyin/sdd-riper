@@ -4,6 +4,10 @@ This repository is designed to be used with coding agents. The goal of this file
 
 本文件是脱敏后的公开版项目地形说明。它不是业务私有规则，也不绑定某台机器、某个账号或某个模型。
 
+## Project Knowledge
+
+Before synchronizing README, skills, `AGENTS.md`, or mirror copies, read [`PROJECT_KNOWLEDGE.md`](./PROJECT_KNOWLEDGE.md). It records the sanitized repository network, mirror boundaries, downstream Aone skill repositories, and the update checklist.
+
 ## Default Workflow
 
 For everyday coding-agent work, prefer the light workflow first:
