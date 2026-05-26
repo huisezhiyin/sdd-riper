@@ -70,12 +70,17 @@ If a task reveals durable knowledge, do not leave it only in chat history.
 Consider updating:
 
 - `README.md` or `README.zh-CN.md` for public user-facing behavior.
+- `AGENTS.md` for project-level routing, validation expectations, safety rules, and indexed long-lived knowledge entrypoints.
 - `skills/*/README.md` or `skills/*/SKILL.md` for agent workflow behavior.
 - `skills/*/references/` for reusable protocol details.
 - `skills/*/examples/` for sanitized examples.
-- Specs or checklists when the change introduces a repeatable decision or risk.
+- Root-level project knowledge files such as `PROJECT_KNOWLEDGE.md`, `PROJECT_SPEC.md`, or `PROJECT_MEMORY.md` when a project uses them.
+- `mydocs/project/PROJECT_SPEC.md`, `mydocs/project/PROJECT_MEMORY.md`, or `mydocs/project/PROJECT_INDEX.md` for stable project truth, reusable experience, and durable indexes.
+- Feature specs or checklists when the change introduces a repeatable decision or risk.
 
 The goal is to turn useful one-time agent work into reusable project terrain.
+
+When a conversation reveals stable, reusable, cross-task knowledge, record it as a Project Sync Candidate instead of leaving it only in chat. If the fact is task-local, keep it in the active feature spec or handoff. If it is project-level memory, sync it to the project knowledge entrypoint after confirmation, with source evidence and scope.
 
 ## Skill Map
 
@@ -86,8 +91,8 @@ The goal is to turn useful one-time agent work into reusable project terrain.
   - More explicit control protocol.
   - Best for complex, high-risk, cross-module, audit, training, or handoff-heavy work.
 - `skills/new-chat-ready/`
-  - Cross-cutting handoff layer for fresh chats, resume packs, and paste-ready continuation prompts.
-  - Best when context is long, a task pauses, or another agent/session must continue without losing state.
+  - Cross-cutting handoff layer for fresh chats, resume packs, paste-ready continuation prompts, and project-level Markdown memory sync.
+  - Best when context is long, a task pauses, another agent/session must continue without losing state, or durable knowledge should be synchronized.
 
 ## Safety And Hygiene
 

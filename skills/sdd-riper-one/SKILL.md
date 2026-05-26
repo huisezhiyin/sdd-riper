@@ -29,6 +29,7 @@ description: 将 SDD-RIPER 方法论落地为严格可执行流程的重型 Harn
 - 默认 prompt 文档只写最小路由、边界、禁止项和恢复规则；不要把完整 Skill 复制进项目 prompt，避免把长期上下文变成噪音。
 - **Spec 受众分层与上下文保护**：Spec 的第一受众是人类（持久化的任务上下文与组织记忆），第二受众才是模型。协议对模型的核心价值是四件事：**注意力聚焦**（让模型在当前阶段只关注该关注的）、**信息索引**（需要时按路径回读，而非全量常驻）、**防止上下文腐烂**（用落盘的 Spec 对抗长对话中的遗忘与漂移）、**辅助 Review**（提供 Spec vs 代码的交叉验证基准）。协议绝不应导致上下文被塞满挤爆——RIPER 管流程，Spec 管记录，模型按需取用。
 - **Spec 分层边界**：默认活跃 spec 是 `Feature Spec`，只记录本次任务；`Project Spec` / `Project Memory` 只记录稳定、可复用、跨任务会影响判断的项目事实。禁止把任务流水写进 Project Spec，也禁止把项目长期记忆塞进 Feature Spec。
+- **项目级长期记忆**：进入项目、new chat 恢复、debug、Review 或任务收尾时，先检查 `AGENTS.md` 是否索引了根目录 `PROJECT_KNOWLEDGE.md`、`PROJECT_MEMORY.md`、`PROJECT_SPEC.md` 或等价文件；有则优先读取并维护这些系统级/项目级知识入口。对话中出现稳定、可复用、跨任务会再次影响判断的经验、规则、验证入口或反复纠正，应记录为 `Project Sync Candidate`，经确认后同步到 Project Spec / Project Memory / AGENTS，而不是只留在聊天里。
 
 ## Harness 教练职责
 
@@ -36,6 +37,7 @@ description: 将 SDD-RIPER 方法论落地为严格可执行流程的重型 Harn
 - 评估当前输入是否能形成最小混沌单元；不能时，先拆分、补 codemap/context 或提出阻塞问题。
 - 将每个任务单元写清：目标、边界、上下文、验证证据、失败回炉方式、用户选择。
 - 在 spec 中持续记录目标、进度、决策、路线偏差、验证、剩余风险和 handoff，支持随时 new chat 恢复。
+- 持续感知可沉淀知识：区分任务流水、Feature Spec 内容和项目长期记忆；对稳定事实主动提出写入目标文件、来源证据和适用边界。
 - 在关键 checkpoint 提醒最终目标和当前任务单元，检查当前路线是否偏离目标。
 - 给用户更强选择权：方案分叉、风险接受、NO-GO 后继续、范围变化，都要显式记录用户决策。
 
@@ -125,6 +127,7 @@ description: 将 SDD-RIPER 方法论落地为严格可执行流程的重型 Harn
 - 原生命令：触发 `create_codemap / build_context_bundle / sdd_bootstrap / review_spec / review_execute / archive` 时读 `references/commands.md`。
 - Debug：触发 `DEBUG / 排查 / 日志分析 / 验证功能` 时读 `references/sdd-riper-one-protocol.md` 的 Debug 段或 `references/usage-examples.md` 的 Debug 示例。
 - New Chat Ready：触发 `new chat / 换对话 / handoff / resume_pack / 续接 prompt / 上下文压缩` 时调用 `$new-chat-ready`，并同步当前 spec 的 `Resume / Handoff` 区块。
+- Project Memory：触发任务收尾、Review、new chat、用户反复纠正、发现稳定项目事实或可复用经验时，扫描并维护项目级长期知识入口；优先遵循 `AGENTS.md` 索引，其次使用根目录 `PROJECT_KNOWLEDGE.md` / `PROJECT_MEMORY.md` / `PROJECT_SPEC.md`。
 - 触发词、命名规则、阶段 DoD：需要时读 `references/workflow-quickref.md`。
 - 归档脚本：需要执行 archive 时读 `references/script-map.md` 和 `references/archive-template.md`。
 

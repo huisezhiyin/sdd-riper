@@ -13,6 +13,8 @@ It is not a generic chat summary. It should preserve the next agent's operating 
 
 Use it as a cross-cutting handoff layer with SDD-RIPER, CodeMap, expcap, ordinary coding tasks, local conversation recovery, and project-level Markdown sync. SDD skills may route to this skill, but the handoff, recovery, and project sync format lives here.
 
+Project-level sync is part of the core job, not an optional afterthought. When a project exposes long-lived knowledge files such as root `PROJECT_KNOWLEDGE.md`, `PROJECT_MEMORY.md`, `PROJECT_SPEC.md`, or equivalents indexed from `AGENTS.md`, prefer those files for stable project truth and reusable memory. Use `AGENTS.md` for routing, boundaries, validation expectations, and safety rules.
+
 ## Trigger
 
 Use this skill when the user asks for or implies:
@@ -51,6 +53,8 @@ For detailed trigger boundaries, read `references/trigger-policy.md`.
 5. Start from a short recap checkpoint, then write the handoff using `references/handoff-template.md`.
 6. Always run `Project MD Sync Scan` before finishing a handoff:
    - read `references/project-md-sync.md` to classify reusable project knowledge from this conversation, recovered logs, spec, codemap, validation, and diff;
+   - first inspect `AGENTS.md` and existing root project knowledge files (`PROJECT_KNOWLEDGE.md`, `PROJECT_MEMORY.md`, `PROJECT_SPEC.md`) to find the local source of truth;
+   - treat stable system-level experience, repeated user corrections, durable project facts, and reusable debugging/validation knowledge as sync candidates whenever they appear during the conversation;
    - report `Synced`, `Candidates not synced`, and `Skipped` even when no files are updated;
    - propose `Project MD Sync Candidates` before editing durable project docs unless the user explicitly asked to update them or current approval includes reverse sync;
    - update only scoped sections in project-level Markdown, not task execution logs.
@@ -68,7 +72,7 @@ For detailed trigger boundaries, read `references/trigger-policy.md`.
 - Do not claim a task is done unless the handoff includes validation evidence.
 - Preserve dirty-work awareness: list existing uncommitted changes, and mark which ones were made by the current agent if known.
 - Prefer recap-first handoff: begin with the shortest accurate state summary, then expand only the details needed for continuity.
-- Project MD Sync scan is mandatory for every handoff; Project MD Sync write is conditional. Separate durable project knowledge from task-specific state; keep edits small, cited, and reviewable.
+- Project MD Sync scan is mandatory for every handoff; Project MD Sync write is conditional. Separate durable project knowledge from task-specific state; keep edits small, cited, and reviewable. If no durable knowledge exists, say so explicitly.
 - The final next-chat prompt must be directly pasteable. It should tell the next agent what to read first and what to do next.
 
 ## References

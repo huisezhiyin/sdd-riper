@@ -139,6 +139,9 @@
 - Stable project facts discovered:
   - ...
 - Suggested destination:
+  - `PROJECT_KNOWLEDGE.md`
+  - `PROJECT_SPEC.md`
+  - `PROJECT_MEMORY.md`
   - `mydocs/project/PROJECT_SPEC.md`
   - `mydocs/project/PROJECT_MEMORY.md`
 - Sync decision: Not synced / Synced / Skipped
@@ -327,6 +330,9 @@
 - Cross-project reusable facts:
   - ...
 - Suggested destination:
+  - `PROJECT_KNOWLEDGE.md`
+  - `PROJECT_SPEC.md`
+  - `PROJECT_MEMORY.md`
   - `mydocs/project/PROJECT_SPEC.md`
   - `mydocs/project/PROJECT_MEMORY.md`
 - Sync decision: Not synced / Synced / Skipped

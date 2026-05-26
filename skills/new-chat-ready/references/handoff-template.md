@@ -62,7 +62,7 @@ List only sources the next agent should trust or read first.
 
 | Candidate | Target | Status | Evidence |
 | --- | --- | --- | --- |
-| `<durable knowledge>` | `<AGENTS.md / README.md / PROJECT_SPEC.md / PROJECT_MEMORY.md / PROJECT_INDEX.md>` | `<synced | proposed | skipped>` | `<source>` |
+| `<durable knowledge>` | `<AGENTS.md / README.md / PROJECT_KNOWLEDGE.md / PROJECT_SPEC.md / PROJECT_MEMORY.md / PROJECT_INDEX.md>` | `<synced | proposed | skipped>` | `<source>` |
 
 ## 9. Paste-Ready New Chat Prompt
 

@@ -28,5 +28,13 @@
 - 不要提交 `.env`、API key、token 或其他本地凭据。
 - 不主动改动 `.gitignore`，包括主动恢复 `.gitignore`；提交和暂存文件时忠实遵守仓库现有 `.gitignore`。
 
+## 最小记忆能力
+
+- 对话中如果感知到稳定、可复用、跨任务会再次影响判断的系统级经验、项目信息或用户偏好，不要只留在聊天里。
+- 优先沉淀到项目已有长期知识入口：根目录 `PROJECT_KNOWLEDGE.md`、`PROJECT_MEMORY.md`、`PROJECT_SPEC.md`，或项目 `AGENTS.md` 明确索引的等价文件。
+- 若知识属于当前任务过程，先写入 feature spec / handoff；若属于项目长期规则或反复踩坑，再作为 Project Sync Candidate，经确认后同步到 Project Spec / Project Memory / AGENTS。
+- 记录时保持最小、可审查、可溯源：写清事实、来源、适用边界和验证证据；不要写入密钥、私人信息、未验证猜测或整段聊天记录。
+- 触发 new chat、handoff、resume pack、上下文压缩或任务收尾时，必须扫描是否有可沉淀知识；没有也要说明“无可同步长期知识”。
+
 详细流程以对应 skill 的 `SKILL.md` 为准，避免把长策略常驻进默认 prompt。
 ```

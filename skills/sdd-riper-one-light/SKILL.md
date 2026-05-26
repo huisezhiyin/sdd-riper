@@ -20,6 +20,7 @@ description: 面向 GPT-5.4 等强模型和熟练用户的轻量 AI Agent Harnes
 - `Recap Checkpoint` 是比 spec 更轻的持久化上下文：用 1-6 行记录“当前目标 / 已完成 / 关键决策 / 当前边界 / 下一步 / 验证风险”，防止长对话和暂停后的上下文腐烂；它不替代 spec，只负责让当前 loop 不断知道“我在哪”。
 - **Spec 受众分层与上下文保护**：Spec 的第一受众是人类（持久化的任务上下文与组织记忆），第二受众才是模型。协议对模型的核心价值是四件事：**注意力聚焦**（让模型只关注当前该关注的）、**信息索引**（需要时按路径回读，而非全量常驻）、**防止上下文腐烂**（用落盘的 Spec 对抗长对话中的遗忘与漂移）、**辅助 Review**（提供 Spec vs 代码的交叉验证基准）。协议绝不应导致上下文被塞满挤爆——RIPER 管流程，Spec 管记录，模型按需取用。
 - **Spec 分层边界**：`Feature Spec` 是本次任务真相源；`Project Spec` 是项目长期真相源。Feature Spec 不承载项目长期记忆，Project Spec 不承载任务执行流水；经验只能经确认后从 Feature Spec 反向同步到 Project Spec / Project Memory。
+- **项目级长期记忆**：进入项目、new chat 恢复、debug 或任务收尾时，先检查 `AGENTS.md` 是否索引了根目录 `PROJECT_KNOWLEDGE.md`、`PROJECT_MEMORY.md`、`PROJECT_SPEC.md` 或等价文件；有则优先读取并维护这些项目级知识入口。对话中出现稳定、可复用、跨任务会再次影响判断的经验、规则、验证入口或反复纠正，应记录为 `Project Sync Candidate`，经确认后同步到 Project Spec / Project Memory / AGENTS。
 
 ## 硬约束
 
@@ -34,6 +35,7 @@ description: 面向 GPT-5.4 等强模型和熟练用户的轻量 AI Agent Harnes
 - `Checkpoint Before Execute`：实现前必须给一次短 checkpoint，确认理解、目标、下一步、风险与验证方式。
 - `Done by Evidence`：完成应由验证结果与外部反馈证明，而不是由模型自行宣布。
 - `Reverse Sync`：执行后必须把结果、偏差、验证结论回写 spec。
+- `Project Memory Scan`：任务收尾、new chat、handoff、用户反复纠正或发现稳定项目事实时，主动扫描是否有可沉淀知识；没有也要说明无可同步长期知识。
 - `Resume Ready`：长任务或暂停前，应在 spec 中留下最小恢复锚点，支持重启与交接；用户触发 new chat / handoff / resume pack 时，调用 `$new-chat-ready` 生成落盘交接包和可直接粘贴的续接 prompt。
 
 ## 默认假设
@@ -86,7 +88,7 @@ description: 面向 GPT-5.4 等强模型和熟练用户的轻量 AI Agent Harnes
 - 若测试、日志、人工反馈暴露出偏差，先基于外部证据重述“当前核心目标是否变化、还差什么”，再决定继续执行还是调整方案。
 - 用户明确批准后执行；若范围或方案变化，先更新 spec 再重新请求批准。
 - 执行后回写 `Change Log / Validation / Resume or Handoff`，并说明“当前核心目标是否已由证据证明完成；若未完成，下一轮核心目标是什么”。
-- 收尾时做一次 spec 分层检查：本次过程留在 Feature Spec；可复用项目事实列为 Project Sync Candidate，经确认后才同步到 Project Spec / Project Memory。
+- 收尾时做一次 spec 分层检查：本次过程留在 Feature Spec；可复用项目事实列为 Project Sync Candidate，经确认后才同步到 Project Spec / Project Memory / AGENTS。同步目标优先遵循项目 `AGENTS.md` 索引，其次使用根目录 `PROJECT_KNOWLEDGE.md`、`PROJECT_MEMORY.md`、`PROJECT_SPEC.md`。
 
 ## 何时暂停
 

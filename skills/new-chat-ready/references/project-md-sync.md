@@ -2,7 +2,7 @@
 
 Use this for every `new-chat-ready` handoff. Every handoff must scan for durable knowledge that future agents or humans should not have to rediscover.
 
-This is not a transcript archive. It is a small, reviewable sync from the current conversation, recovered logs, active spec, codemap, validation evidence, and diff into project-level Markdown.
+This is not a transcript archive. It is a small, reviewable sync from the current conversation, recovered logs, active spec, codemap, validation evidence, and diff into project-level Markdown. If the project exposes root-level knowledge files such as `PROJECT_KNOWLEDGE.md`, `PROJECT_MEMORY.md`, `PROJECT_SPEC.md`, or equivalents indexed by `AGENTS.md`, treat them as the preferred long-lived memory layer.
 
 Core rule:
 
@@ -37,12 +37,15 @@ Do not sync:
 
 - `AGENTS.md`: agent routing, repo-specific boundaries, required workflows, repeated corrections, validation expectations, safety rules.
 - `README.md`: human-facing setup, usage, build/test commands, project overview, stable operational workflows.
+- `PROJECT_KNOWLEDGE.md`: stable project facts, decision context, operating model, and high-level knowledge that future agents should read first.
+- `PROJECT_SPEC.md`: long-lived project truth when the repo uses root-level spec files instead of `mydocs/project/`.
+- `PROJECT_MEMORY.md`: reusable experience and recurring pitfalls when the repo uses root-level memory files instead of `mydocs/project/`.
 - `mydocs/project/PROJECT_SPEC.md`: long-lived project truth, domain model, module boundaries, invariants, architecture rules, validation entry points.
 - `mydocs/project/PROJECT_MEMORY.md`: reusable experience, pitfalls, debugging paths, known traps, effective repair patterns.
 - `mydocs/project/PROJECT_INDEX.md`: links to important specs, codemaps, handoffs, archives, and where to start for common tasks.
 - `mydocs/codemap/*`: code terrain indexes. Do not place code navigation facts in Project Memory when they belong in a CodeMap.
 
-If a project uses different conventions, follow the existing local structure.
+If a project uses different conventions, follow the existing local structure. First inspect `AGENTS.md` for indexed project knowledge files, then check for root-level `PROJECT_*` files, then fall back to `mydocs/project/*`.
 
 ## Decision Rules
 
@@ -79,13 +82,14 @@ Project MD Sync:
 ## Workflow
 
 1. Always scan the handoff, recovered logs, spec, codemap, diff, validation, and explicit user corrections.
-2. Collect durable candidates.
-3. Filter out task-local facts that belong in Feature Spec / handoff.
-4. Pick target files by content type.
-5. Read existing target sections before editing.
-6. Patch only the smallest relevant section; preserve existing style and headings.
-7. Add source links or evidence notes when useful, but do not paste long transcripts.
-8. Report what was synced, skipped, and left as candidate.
+2. Inspect project knowledge entrypoints: `AGENTS.md` indexes, root `PROJECT_KNOWLEDGE.md` / `PROJECT_MEMORY.md` / `PROJECT_SPEC.md`, and `mydocs/project/*`.
+3. Collect durable candidates.
+4. Filter out task-local facts that belong in Feature Spec / handoff.
+5. Pick target files by content type.
+6. Read existing target sections before editing.
+7. Patch only the smallest relevant section; preserve existing style and headings.
+8. Add source links or evidence notes when useful, but do not paste long transcripts.
+9. Report what was synced, skipped, and left as candidate.
 
 ## Output Shape
 

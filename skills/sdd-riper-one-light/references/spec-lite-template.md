@@ -80,6 +80,9 @@ Feature Spec 是本次任务真相源，用来维护当前功能、bug、重构�
 - 候选事实：
   - <稳定、可复用、跨任务会再次影响判断的事实>
 - 建议同步位置：
+  - `PROJECT_KNOWLEDGE.md`
+  - `PROJECT_SPEC.md`
+  - `PROJECT_MEMORY.md`
   - `mydocs/project/PROJECT_SPEC.md`
   - `mydocs/project/PROJECT_MEMORY.md`
 - 同步状态：Not synced / Synced / Skipped
