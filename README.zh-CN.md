@@ -121,6 +121,7 @@ spec 是持久化真相源，不是反复塞满上下文的大 prompt。
   AGENTS.md
   skills/
     codemap/
+    new-chat-ready/
     sdd-riper-one-light/
     sdd-riper-one/
 ```
@@ -128,6 +129,7 @@ spec 是持久化真相源，不是反复塞满上下文的大 prompt。
 - `AGENTS.md` 放在仓库根目录，承载工作区默认规则。
 - `sdd-riper-one-light` 和 `sdd-riper-one` 放在 `skills/` 目录。
 - `codemap` 作为代码地形索引 Skill，优先用于陌生代码库、老项目、大模块和跨仓任务。
+- `new-chat-ready` 用于新对话交接、resume pack、可直接粘贴的续接 prompt，以及必要的项目级 Markdown 记忆同步。
 - 日常默认使用 `sdd-riper-one-light`。
 - 重构、审计、交接和高风险任务切到 `sdd-riper-one`。
 
@@ -213,6 +215,7 @@ MULTI / 多项目
 | [`skills/sdd-riper-one-light`](./skills/sdd-riper-one-light/) | 主推 Light Harness，日常默认入口 |
 | [`skills/sdd-riper-one`](./skills/sdd-riper-one/) | 标准控盘协议，训练、审计、交接和复杂任务入口 |
 | [`skills/codemap`](./skills/codemap/) | 代码地形索引 Skill，用 feature / project CodeMap 节约上下文注意力 |
+| [`skills/new-chat-ready`](./skills/new-chat-ready/) | 新对话交接 Skill，生成可恢复 handoff、续接 prompt，并按需同步项目级 Markdown 记忆 |
 | [`protocols/SDD-RIPER-ONE.md`](./protocols/SDD-RIPER-ONE.md) | 标准协议原文 |
 | [`protocols/RIPER-DOC.md`](./protocols/RIPER-DOC.md) | 文档生成与维护协议 |
 | [`protocols/RIPER-5.md`](./protocols/RIPER-5.md) | 更早期、更严格的 RIPER 参考 |

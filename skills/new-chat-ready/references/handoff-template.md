@@ -32,7 +32,7 @@ List only sources the next agent should trust or read first.
 
 ## 3. Decisions And Constraints
 
-- Decision: <what was decided>  
+- Decision: <what was decided>
   Evidence: <file, command, or user statement>
 - Constraint: <boundary, non-goal, approval rule, privacy rule, or repo hygiene rule>
 
