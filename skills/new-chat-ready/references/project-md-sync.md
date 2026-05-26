@@ -69,6 +69,15 @@ Write directly only when:
 
 Otherwise propose candidates and ask before editing.
 
+## Commit Boundary
+
+Project MD Sync files may contain internal project facts, feature-level context, user preferences, or private operational knowledge. Updating a file is not the same as committing it.
+
+- Do not stage or commit system-level knowledge, feature specs, handoffs, Project Memory, Project Spec, or user preference memory by default.
+- Before committing any memory/spec/handoff/project-knowledge file, confirm that the user wants it committed and that the content is sanitized for the target repository.
+- For public repositories, default to reporting candidates or keeping local artifacts uncommitted unless the user explicitly approves publication.
+- If privacy risk is unclear, skip the write or leave the file untracked and report the reason.
+
 If no reusable knowledge is found, still report the scan:
 
 ```text

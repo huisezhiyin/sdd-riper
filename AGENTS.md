@@ -82,6 +82,8 @@ The goal is to turn useful one-time agent work into reusable project terrain.
 
 When a conversation reveals stable, reusable, cross-task knowledge, record it as a Project Sync Candidate instead of leaving it only in chat. If the fact is task-local, keep it in the active feature spec or handoff. If it is project-level memory, sync it to the project knowledge entrypoint after confirmation, with source evidence and scope.
 
+System-level knowledge, feature specs, handoffs, Project Memory, Project Spec, and user preference memory may contain private or internal information. Do not stage or commit them by default. Only commit them when the user explicitly asks, the target repository is appropriate, and the content has been sanitized for that repository.
+
 ## Skill Map
 
 - `skills/sdd-riper-one-light/`

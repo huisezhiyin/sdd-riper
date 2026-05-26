@@ -30,6 +30,7 @@ description: 将 SDD-RIPER 方法论落地为严格可执行流程的重型 Harn
 - **Spec 受众分层与上下文保护**：Spec 的第一受众是人类（持久化的任务上下文与组织记忆），第二受众才是模型。协议对模型的核心价值是四件事：**注意力聚焦**（让模型在当前阶段只关注该关注的）、**信息索引**（需要时按路径回读，而非全量常驻）、**防止上下文腐烂**（用落盘的 Spec 对抗长对话中的遗忘与漂移）、**辅助 Review**（提供 Spec vs 代码的交叉验证基准）。协议绝不应导致上下文被塞满挤爆——RIPER 管流程，Spec 管记录，模型按需取用。
 - **Spec 分层边界**：默认活跃 spec 是 `Feature Spec`，只记录本次任务；`Project Spec` / `Project Memory` 只记录稳定、可复用、跨任务会影响判断的项目事实。禁止把任务流水写进 Project Spec，也禁止把项目长期记忆塞进 Feature Spec。
 - **项目级长期记忆**：进入项目、new chat 恢复、debug、Review 或任务收尾时，先检查 `AGENTS.md` 是否索引了根目录 `PROJECT_KNOWLEDGE.md`、`PROJECT_MEMORY.md`、`PROJECT_SPEC.md` 或等价文件；有则优先读取并维护这些系统级/项目级知识入口。对话中出现稳定、可复用、跨任务会再次影响判断的经验、规则、验证入口或反复纠正，应记录为 `Project Sync Candidate`，经确认后同步到 Project Spec / Project Memory / AGENTS，而不是只留在聊天里。
+- **隐私提交边界**：系统级知识、Feature Spec、handoff、Project Spec / Project Memory 和用户偏好可能包含隐私或内部信息。可以主动识别、总结、提出候选，但默认不得暂存或提交到仓库；只有用户明确要求提交，且内容已按目标仓库脱敏确认后，才允许纳入 git。
 
 ## Harness 教练职责
 

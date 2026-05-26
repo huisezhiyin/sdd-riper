@@ -57,6 +57,7 @@ For detailed trigger boundaries, read `references/trigger-policy.md`.
    - treat stable system-level experience, repeated user corrections, durable project facts, and reusable debugging/validation knowledge as sync candidates whenever they appear during the conversation;
    - report `Synced`, `Candidates not synced`, and `Skipped` even when no files are updated;
    - propose `Project MD Sync Candidates` before editing durable project docs unless the user explicitly asked to update them or current approval includes reverse sync;
+   - never stage or commit system-level knowledge, feature specs, handoffs, Project Memory, or user preference memory by default; these may contain private/internal content and require explicit user approval plus sanitization before committing;
    - update only scoped sections in project-level Markdown, not task execution logs.
 7. Produce a paste-ready next-chat prompt using `references/new-chat-prompt-template.md`.
 8. If expcap is available and the project asks for durable experience capture, run the appropriate finish/save step after the handoff is correct. Do not make expcap a dependency for the handoff.
