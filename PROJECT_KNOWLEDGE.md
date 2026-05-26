@@ -12,6 +12,8 @@ This project has multiple mirrors / downstream copies. Treat the public GitHub r
 | Internal mirror | Internal distribution mirror with internal README, Aone links, and Ant mirror push target | Do not publish internal URLs in public docs. Keep exact remotes in the internal mirror's project knowledge. |
 | Aone Light Skill repo | Downstream source for `skills/sdd-riper-one-light/` | Keep only the `sdd-riper-one-light` skill payload synchronized. |
 | Aone Standard Skill repo | Downstream source for `skills/sdd-riper-one/` | Keep only the `sdd-riper-one` skill payload synchronized. |
+| Aone CodeMap Skill repo | Downstream source for `skills/codemap/` | Keep only the `codemap` skill payload synchronized. |
+| Aone New Chat Ready Skill repo | Downstream source for `skills/new-chat-ready/` | Keep only the `new-chat-ready` skill payload synchronized. |
 
 ## Sync Rules
 
@@ -32,7 +34,9 @@ When changing README, `AGENTS.md`, skill behavior, memory rules, or public docs:
 4. Sync the internal mirror without overwriting internal-only README/AGENTS content unless explicitly intended.
 5. If `skills/sdd-riper-one-light/` changed, sync the Aone Light Skill repository.
 6. If `skills/sdd-riper-one/` changed, sync the Aone Standard Skill repository.
-7. Verify each target with `git status -sb`, the latest commit, and remote branch pointer.
+7. If `skills/codemap/` changed, sync the Aone CodeMap Skill repository.
+8. If `skills/new-chat-ready/` changed, sync the Aone New Chat Ready Skill repository.
+9. Verify each target with `git status -sb`, the latest commit, and remote branch pointer.
 
 ## Internal Details
 
