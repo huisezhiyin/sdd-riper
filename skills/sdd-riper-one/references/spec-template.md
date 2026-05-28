@@ -2,7 +2,7 @@
 
 本模板是 `Feature Spec`：当前任务真相源。它只维护本次功能、bug、重构、文档或跨项目任务的目标、边界、进度、计划、验证和恢复点。
 
-`Project Spec` / `Project Memory` 是另一类产物，只记录稳定、可复用、跨任务会影响判断的项目事实。不要把任务执行流水写进 Project Spec，也不要把项目长期记忆混进 Feature Spec；可复用事实先进入本模板的 `Project Sync Candidates`。
+项目级知识入口由项目 `AGENTS.md` 或用户定义。不要把任务执行流水写进项目级长期文件，也不要把项目长期记忆混进 Feature Spec；可复用事实先进入本模板的 `Project Sync Candidates`，再按已定义落点或 `project-sync-boundary.md` 建议同步。
 
 本模板包含两个版本：**单项目模板**（默认）和 **多项目模板**（`mode=multi_project` 时使用）。Agent 根据启动模式自动选择对应模板。
 
@@ -139,6 +139,7 @@
 - Stable project facts discovered:
   - ...
 - Suggested destination:
+  - project-defined entrypoint from `AGENTS.md`
   - `PROJECT_KNOWLEDGE.md`
   - `PROJECT_SPEC.md`
   - `PROJECT_MEMORY.md`
@@ -340,7 +341,9 @@
 
 ---
 
-## Project Spec / Project Memory Boundary
+## Project Sync Boundary Defaults
+
+Project rules or explicit user instructions always win. These defaults apply only when the project has not defined another knowledge topology.
 
 Use `mydocs/project/PROJECT_SPEC.md` for stable project truth:
 

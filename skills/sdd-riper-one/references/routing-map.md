@@ -13,6 +13,7 @@
 | 陌生代码库 / 跨模块 | `commands.md` | `workflow-quickref.md` | 无 |
 | 模型提出不同路线 | `water-flow.md` | `spec-template.md` | 无 |
 | 长对话 / new chat 恢复 | `anti-context-decay.md` | `spec-template.md` | 无 |
+| 项目知识沉淀 / 分流不清 | `project-sync-boundary.md` | `spec-template.md` | 无 |
 | 多项目 | `multi-project.md` | `commands.md` | 无 |
 | 归档沉淀 | `archive-template.md` | `script-map.md` | `scripts/archive_builder.py ...` |
 | 默认 prompt 写入 | `default-prompt-setup.md` | `script-map.md` | `scripts/default_prompt_check.py --apply`，必须先获用户批准 |

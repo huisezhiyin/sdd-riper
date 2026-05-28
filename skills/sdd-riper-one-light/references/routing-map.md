@@ -11,6 +11,7 @@
 | 任务明显过大/高风险 | `mode-selection-lite.md` | `modules.md` | 无 |
 | 长对话 / new chat 恢复 | `anti-context-decay-lite.md` | `spec-lite-template.md` | 无 |
 | deep/debug/review/multi-project | `modules.md` | `mode-selection-lite.md` | 无 |
+| 项目知识沉淀 / 分流不清 | `project-sync-boundary.md` | `spec-lite-template.md` | 无 |
 | 默认 prompt 写入 | `default-prompt-setup-lite.md` | `script-map.md` | `scripts/default_prompt_check.py --apply`，必须先获用户批准 |
 
 ## Light 步骤树

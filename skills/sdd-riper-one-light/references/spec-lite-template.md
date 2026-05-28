@@ -2,7 +2,7 @@
 
 Feature Spec 是本次任务真相源，用来维护当前功能、bug、重构或文档任务的目标、边界、进度、验证和恢复点；没有最小 Feature Spec，不进入代码实现。
 
-不要把项目长期记忆混进 Feature Spec。可复用事实只先写进 `Project Sync Candidates`，经确认后再同步到 Project Spec / Project Memory。
+不要把项目长期记忆混进 Feature Spec。可复用事实只先写进 `Project Sync Candidates`，经确认后按项目 `AGENTS.md`、用户定义或 `project-sync-boundary.md` 建议同步。
 
 ```markdown
 # Spec: <Task Name>
@@ -80,6 +80,7 @@ Feature Spec 是本次任务真相源，用来维护当前功能、bug、重构�
 - 候选事实：
   - <稳定、可复用、跨任务会再次影响判断的事实>
 - 建议同步位置：
+  - 项目 `AGENTS.md` 已定义的知识入口
   - `PROJECT_KNOWLEDGE.md`
   - `PROJECT_SPEC.md`
   - `PROJECT_MEMORY.md`

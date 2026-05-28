@@ -28,6 +28,8 @@
 - `Project Spec`：项目长期真相源，记录稳定业务概念、模块边界、架构约定、核心链路、测试/构建入口和跨任务会复用的事实。
 - `Project Memory`：项目经验层，记录常见坑点、已验证排查路径、经验模式和后续 agent 进入项目时应知道的注意事项。
 
+项目 `AGENTS.md` 或用户定义的知识拓扑优先；以上是默认约定，不是强制裁判。分流不清时读取 `project-sync-boundary.md`。
+
 硬边界：
 
 - Feature Spec 不承载项目长期记忆。
@@ -35,9 +37,9 @@
 - Codemap 不承载任务决策，只做代码地形索引。
 - Archive 不替代当前真相源，只做完成后的沉淀视图。
 
-## Project Spec 同步规则
+## Project Sync 同步规则
 
-从 Feature Spec 反向同步到 Project Spec / Project Memory 前，必须满足至少一条：
+从 Feature Spec 反向同步到项目级知识入口前，必须满足至少一条：
 
 - 该事实稳定存在于代码、配置、测试或业务规则中。
 - 后续多个任务会再次依赖它。
