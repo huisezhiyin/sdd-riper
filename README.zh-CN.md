@@ -5,9 +5,15 @@
 > 让模型负责推进事件。
 > 让人类负责目标、边界、权限、checkpoint、证据和验收。
 
-SDD-RIPER 是一套面向 AI coding agent 的 Harness。它不是神奇 Prompt，也不是传统重型 SDD，而是一组很小的控制规则，让模型驱动的工作可观察、可恢复、可审查、可交接。
+SDD-RIPER 是一套以上下文治理为核心的 LLM 任务自动化工具组，面向 AI coding agent 协作。它不是神奇 Prompt，也不是传统重型 SDD，而是一组很小的控制规则和配套 skills，让模型驱动的工作可观察、可恢复、可审查、可交接。
 
 默认入口是 [`sdd-riper-one-light`](./skills/sdd-riper-one-light/SKILL.md)。当任务需要更强门禁时，再切到 [`sdd-riper-one`](./skills/sdd-riper-one/SKILL.md)。
+
+本仓围绕四个互补 skill 组织：
+
+- `sdd-riper-one-light` 和 `sdd-riper-one` 负责执行控盘、checkpoint、validation 和 reverse sync。
+- `codemap` 把陌生代码整理成面向 agent 的上下文索引。
+- `new-chat-ready` 为新对话、交接和长暂停保留可恢复上下文。
 
 ## 快速开始
 
@@ -46,6 +52,8 @@ SDD-RIPER 是一套面向 AI coding agent 的 Harness。它不是神奇 Prompt�
 ```
 
 ## Skill 怎么选
+
+这四个 skill 共享同一个上下文原则：活跃上下文保持小，持久状态落到聊天外，需要决策时只按需读取最小切片。
 
 | Skill | 适用场景 | 产物 |
 | --- | --- | --- |
@@ -103,6 +111,7 @@ Harness 保留少数硬规则：
 
 隐私边界：
 
+- 知识拓扑由项目或人定义；SDD 只负责识别 `Project Sync Candidate`，并按 `AGENTS.md` 或用户明确指令分流。
 - Agent 可以主动发现可复用知识，并提出 `Project Sync Candidate`。
 - Agent 默认不得暂存或提交系统级知识、feature spec、handoff、项目记忆或用户偏好记忆。
 - 只有用户明确要求提交，目标仓库合适，并且内容已按目标仓库脱敏确认后，才可以提交这些文件。

@@ -5,9 +5,15 @@
 > Let the model move the work forward.
 > Let the human own goals, boundaries, permissions, checkpoints, evidence, and acceptance.
 
-SDD-RIPER is an AI coding harness for working with strong coding agents. It is not a magic prompt and it is not heavyweight spec-driven development. It is a small set of controls that make model-driven work observable, recoverable, reviewable, and safe to resume.
+SDD-RIPER is a context-first LLM task automation toolkit for working with strong coding agents. It is not a magic prompt and it is not heavyweight spec-driven development. It is a small set of controls and companion skills that make model-driven work observable, recoverable, reviewable, and safe to resume.
 
 The default entry is [`sdd-riper-one-light`](./skills/sdd-riper-one-light/SKILL.md). Use the heavier [`sdd-riper-one`](./skills/sdd-riper-one/SKILL.md) when the task needs stricter gates.
+
+The repository is organized around four complementary skills:
+
+- `sdd-riper-one-light` and `sdd-riper-one` control execution, checkpoints, validation, and reverse sync.
+- `codemap` turns unfamiliar code into an agent-facing context index.
+- `new-chat-ready` preserves recovery context for new chats, handoffs, and long pauses.
 
 ## Quick Start
 
@@ -46,6 +52,8 @@ Also scan for reusable project knowledge, but do not commit memory/spec/handoff 
 ```
 
 ## Which Skill To Use
+
+These four skills share the same context principle: keep active context small, persist durable state outside the chat, and load only the slice needed for the next decision.
 
 | Skill | Use When | Output |
 | --- | --- | --- |
@@ -103,6 +111,7 @@ There are three different layers. Do not mix them.
 
 Important privacy rule:
 
+- The project or human defines the knowledge topology. SDD detects `Project Sync Candidate`s and routes them according to `AGENTS.md` or explicit user instruction.
 - Agents may proactively detect reusable knowledge and propose a `Project Sync Candidate`.
 - Agents must not stage or commit system-level knowledge, feature specs, handoffs, project memory, or user preference memory by default.
 - Commit those files only when the user explicitly asks, the target repository is appropriate, and the content has been sanitized for that repository.
