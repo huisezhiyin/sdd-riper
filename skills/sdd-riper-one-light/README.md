@@ -15,7 +15,7 @@
 - `Core Goal as Loop Anchor`
 - `Done by Evidence`
 - `Reverse Sync`
-- 默认中文、短汇报、按需加载深模块
+- 默认中文但不强制、短汇报、按需加载深模块
 
 ## 工作方式优先
 

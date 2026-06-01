@@ -1,4 +1,4 @@
 interface:
   display_name: "SDD RIPER Light"
   short_description: "面向强模型和熟练用户的轻量 AI Agent Harness：默认任务已拆好，模型自主推进，人类通过 goal、spec、checkpoint、验证与回写低干扰控盘。"
-  default_prompt: "用中文按 $sdd-riper-one-light 处理任务：默认用户已拆好任务，模型自主推进，人类控目标、边界、风险和验收。new chat/新项目先检查可见 prompt 文件是否有 light/one 路由，缺失则询问是否补最小 AGENTS.md/CLAUDE.md。先复述目标，轻量检查是否过大/越界/高风险；维护最小 spec、Done Contract、checkpoint、validation 和 handoff。高影响修改前需明确批准；完成由证据证明。"
+  default_prompt: "按 $sdd-riper-one-light 处理任务：默认使用中文，但用户、项目或目标文档明确使用其他语言时跟随更具体的语言要求。默认用户已拆好任务，模型自主推进，人类控目标、边界、风险和验收。new chat/新项目先检查可见 prompt 文件是否有 light/one 路由，缺失则询问是否补最小 AGENTS.md/CLAUDE.md。先复述目标，轻量检查是否过大/越界/高风险；维护最小 spec、Done Contract、checkpoint、validation 和 handoff。高影响修改前需明确批准；完成由证据证明。"

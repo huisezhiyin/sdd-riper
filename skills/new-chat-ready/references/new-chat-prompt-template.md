@@ -3,7 +3,7 @@
 Use this as the final section of a handoff. Keep it compact enough to paste directly into a fresh chat.
 
 ```text
-默认用中文交流。
+默认用中文交流；用户、项目或目标文档明确使用其他语言时，跟随更具体的语言要求。
 
 请接着这个任务继续，不要从零开始。
 
