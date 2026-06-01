@@ -7,7 +7,7 @@
 
 SDD-RIPER is a context-first LLM task automation toolkit for working with strong coding agents. It is not a magic prompt and it is not heavyweight spec-driven development. It is a small set of controls and companion skills that make model-driven work observable, recoverable, reviewable, and safe to resume.
 
-The default entry is [`sdd-riper-one-light`](./skills/sdd-riper-one-light/SKILL.md). Use the heavier [`sdd-riper-one`](./skills/sdd-riper-one/SKILL.md) when the task needs stricter gates.
+The default entry is [`sdd-riper-one-light`](./skills/sdd-riper-one-light/SKILL.md). Use the heavier [`sdd-riper-one`](./skills/sdd-riper-one/SKILL.md) when the task needs stricter gates, denser artifacts, or training/audit-ready traces.
 
 The repository is organized around four complementary skills:
 
@@ -57,8 +57,8 @@ These four skills share the same context principle: keep active context small, p
 
 | Skill | Use When | Output |
 | --- | --- | --- |
-| [`sdd-riper-one-light`](./skills/sdd-riper-one-light/) | Daily coding, docs, bugfixes, ordinary refactors, strong-model work | Minimal spec, checkpoint, validation, reverse sync |
-| [`sdd-riper-one`](./skills/sdd-riper-one/) | High-risk work, multi-file refactors, audit, training, complex handoff | Explicit RIPER gates, fuller spec, stronger blocking |
+| [`sdd-riper-one-light`](./skills/sdd-riper-one-light/) | Daily coding, docs, bugfixes, ordinary refactors, strong-model work | Same core controls with low-friction checkpoints, minimal spec, validation, reverse sync |
+| [`sdd-riper-one`](./skills/sdd-riper-one/) | High-risk work, multi-file refactors, audit, training, complex handoff | Same core controls with explicit RIPER gates, fuller spec, denser artifacts, stronger blocking |
 | [`codemap`](./skills/codemap/) | Unfamiliar codebases, legacy systems, large modules, cross-repo tasks | Agent-facing code terrain index |
 | [`new-chat-ready`](./skills/new-chat-ready/) | New chat, resume pack, handoff, context compression, recovered sessions | Durable handoff, next-chat prompt, project-memory sync scan |
 

@@ -48,7 +48,8 @@ python3 <skill-root>/scripts/default_prompt_check.py --root <project-root> --mod
 
 - 日常中等及以上 coding 任务默认使用 `sdd-riper-one-light`。
 - light 默认用户已拆好任务；agent 只做目标复述、最小 spec/micro-spec、checkpoint、validation、handoff。
-- 任务明显过大、边界不清、高风险或需要 codemap/context/频繁阻塞时，建议切到 `sdd-riper-one`。
+- `sdd-riper-one` 和 light 共享目标复述、Spec 真相源、checkpoint、approval、validation、reverse sync、handoff 和端到端闭环；区别是 one 的门禁更强、流程更显式、产物密度更高。
+- 任务明显过大、边界不清、高风险或需要 codemap/context/频繁阻塞/审计留痕时，建议切到 `sdd-riper-one`。
 - 不要裸改：中等以上任务执行前先说明目标、边界、下一步、风险和验证方式。
 - 完成必须由测试、日志、运行结果或人工确认等证据证明。
 - 不提交本地记忆、trace、SQLite/Milvus、密钥或机器私有路径。

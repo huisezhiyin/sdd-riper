@@ -17,7 +17,7 @@
 
 - `codemap`：进入陌生代码库、遗留系统、大模块、跨仓任务，或用户要求 `create_codemap` / `MAP` / 项目总图 / 功能地形图时使用；产物面向 agent，不写成人类架构长文。
 - `sdd-riper-one-light`：中等及以上代码任务使用；简单问答、低风险文案、单点机械修改可跳过。
-- `sdd-riper-one`：高风险、多文件、跨模块、审计、训练、复杂交接或需要显式阶段门禁时使用。
+- `sdd-riper-one`：与 light 共享目标复述、checkpoint、validation、reverse sync 等核心控制原语；高风险、多文件、跨模块、审计、训练、复杂交接或需要更强阶段门禁与更高产物密度时使用。
 - `new-chat-ready`：用户表达要 new chat、换对话、handoff、resume pack、上下文压缩、无缝续接时使用；自动整理当前状态、可落盘交接文档，并生成新对话可直接粘贴的 prompt。
 
 ## 默认边界

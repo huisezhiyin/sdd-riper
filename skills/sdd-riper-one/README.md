@@ -2,7 +2,7 @@
 
 SDD-RIPER ONE Skill（重型 Harness 教练 / 标准控盘协议）。
 
-该 Skill 是比 `sdd-riper-one-light` 更重、更显式的入口，用于帮助用户、模型和任务从混沌状态收敛到可执行状态：澄清最终目标、生成 codemap/context、拆分最小混沌单元、维护完整 spec、设置阻塞点，并严格按以下流程执行研发任务：
+该 Skill 是同一套 SDD / Code is cheap 控制原语的重型实现。它比 `sdd-riper-one-light` 更重、更显式，用于帮助用户、模型和任务从混沌状态收敛到可执行状态：澄清最终目标、生成 codemap/context、拆分最小混沌单元、维护完整 spec、设置阻塞点，并严格按以下流程执行研发任务：
 
 `Research -> (Innovate, 可选) -> Plan -> (Plan Approved) -> Execute -> Review`
 
@@ -10,7 +10,7 @@ SDD-RIPER ONE Skill（重型 Harness 教练 / 标准控盘协议）。
 
 这个仓库更推荐把 `sdd-riper-one` 当成一种**标准控盘工作方式**来使用，而不是当成一组必须死记硬背的显式命令。
 
-它不是被 `sdd-riper-one-light` 淘汰的旧方案，而是给需要更强显式流程的人使用：团队训练、复杂任务、低模型能力环境、严格审计、跨人交接，都适合从这里进入。
+它和 `sdd-riper-one-light` 共享同一套哲学和核心控制原语：目标复述、Spec 真相源、checkpoint、approval、validation、reverse sync、handoff 和端到端闭环。区别在控制姿态、流程显式度和产物密度。团队训练、复杂任务、低模型能力环境、严格审计、跨人交接，都适合从这里进入。
 
 最重要的不是先记住 `create_codemap`、`build_context_bundle`、`sdd_bootstrap` 这些名字，而是先形成下面这套默认习惯：
 
@@ -39,7 +39,7 @@ SDD-RIPER ONE Skill（重型 Harness 教练 / 标准控盘协议）。
 - **Prompt**：可选增强（有则更稳，无也可用）。
 - **MCP**：可选提效，不是必需依赖。
 - **底线**：`No Spec, No Code` + `Plan Approved` 前不得改代码。
-- **定位**：one 负责把不清楚的大任务收敛成可 Harness 的任务单元；light 负责在任务已清楚时快速推进。
+- **定位**：one 是同一核心控制原语的重型实现，负责把不清楚的大任务收敛成可 Harness 的任务单元，并提供更强门禁和更高产物密度；light 是低打扰实现，负责在任务已清楚时快速推进。
 - **默认注入**：进入 new chat 或新项目会话时，先检查可见的项目/系统提示词入口是否包含 skill 路由；缺失时询问是否新建或补充 `AGENTS.md`、`CLAUDE.md`、`.github/copilot-instructions.md`、`.cursorrules` 等默认 prompt 文档。
 
 ### 推荐的最小启动方式
@@ -76,13 +76,16 @@ SDD-RIPER ONE Skill（重型 Harness 教练 / 标准控盘协议）。
 
 ## 轻重分层
 
+两者共享同一套核心控制原语：目标复述、Spec 真相源、checkpoint、approval、validation、reverse sync、handoff、端到端闭环。差异不是"谁有核心能力"，而是门禁强度、流程显式度和产物密度。
+
 | 维度 | `sdd-riper-one` | `sdd-riper-one-light` |
 |---|---|---|
 | 默认用户 | 新手、实习生、低质量模型、需要训练的人 | 深度用户、强模型、高频日常任务 |
 | 任务状态 | 大、乱、不清楚、风险高 | 已经被用户拆得基本可执行 |
-| 主要动作 | 澄清目标、codemap/context、拆分最小混沌单元、重度留痕、频繁阻塞 | 目标复述、checkpoint、中度留痕、进度汇报、验证闭环 |
+| 主要动作 | 目标复述 + 澄清目标、codemap/context、拆分最小混沌单元、重度留痕、频繁阻塞 | 目标复述、checkpoint、中度留痕、进度汇报、验证闭环 |
 | 自动化 | 按风险降低自动化，按清晰度释放自动化 | 默认自动推进，只在硬风险处阻塞 |
 | Spec | 大而完整，记录目标、过程、选择、偏差和验证 | 小而够用，记录目标、证据和恢复点 |
+| 产物密度 | 高：完整 spec、plan、review、archive 等按风险生成 | 低：micro-spec、短 checkpoint、验证记录为主 |
 
 ## Multi-Project Collaboration（自动发现 + 作用域隔离）
 

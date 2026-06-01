@@ -1,6 +1,8 @@
 # Mode Selection
 
-`sdd-riper-one` 是重型 Harness 教练和控盘器；`sdd-riper-one-light` 是熟练用户的无感安全带。两者不是完整/简化关系，而是职责不同。
+`sdd-riper-one` 和 `sdd-riper-one-light` 共享同一套 SDD / Code is cheap 核心控制原语：目标复述、Spec 真相源、checkpoint、approval、validation、reverse sync、handoff、端到端闭环。
+
+两者不是"一个有核心能力、一个没有核心能力"的关系，也不是简单完整版/简化版关系。区别主要在控制姿态、流程显式度和产物密度：`light` 是低打扰、checkpoint-driven 的日常实现；`one` 是重型、phase-gated、产物密集的训练 / 审计 / 复杂任务实现。
 
 ## 使用 sdd-riper-one
 
@@ -26,13 +28,14 @@
 
 ## 从 one 降级到 light
 
-当 spec 已经形成清晰任务单元，且风险可控时，可以建议后续小步执行改用 light：
+当 spec 已经形成清晰任务单元，且风险可控时，可以建议后续小步执行改用 light，或在 `one` 内采用更短的降噪 checkpoint 风格：
 
 - 最终目标清楚。
 - 当前任务单元可独立验证。
 - In / Out 清楚。
 - 失败可局部回炉。
 - 不再需要频繁问询或方案分叉。
+- 不再需要 codemap/context/review/archive 等高密度产物。
 
 ## 从 light 升级到 one
 

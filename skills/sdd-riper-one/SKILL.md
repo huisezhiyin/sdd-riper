@@ -9,16 +9,23 @@ description: 将 SDD-RIPER 方法论落地为严格可执行流程的重型 Harn
 
 - **高危操作阻断**：永远不要静默或提议执行 `git clean`（包含任何参数，特别是 `-fdx`），防止用户未提交的工作区数据不可逆丢失。
 - **研发纪律**：
+  - `Restate First`：用户给任务后，先复述最终目标、当前任务单元和已知边界，再进入 spec 或计划。
   - `No Spec, No Code`：未形成并持久化 Spec 前，不进入代码实现。
   - `No Approval, No Execute`：未得到执行许可前，禁止进行环境修改或高风险变更。
   - `Spec is Truth`：任何聊天决议或最新改动必须回源到 Spec，Spec 是唯一真相源。
+  - `Checkpoint Before Execute`：执行前必须让目标、阶段、批准状态、风险和验证方式清晰可见。
+  - `Done by Evidence`：完成由验证结果、日志、测试或用户验收证明，不由模型自行宣布。
+  - `Reverse Sync`：实现偏差、验证结论、用户决策和剩余风险必须回写 Spec。
+  - `End-to-End Loop`：从目标收敛、上下文装配、计划、执行、验证到恢复锚点形成完整闭环。
 
 ## 核心定位
 
-- 这是重型 Harness 教练 / 控盘器 / 本地任务黑盒，不是 `sdd-riper-one-light` 的简单完整版。
+- 这是重型 Harness 教练 / 控盘器 / 本地任务黑盒，和 `sdd-riper-one-light` 共享同一套 SDD / Code is cheap 核心控制原语：目标复述、Spec 真相源、checkpoint、approval、validation、reverse sync、handoff、端到端闭环。
+- 它包含 `sdd-riper-one-light` 的核心闭环，但不是简单的 "light + 更多步骤"，也不是另一套哲学；区别在控制姿态、流程显式度和产物密度。`light` 是低打扰实现，`one` 是高门禁、高留痕、高可审计实现。
 - 默认用于用户、模型或任务还不能稳定切出最小混沌单元的场景：新手、实习生、低质量模型、复杂需求、高风险修改、长链路推进、审计或交接任务。
 - 它要做更多事：澄清最终目标、生成 codemap/context、辅助拆分任务单元、频繁 checkpoint、显式阻塞、记录决策与进度、检查路线是否偏离最终目标。
 - 自动化按风险释放：目标和任务单元不清时降低自动化、增加问询和阻塞；一旦最小混沌单元清楚，可在批准范围内自动推进该单元。
+- 降噪规则：当 Spec、当前任务单元、In/Out、风险和验证方式已经清楚时，后续执行可以减少教学性解释和完整 phase 文本，但不能省略 checkpoint、approval、validation 与 reverse sync。
 - `New Chat Startup Check`：进入 new chat 或新项目会话时，先检查可见的项目/系统提示词入口是否存在、是否包含 `sdd-riper-one` / `sdd-riper-one-light` 路由；缺失时询问用户是否要新建或补充 `AGENTS.md`、`CLAUDE.md`、`.github/copilot-instructions.md`、`.cursorrules` 等默认文档；未获同意不得静默写入。
 - 先读一次：`references/sdd-riper-one-protocol.md`
 - 总纲：`Pre-Research -> RIPER`，全程遵循 SDD 并持续维护 Spec
@@ -52,6 +59,13 @@ description: 将 SDD-RIPER 方法论落地为严格可执行流程的重型 Harn
   - 未完成最终目标澄清和最小混沌单元评估前，不进入 Plan
   - 未收到精确字样 `Plan Approved`，禁止进入 `Execute`
   - `Review` 不通过，回到 `Research/Plan` 修正
+
+## 产物密度规则
+
+- **必须产物**：活跃 Spec、最终目标与当前任务单元、In/Out 边界、可验证 Done Contract、Plan/checklist、执行前 checkpoint、Validation、Change Log / Reverse Sync、Resume / Handoff 锚点。
+- **按需产物**：codemap、context bundle、方案对比、review matrix、archive、多项目 registry、完整复盘。只有在陌生代码库、需求分散、高风险、审计、交接或恢复需要时生成。
+- **降噪执行**：进入清晰、低分叉的任务单元后，输出可以接近 light 的短 checkpoint 风格；产物仍写入 Spec，阶段门禁仍按 one 执行。
+- **升级回重流程**：一旦出现目标漂移、边界不清、验证失败、风险升高或用户需要训练式解释，恢复完整 phase gate 和更高密度留痕。
 
 ## 上下文装配规则
 

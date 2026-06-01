@@ -47,8 +47,9 @@ python3 <skill-root>/scripts/default_prompt_check.py --root <project-root> --mod
 
 - 复杂、高风险、陌生代码库、需求不清、需要交接/审计的任务，使用 `sdd-riper-one`。
 - 日常已拆好的中低风险任务，使用 `sdd-riper-one-light`。
-- `sdd-riper-one` 负责澄清最终目标、生成/引用 codemap/context、拆分最小混沌单元、维护完整 spec、阶段门禁和重度留痕。
-- `sdd-riper-one-light` 负责目标复述、最小 spec/micro-spec、checkpoint、validation、进度汇报和中度留痕。
+- 两者共享目标复述、Spec 真相源、checkpoint、approval、validation、reverse sync、handoff 和端到端闭环。
+- `sdd-riper-one` 是重型实现：澄清最终目标、生成/引用 codemap/context、拆分最小混沌单元、维护完整 spec、阶段门禁和重度留痕。
+- `sdd-riper-one-light` 是低打扰实现：最小 spec/micro-spec、短 checkpoint、validation、进度汇报和中度留痕。
 - 中等以上任务不要裸改；执行前必须有目标、边界、风险、验证方式和 checkpoint。
 - 高风险或不可逆操作必须先暂停并等待用户确认。
 - 完成必须由测试、日志、运行结果或人工确认等证据证明。

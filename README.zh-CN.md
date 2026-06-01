@@ -7,7 +7,7 @@
 
 SDD-RIPER 是一套以上下文治理为核心的 LLM 任务自动化工具组，面向 AI coding agent 协作。它不是神奇 Prompt，也不是传统重型 SDD，而是一组很小的控制规则和配套 skills，让模型驱动的工作可观察、可恢复、可审查、可交接。
 
-默认入口是 [`sdd-riper-one-light`](./skills/sdd-riper-one-light/SKILL.md)。当任务需要更强门禁时，再切到 [`sdd-riper-one`](./skills/sdd-riper-one/SKILL.md)。
+默认入口是 [`sdd-riper-one-light`](./skills/sdd-riper-one-light/SKILL.md)。当任务需要更强门禁、更高产物密度，或需要训练 / 审计级留痕时，再切到 [`sdd-riper-one`](./skills/sdd-riper-one/SKILL.md)。
 
 本仓围绕四个互补 skill 组织：
 
@@ -57,8 +57,8 @@ SDD-RIPER 是一套以上下文治理为核心的 LLM 任务自动化工具组�
 
 | Skill | 适用场景 | 产物 |
 | --- | --- | --- |
-| [`sdd-riper-one-light`](./skills/sdd-riper-one-light/) | 日常 coding、文档、bugfix、普通重构、强模型协作 | 最小 spec、checkpoint、validation、reverse sync |
-| [`sdd-riper-one`](./skills/sdd-riper-one/) | 高风险、多文件重构、审计、训练、复杂交接 | 显式 RIPER 阶段门禁、更完整 spec、更强阻塞 |
+| [`sdd-riper-one-light`](./skills/sdd-riper-one-light/) | 日常 coding、文档、bugfix、普通重构、强模型协作 | 同一核心控制原语的低摩擦实现：最小 spec、checkpoint、validation、reverse sync |
+| [`sdd-riper-one`](./skills/sdd-riper-one/) | 高风险、多文件重构、审计、训练、复杂交接 | 同一核心控制原语的重型实现：显式 RIPER 门禁、更完整 spec、更高产物密度、更强阻塞 |
 | [`codemap`](./skills/codemap/) | 陌生代码库、遗留系统、大模块、跨仓任务 | 面向 agent 的代码地形索引 |
 | [`new-chat-ready`](./skills/new-chat-ready/) | 新对话、resume pack、handoff、上下文压缩、恢复旧会话 | 持久化 handoff、续接 prompt、项目记忆同步扫描 |
 
@@ -83,7 +83,7 @@ SDD-RIPER 是一套以上下文治理为核心的 LLM 任务自动化工具组�
 - 日常默认使用 `sdd-riper-one-light`。
 - 陌生或大型代码改动前先用 `codemap`。
 - 长暂停、上下文重置或交接前用 `new-chat-ready`。
-- 高风险、审计、训练场景切到 `sdd-riper-one`。
+- 高风险、审计、训练或需要更高产物密度的场景切到 `sdd-riper-one`。
 
 ## 核心工作流
 

@@ -24,7 +24,15 @@ You are an advanced Large Language Model. However, **your "autonomy" is classifi
 
 3. **Reverse Sync**: If you find a bug during execution, you MUST update the Spec first to reflect the reality, then fix the code.
 
-4. **IMMEDIATE PERSISTENCE (AUTO-SAVE)**:
+4. **Restate First**: Before planning or executing, restate the final goal, current task unit, known boundaries, and validation target in your own words.
+
+5. **Checkpoint Before Execute**: Before execution or phase transitions, make goal, phase, approval status, risks, next action, and validation evidence visible.
+
+6. **Done by Evidence**: Completion must be proven by tests, logs, manual verification, user acceptance, or another explicit evidence source.
+
+7. **End-to-End Loop**: Keep the task connected from goal clarification and context assembly through plan, execution, validation, reverse sync, and recovery anchors.
+
+8. **IMMEDIATE PERSISTENCE (AUTO-SAVE)**:
 
     * **User Confirmation is NOT required for updating the Spec file.**
 
@@ -32,7 +40,7 @@ You are an advanced Large Language Model. However, **your "autonomy" is classifi
 
     * **Never** just display the Spec in the chat without saving it first.
 
-5. **RELOAD BEFORE ACT (Anti-Decay)**:
+9. **RELOAD BEFORE ACT (Anti-Decay)**:
 
     * Chat history degrades over long conversations (compression, truncation, hallucination). **Do NOT rely on in-context Spec copies from earlier turns.**
 
@@ -91,6 +99,8 @@ Guideline:
 
 * If architecture impact is broad or cross-module, prioritize Standard Flow.
 * If scope is small or requirement is still vague, allow Fast Flow and mark info gaps in Spec.
+* Artifact density is risk-based: Spec, Plan/checklist, checkpoint, validation, reverse sync, and handoff anchors are mandatory; codemap, context bundle, review matrix, archive, and multi-project registry are generated when they reduce real uncertainty or support audit/handoff.
+* When the Spec, task unit, In/Out boundary, risks, and validation target are already clear, keep phase output concise. Do not remove gates; reduce explanatory noise.
 
 ### 1️⃣ MODE 1: RESEARCH (First RIPER Stage)
 
