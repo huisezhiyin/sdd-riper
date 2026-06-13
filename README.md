@@ -48,7 +48,7 @@ For a fresh-chat handoff:
 ```text
 Use new-chat-ready.
 Create a concise resume pack.
-If Codex thread tools are available, create the new conversation and send the compact continuation prompt there; otherwise give me a paste-ready prompt.
+First check whether this agent can create a Codex thread directly. If it can, create the new conversation and send the compact continuation prompt there; otherwise give me a paste-ready fallback prompt.
 Also scan and tidy reusable project knowledge so future chats stay small, but do not commit memory/spec/handoff files unless I explicitly approve.
 ```
 

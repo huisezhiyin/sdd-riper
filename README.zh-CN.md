@@ -48,7 +48,7 @@ SDD-RIPER 是一套以上下文治理为核心的 LLM 任务自动化工具组�
 ```text
 请使用 new-chat-ready。
 生成精简 resume pack。
-如果 Codex 线程工具可用，请直接创建新对话并把精简续接 prompt 发过去；否则给我可直接粘贴的 prompt。
+先确认当前 agent 是否能直接创建 Codex 新对话。能创建就直接创建新对话并把精简续接 prompt 发过去；不能创建时再给我可直接粘贴的 fallback prompt。
 同时扫描并整理可复用项目知识，避免未来新对话越来越臃肿；但不要默认提交 memory/spec/handoff 文件，除非我明确批准。
 ```
 

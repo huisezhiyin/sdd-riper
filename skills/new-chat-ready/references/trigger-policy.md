@@ -12,6 +12,8 @@ Create a handoff pack when the user explicitly says to:
 - preserve reusable knowledge in project-level Markdown so future chats avoid repeated learning or repeated corrections;
 - pause a task and leave recoverable context.
 
+Before choosing the delivery shape, run a new-chat capability check. In Codex, first look for thread-management tools such as `create_thread` and `send_message_to_thread`. If they are available and safe for the current content, direct thread creation is the preferred delivery mode.
+
 ## Offer Proactively
 
 Offer a handoff, and create it if the user agrees, when:
@@ -44,4 +46,4 @@ If the user's wording is ambiguous, ask one short question only when the choice 
 
 When a handoff touches SDD-RIPER state, preserve the active spec as the source of truth. The new-chat handoff should point to the spec and summarize the next step; it should not fork an alternative truth.
 
-When direct Codex thread creation is available and safe, prefer creating the thread and sending the compact prompt automatically. Still keep a paste-ready prompt in the handoff so the continuation is portable across tools.
+When direct Codex thread creation is available and safe, create the thread and send the compact prompt automatically before offering manual paste. Still keep a paste-ready prompt in the handoff so the continuation is portable across tools.

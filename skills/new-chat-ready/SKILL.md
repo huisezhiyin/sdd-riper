@@ -7,7 +7,7 @@ description: Prepare seamless new-chat handoff packs when a user wants to start 
 
 ## Core Position
 
-This skill turns an active or recoverable past conversation into an execution handoff, optionally starts the next Codex conversation when the runtime supports it, and preserves durable project knowledge without bloating the next context window.
+This skill turns an active or recoverable past conversation into an execution handoff, first checks whether the current agent can start the next Codex conversation itself, and preserves durable project knowledge without bloating the next context window.
 
 It is not a generic chat summary. It should preserve only the next agent's operating context: the current goal, latest recap checkpoint, workspace, decisions, files, validation evidence, risks, constraints, and the exact next action.
 
@@ -32,17 +32,18 @@ For detailed trigger boundaries, read `references/trigger-policy.md`.
 
 ## Delivery Mode
 
-Prefer the lowest-friction continuation path that the current runtime actually supports:
+Before generating any manual prompt, explicitly check whether the current agent/runtime can create or continue Codex conversations itself. Prefer the lowest-friction continuation path that the current runtime actually supports:
 
-1. **Direct Codex continuation**: if the environment exposes thread tools such as `create_thread` and `send_message_to_thread`, create the new conversation yourself after the handoff/prompt is ready. Send the compact next-chat prompt into that thread so the user does not need to paste it manually. In Codex, discover these tools with `tool_search` before use when they are not already loaded.
-2. **Paste-ready fallback**: if thread tools are unavailable, blocked, or inappropriate for privacy/workspace reasons, output a compact prompt the user can paste manually.
-3. **Inline-only fallback**: if writing files is not appropriate, provide an inline handoff and compact prompt, and state that no file or new conversation was created.
+1. **Capability check**: in Codex, discover thread tools such as `create_thread` and `send_message_to_thread` with `tool_search` when they are not already loaded. Record whether direct creation is `available`, `unavailable`, or `skipped for safety`.
+2. **Direct Codex continuation**: if direct creation is available and the user wants a new chat / handoff / resume continuation, create the new conversation yourself after the handoff/prompt is ready. Send the compact next-chat prompt into that thread so the user does not need to paste it manually.
+3. **Paste-ready fallback**: generate a manual prompt only when thread tools are unavailable, blocked, unsafe for the current content, or the user explicitly wants a reusable prompt/document instead of a created thread.
+4. **Inline-only fallback**: if writing files is not appropriate, provide an inline handoff and compact prompt, and state that no file or new conversation was created.
 
-Never invent tool availability. If direct creation succeeds, still provide the created thread identifier or link required by the host UI and keep the final visible summary short.
+Never invent tool availability, and do not skip the capability check merely because a paste-ready prompt would be easier. If direct creation succeeds, still provide the created thread identifier or link required by the host UI and keep the final visible summary short.
 
 ## Workflow
 
-1. Identify the active task, workspace, intended next-chat scope, and whether direct Codex thread creation is available.
+1. Run `New Chat Capability Check`: identify the active task, workspace, intended next-chat scope, and whether the current agent can create/send to Codex threads directly.
 2. Gather only evidence needed for continuity:
    - project instructions such as `AGENTS.md`;
    - the latest recap checkpoint if one exists;
@@ -75,8 +76,8 @@ Never invent tool availability. If direct creation succeeds, still provide the c
    - propose `Project MD Sync Candidates` before editing durable project docs unless the user explicitly asked to update them or current approval includes reverse sync;
    - never stage or commit system-level knowledge, feature specs, handoffs, Project Memory, or user preference memory by default; these may contain private/internal content and require explicit user approval plus sanitization before committing;
    - update only scoped sections in project-level Markdown, not task execution logs.
-8. Produce a compact next-chat prompt using `references/new-chat-prompt-template.md`.
-9. If direct Codex continuation is available and appropriate, create the new thread and send the compact prompt there. Otherwise provide the prompt for manual paste.
+8. Produce a compact next-chat prompt using `references/new-chat-prompt-template.md`. Treat this as the payload for direct thread creation first, and as a manual paste artifact only as fallback.
+9. If direct Codex continuation is available and appropriate, create the new thread and send the compact prompt there. Otherwise provide the prompt for manual paste and explain the fallback reason in one line.
 10. If expcap is available and the project asks for durable experience capture, run the appropriate finish/save step after the handoff is correct. Do not make expcap a dependency for the handoff.
 
 ## Output Rules
@@ -92,6 +93,7 @@ Never invent tool availability. If direct creation succeeds, still provide the c
 - Prefer recap-first handoff: begin with the shortest accurate state summary, then expand only the details needed for continuity.
 - Project MD Sync scan is mandatory for every handoff; Project MD Sync write is conditional. Separate durable project knowledge from task-specific state; keep edits small, cited, and reviewable. If no durable knowledge exists, say so explicitly.
 - Keep both handoff and prompt compact. Default targets: handoff under about 120 lines, next-chat prompt under about 60 lines. Exceed these only when the next agent would otherwise be unable to continue safely.
+- Always report the `New Chat Capability Check` result: direct thread created, direct creation unavailable, or direct creation skipped with reason.
 - The final next-chat prompt must be directly pasteable even when it is also sent into a created Codex thread. It should tell the next agent what to read first and what to do next, not retell the whole conversation.
 
 ## References
