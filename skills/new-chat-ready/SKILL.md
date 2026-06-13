@@ -1,5 +1,6 @@
 ---
 name: new-chat-ready
+version: 0.2.1
 description: Prepare seamless new-chat handoff packs when a user wants to start a fresh chat, continue elsewhere, pause a long task, recover from context decay, recover a lost conversation from local Codex or Claude Code logs, preserve reusable project knowledge in Markdown, or hand work to another agent. Generates a durable handoff document, optional project-level Markdown updates such as AGENTS.md/README.md/PROJECT_SPEC.md/PROJECT_MEMORY.md, and a paste-ready next-chat prompt grounded in current task state, local conversation records, source files, specs, codemaps, validation evidence, open risks, and constraints.
 ---
 
