@@ -5,6 +5,7 @@
 Create a handoff pack when the user explicitly says to:
 
 - start or prepare a `new chat`;
+- create/open a new Codex conversation directly when supported;
 - generate a `handoff`, `resume pack`, or `续接 prompt`;
 - recover a lost Codex / Claude Code conversation before making a handoff;
 - summarize the current work for another agent or future session;
@@ -30,8 +31,17 @@ Do not create a handoff pack when:
 - creating files would violate the current workspace boundary;
 - the user asks for a normal summary rather than a next-agent execution package.
 
+Do not create a new Codex conversation directly when:
+
+- the runtime does not expose thread-management tools;
+- the prompt contains private material that should be reviewed before being sent elsewhere;
+- the user asked only for a reusable handoff document or paste-ready prompt;
+- the target workspace or branch for the new thread is ambiguous and the choice changes safety.
+
 ## Disambiguation
 
 If the user's wording is ambiguous, ask one short question only when the choice affects persistence or privacy. Otherwise prefer a safe inline handoff and mention that no file was written.
 
 When a handoff touches SDD-RIPER state, preserve the active spec as the source of truth. The new-chat handoff should point to the spec and summarize the next step; it should not fork an alternative truth.
+
+When direct Codex thread creation is available and safe, prefer creating the thread and sending the compact prompt automatically. Still keep a paste-ready prompt in the handoff so the continuation is portable across tools.

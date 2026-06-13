@@ -1,9 +1,12 @@
 # New Chat Handoff: <task>
 
+Keep this document concise. Default target: under about 120 lines. Link to specs, codemaps, commits, logs, and validation output instead of copying long details. If a section has no useful continuity value, write `None` or merge it into a shorter section.
+
 - Created: <YYYY-MM-DD HH:mm timezone>
 - Workspace: `<absolute path>`
 - Active Skill / Workflow: `<skill or workflow>`
 - Recovery Sources: `<current chat | local logs | mixed>` with source paths if recovered
+- Delivery Mode: `<created Codex thread | paste-ready prompt | inline-only>` with thread id/link if created
 - Current Goal: <one sentence>
 - Status: `<not-started | in-progress | blocked | validating | complete>`
 - Confidence: `<high | medium | low>` with reason
@@ -17,6 +20,8 @@ List only sources the next agent should trust or read first.
 | `<path or chat artifact>` | <why it matters> | `<confirmed | stale | unknown>` |
 
 ## 2. Current State
+
+Keep this to the shortest facts needed for the next action.
 
 ### Confirmed
 
@@ -42,6 +47,8 @@ List only sources the next agent should trust or read first.
 | --- | --- | --- |
 | `<path>` | `<changed | read | generated | user-dirty | untouched>` | <what the next agent must know> |
 
+List only files that affect continuation, validation, or safety. Do not inventory the entire repo.
+
 ## 5. Validation
 
 | Command / Evidence | Result | Coverage |
@@ -64,6 +71,8 @@ List only sources the next agent should trust or read first.
 | --- | --- | --- | --- |
 | `<durable knowledge>` | `<AGENTS.md / README.md / PROJECT_KNOWLEDGE.md / PROJECT_SPEC.md / PROJECT_MEMORY.md / PROJECT_INDEX.md>` | `<synced | proposed | skipped>` | `<source>` |
 
+Use this section to keep future prompts short: stable knowledge belongs in project docs or as explicit sync candidates, not repeatedly pasted into every handoff.
+
 ## 9. Paste-Ready New Chat Prompt
 
-Paste the final prompt here, or link to the generated prompt section/file if it is stored separately.
+Paste the compact final prompt here, or link to the generated prompt section/file if it is stored separately. If a Codex thread was created automatically, record the thread id/link and the exact prompt sent.

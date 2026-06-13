@@ -1,6 +1,14 @@
 # Paste-Ready New Chat Prompt Template
 
-Use this as the final section of a handoff. Keep it compact enough to paste directly into a fresh chat.
+Use this as the final section of a handoff, or as the message sent into a newly created Codex thread. Keep it compact enough to paste directly into a fresh chat.
+
+Compression rules:
+
+- Aim for 20-40 lines; stay under about 60 lines unless safety requires more.
+- Prefer paths and commands over narrative history.
+- Include only sources the next agent should read first.
+- Do not duplicate long details already stored in the handoff/spec/project docs.
+- If a Codex thread was created automatically, this prompt should still be portable for manual paste.
 
 ```text
 默认用中文交流；用户、项目或目标文档明确使用其他语言时，跟随更具体的语言要求。
@@ -12,9 +20,8 @@ Workspace:
 
 Active instructions to read first:
 - <AGENTS.md or equivalent>
-- <README.md or project-level docs if relevant>
-- <active spec / handoff / codemap path>
-- <other essential source path>
+- <project knowledge/spec/memory only if directly relevant>
+- <active spec/handoff/codemap path>
 
 Recovered context sources:
 - <current chat or local log/session path, if recovery was used>
@@ -37,7 +44,7 @@ Constraints:
 - <approval, safety, privacy, non-goals, files not to touch>
 
 Project memory:
-- <project-level markdown updated or recommended during handoff>
+- <synced/proposed/skipped project docs, one line>
 
 Next action:
 1. <first concrete action>

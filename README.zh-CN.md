@@ -47,8 +47,9 @@ SDD-RIPER 是一套以上下文治理为核心的 LLM 任务自动化工具组�
 
 ```text
 请使用 new-chat-ready。
-生成 resume pack 和可直接粘贴的新对话 prompt。
-同时扫描可复用项目知识，但不要默认提交 memory/spec/handoff 文件，除非我明确批准。
+生成精简 resume pack。
+如果 Codex 线程工具可用，请直接创建新对话并把精简续接 prompt 发过去；否则给我可直接粘贴的 prompt。
+同时扫描并整理可复用项目知识，避免未来新对话越来越臃肿；但不要默认提交 memory/spec/handoff 文件，除非我明确批准。
 ```
 
 ## Skill 怎么选
@@ -60,7 +61,7 @@ SDD-RIPER 是一套以上下文治理为核心的 LLM 任务自动化工具组�
 | [`sdd-riper-one-light`](./skills/sdd-riper-one-light/) | 日常 coding、文档、bugfix、普通重构、强模型协作 | 同一核心控制原语的低摩擦实现：最小 spec、checkpoint、validation、reverse sync |
 | [`sdd-riper-one`](./skills/sdd-riper-one/) | 高风险、多文件重构、审计、训练、复杂交接 | 同一核心控制原语的重型实现：显式 RIPER 门禁、更完整 spec、更高产物密度、更强阻塞 |
 | [`codemap`](./skills/codemap/) | 陌生代码库、遗留系统、大模块、跨仓任务 | 面向 agent 的代码地形索引 |
-| [`new-chat-ready`](./skills/new-chat-ready/) | 新对话、resume pack、handoff、上下文压缩、恢复旧会话 | 持久化 handoff、续接 prompt、项目记忆同步扫描 |
+| [`new-chat-ready`](./skills/new-chat-ready/) | 新对话、resume pack、handoff、上下文压缩、恢复旧会话 | 精简 handoff、可选直接创建 Codex 新对话、续接 prompt、项目记忆同步扫描 |
 
 ## Agent 最小接入方式
 
