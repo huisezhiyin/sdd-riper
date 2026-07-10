@@ -23,6 +23,12 @@ spec 作为持久化真相源，不作为反复塞满上下文的巨大 prompt�
 
 日常任务先用 `sdd-riper-one-light`。陌生老项目、大模块、跨仓任务先用 `codemap` 建代码地形索引。需要训练、审计、交接、高风险控制时，再切到 `sdd-riper-one`。
 
+## 延伸观点
+
+| 文档 | 核心观点 |
+| --- | --- |
+| [从 Agent Flow 到 AI Native：为什么通用 Agent 是饮鸩止渴](<./从 Agent Flow 到 AI Native：为什么通用 Agent 是饮鸩止渴.md>) | 通用 Agent 不是目标；从真实问题出发，用 Flow、Agent Node、业务接口和必要的 hardcode 组成可靠链路，才更接近 AI Native |
+
 ## 归档文章
 
 以下文章保留在 [archive/](./archive/) 中。它们记录了方法论形成过程，也能作为写作素材，但不再作为新读者的默认入口。
