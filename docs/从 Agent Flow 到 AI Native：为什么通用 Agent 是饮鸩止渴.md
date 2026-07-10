@@ -134,6 +134,8 @@ Agent 的核心不是架构，不是 loop，不是 harness，而是用户是�
 不得不嫉妒地说，这个内部运维 Agent 的位置天生就好，它可以更简单地拿到更多权限，获取更多基建，通过更多审核。毕竟这就是 location 的重要性，这也是我之前提到的“只有你能解决某些问题”。
 
 > 塞两句我爱的私货，太契合这个场景了：
+> ● Power is a lot like real estate. It's all about location, location, location.
+> ● Money is the McMansion in Sarasota that starts falling apart after 10 years. Power is the old stone building that stands for centuries.
 
 当然了，作为一个独立的程序员，我只能研究使用某些 Code Agent 写代码的方法论，去写一些无关痛痒的文章。一些更深远、更重要的层次，比如基建，比如权限，我没有权利发表什么言论。但是我知道，一切的阻碍必然会被消灭，大模型就是一辆带着推土铲的 Leopard 2 A8，会消灭面前的一切，这只是一个谁快谁慢的问题，而在这种问题上，我不建议我们继续落后。
 
