@@ -6,10 +6,10 @@
 
 | 文档 | 适合谁 | 读完应该获得什么 |
 | --- | --- | --- |
-| [Code is cheap. Don't write any.——AI Native，程序员如何提升五倍coding效率](<./Code is cheap. Don't write any.——程序员的全自动工作指南.md>) | 公众号读者、宣讲场、入门读者 | 一篇精炼主文掌握 Harness 全套：水流理论（堤坝/水闸/漫溢/夺淮入海/溃堤）+ 最小混沌单元 + 6 种 checkpoint 动作 + 4 入口 skill + 8 步操作卡片 |
-| [手把手学会 AI Coding Harness：从任务拆分到上下文控盘](<./手把手学会 AI Coding Harness：从任务拆分到上下文控盘.md>) | 工程师、架构师，需要深度方法论 | 用两个真实开源 Harness 项目深度学习任务拆分、上下文控盘、codemap 代码地形索引、目标驱动执行、验收和留痕 |
-| [团队落地指南](./团队落地指南.md) | TL、主管、团队推广者 | 设计团队默认入口、试点路径、检查点、验收与效果指标 |
-| [Claude Code 源码拆解：从启动到多 Agent 扩展层](./Claude%20Code%20源码拆解：从启动到多%20Agent%20扩展层.md) | 想看真实 agent runtime 的人 | 理解工具、权限、任务、多 agent 与 skill 扩展层如何支撑 Harness |
+| [Code is cheap. Don't write any.——AI Native，程序员如何提升五倍coding效率](./code-is-cheap.md) | 公众号读者、宣讲场、入门读者 | 一篇精炼主文掌握 Harness 全套：水流理论（堤坝/水闸/漫溢/夺淮入海/溃堤）+ 最小混沌单元 + 6 种 checkpoint 动作 + 4 入口 skill + 8 步操作卡片 |
+| [手把手学会 AI Coding Harness：从任务拆分到上下文控盘](./ai-coding-harness-guide.md) | 工程师、架构师，需要深度方法论 | 用两个真实开源 Harness 项目深度学习任务拆分、上下文控盘、codemap 代码地形索引、目标驱动执行、验收和留痕 |
+| [团队落地指南](./team-adoption-guide.md) | TL、主管、团队推广者 | 设计团队默认入口、试点路径、检查点、验收与效果指标 |
+| [Claude Code 源码拆解：从启动到多 Agent 扩展层](./claude-code-runtime.md) | 想看真实 agent runtime 的人 | 理解工具、权限、任务、多 agent 与 skill 扩展层如何支撑 Harness |
 
 ## 一句话主线
 
@@ -27,7 +27,7 @@ spec 作为持久化真相源，不作为反复塞满上下文的巨大 prompt�
 
 | 文档 | 核心观点 |
 | --- | --- |
-| [从 Agent Flow 到 AI Native：为什么通用 Agent 是饮鸩止渴](<./从 Agent Flow 到 AI Native：为什么通用 Agent 是饮鸩止渴.md>) | 通用 Agent 不是目标；从真实问题出发，用 Flow、Agent Node、业务接口和必要的 hardcode 组成可靠链路，才更接近 AI Native |
+| [从 Agent Flow 到 AI Native：为什么通用 Agent 是饮鸩止渴](./general-purpose-agents-are-a-trap.md) | 通用 Agent 不是目标；从真实问题出发，用 Flow、Agent Node、业务接口和必要的 hardcode 组成可靠链路，才更接近 AI Native |
 
 ## 归档文章
 
@@ -46,6 +46,7 @@ spec 作为持久化真相源，不作为反复塞满上下文的巨大 prompt�
 ## 维护原则
 
 - 新读者入口不超过 4 篇。
+- 当前推荐阅读和延伸观点使用小写英文 `kebab-case` 文件名；中文标题保留在一级标题和链接文案中，归档文章不强制追溯迁移。
 - 新思想优先合并进 Harness 主文或团队指南，不再无限新增同主题长文。
 - 历史文章可以保留，但默认从 README 与本文档降级到 archive。
 - 如果一篇文章只是重复说明“人要控制边界、模型负责执行”，优先合并，不再新增。

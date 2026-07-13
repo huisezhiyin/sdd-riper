@@ -1,11 +1,20 @@
-# SDD-RIPER Light: AI Agent Harness
+# SDD-RIPER Light：Coding Agent 的控制面
 
 [English](./README.md) | [简体中文](./README.zh-CN.md)
 
-> 让模型负责推进事件。
-> 让人类负责目标、边界、权限、checkpoint、证据和验收。
+> Code is cheap. 真正昂贵的是上下文、控制和证据。
+>
+> 让模型负责推进事件，让人类负责目标、边界、权限、checkpoint、证据和验收。
 
-SDD-RIPER 是一套以上下文治理为核心的 LLM 任务自动化工具组，面向 AI coding agent 协作。它不是神奇 Prompt，也不是传统重型 SDD，而是一组很小的控制规则和配套 skills，让模型驱动的工作可观察、可恢复、可审查、可交接。
+强大的 Coding Agent 已经不再停留在给建议。它可以读取仓库、跨文件修改、调用工具、验证结果，并独立推动一个工程任务向前。当模型开始真正行动，瓶颈就从“能不能生成代码”转向了“任务是否始终对齐、过程是否可观察、结果是否可证明、失败后是否能恢复”。
+
+SDD-RIPER 是为这个控制问题准备的一组轻量、项目原生的 Harness。它不是神奇 Prompt，也不是传统重型 SDD；它为强模型提供持久化工作面，同时避免把每个任务都变成流程表演。
+
+| 人负责 | Agent 负责 | 项目沉淀 |
+| --- | --- | --- |
+| 目标、边界、权限、checkpoint、验收 | 探索、实现、迭代、工具调用 | spec、上下文索引、验证证据、恢复状态、可复用知识 |
+
+从这里开始：[直接使用 Light Skill](./skills/sdd-riper-one-light/README.md) · [理解背后的判断](./docs/code-is-cheap.md) · [打开文档地图](./docs/README.md)
 
 默认入口是 [`sdd-riper-one-light`](./skills/sdd-riper-one-light/SKILL.md)。当任务需要更强门禁、更高产物密度，或需要训练 / 审计级留痕时，再切到 [`sdd-riper-one`](./skills/sdd-riper-one/SKILL.md)。
 
@@ -169,14 +178,18 @@ MULTI / 多项目
 4. 需要强门禁时读 [`skills/sdd-riper-one/README.md`](./skills/sdd-riper-one/README.md)。
 5. 需要长文再看 [`docs/README.md`](./docs/README.md)。
 
-推荐长文：
+当前长文保留四篇主入口。完整索引和历史文章见[文档地图](./docs/README.md)。
 
 | 文档 | 核心问题 |
 | --- | --- |
-| [文档地图](./docs/README.md) | 哪些文档是当前主线，哪些已经归档 |
-| [手把手学会 AI Coding Harness](./docs/手把手学会%20AI%20Coding%20Harness：从任务拆分到上下文控盘.md) | 如何切任务、控上下文、用 codemap、验收输出、留下可恢复状态 |
-| [团队落地指南](./docs/团队落地指南.md) | 如何把个人 agent 习惯变成团队实践 |
-| [Claude Code 源码拆解](./docs/Claude%20Code%20源码拆解：从启动到多%20Agent%20扩展层.md) | 从真实 agent runtime 看 Harness 设计 |
+| [Code is cheap. Don't write any.](./docs/code-is-cheap.md) | 为什么代码变廉价后，工程价值会转向目标、上下文、checkpoint、验收与风险控制 |
+| [手把手学会 AI Coding Harness](./docs/ai-coding-harness-guide.md) | 如何切任务、控上下文、用 codemap、验收输出、留下可恢复状态 |
+| [团队落地指南](./docs/team-adoption-guide.md) | 如何把个人 agent 习惯变成团队实践 |
+| [Claude Code 源码拆解](./docs/claude-code-runtime.md) | 从真实 agent runtime 看 Harness 设计 |
+
+延伸观点：
+
+- [从 Agent Flow 到 AI Native：为什么通用 Agent 是饮鸩止渴](./docs/general-purpose-agents-are-a-trap.md)：为什么面向具体能力的 Agent、显式 Flow、业务接口和必要的 hardcode，往往比模糊的通用能力更可靠地解决真实问题。
 
 ## 核心判断
 

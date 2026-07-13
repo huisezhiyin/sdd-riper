@@ -4,7 +4,7 @@
 
 > 以下内容统一以仓库内文档为准，避免依赖外部平台链接。
 
-* 主文入口：[《手把手学会 AI Coding Harness：从任务拆分到上下文控盘》](<./手把手学会 AI Coding Harness：从任务拆分到上下文控盘.md>)
+* 主文入口：[《手把手学会 AI Coding Harness：从任务拆分到上下文控盘》](./ai-coding-harness-guide.md)
 * 文档地图：[《文档阅读地图》](./README.md)
 * 仓库地址：[SDD-RIPER: AI Agent Harness for Human Control](../README.md)
 * **本文：落地篇 — 如何在团队里推开大模型编程（面向 TL / 主管 / 团队负责人）**
@@ -1003,7 +1003,7 @@ Spec 不是长文，最小结构只需要五个字段：
 
 | 序号 | 文档 | 一句话定位 | 阅读时间 |
 | --- | --- | --- | --- |
-| 1️⃣ | [手把手学会 AI Coding Harness：从任务拆分到上下文控盘](<./手把手学会 AI Coding Harness：从任务拆分到上下文控盘.md>) | **主文**：用两个真实开源 Harness 项目串起理念、输入模板、上下文控盘与验收留痕 | 30 min |
+| 1️⃣ | [手把手学会 AI Coding Harness：从任务拆分到上下文控盘](./ai-coding-harness-guide.md) | **主文**：用两个真实开源 Harness 项目串起理念、输入模板、上下文控盘与验收留痕 | 30 min |
 | 2️⃣ | [文档阅读地图](./README.md) | **项目导航**：当前主线、技能、归档文章怎么读 | 5 min |
 
 我自用的agents.md参考：

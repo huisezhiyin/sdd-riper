@@ -1,11 +1,20 @@
-# SDD-RIPER Light: AI Agent Harness
+# SDD-RIPER Light: Control Plane for Coding Agents
 
 [English](./README.md) | [简体中文](./README.zh-CN.md)
 
-> Let the model move the work forward.
-> Let the human own goals, boundaries, permissions, checkpoints, evidence, and acceptance.
+> Code is cheap. Context, control, and evidence are not.
+>
+> Let the model move the work forward. Let the human own goals, boundaries, permissions, checkpoints, evidence, and acceptance.
 
-SDD-RIPER is a context-first LLM task automation toolkit for working with strong coding agents. It is not a magic prompt and it is not heavyweight spec-driven development. It is a small set of controls and companion skills that make model-driven work observable, recoverable, reviewable, and safe to resume.
+Strong coding agents no longer stop at suggestions. They can read a repository, change multiple files, run tools, validate results, and move an engineering task forward. Once the model can act, the bottleneck shifts from producing code to keeping the work aligned, observable, recoverable, and provable.
+
+SDD-RIPER is a small, repo-native harness for that control problem. It is not a magic prompt and it is not heavyweight spec-driven development. It gives strong agents a durable working surface without turning every task into process theater.
+
+| Human Owns | Agent Owns | Project Preserves |
+| --- | --- | --- |
+| Goals, boundaries, permissions, checkpoints, acceptance | Exploration, implementation, iteration, tool use | Specs, context indexes, validation evidence, recovery state, reusable knowledge |
+
+Start here: [use the light skill](./skills/sdd-riper-one-light/README.md) · [understand the thesis](./docs/code-is-cheap.md) · [open the docs map](./docs/README.md)
 
 The default entry is [`sdd-riper-one-light`](./skills/sdd-riper-one-light/SKILL.md). Use the heavier [`sdd-riper-one`](./skills/sdd-riper-one/SKILL.md) when the task needs stricter gates, denser artifacts, or training/audit-ready traces.
 
@@ -169,14 +178,18 @@ If you want the shortest useful path:
 4. Read [`skills/sdd-riper-one/README.md`](./skills/sdd-riper-one/README.md) when you need stricter gates.
 5. Use [`docs/README.md`](./docs/README.md) only when you want the long-form articles.
 
-Recommended long-form docs:
+The current long-form reading path has four front-door documents. See the [docs map](./docs/README.md) for the complete index and archive.
 
 | Document | Core Question |
 | --- | --- |
-| [Docs map](./docs/README.md) | Which docs are current and which are archived |
-| [Hands-on AI Coding Harness](./docs/手把手学会%20AI%20Coding%20Harness：从任务拆分到上下文控盘.md) | How to slice tasks, control context, use codemap, validate output, and leave recoverable state |
-| [Team adoption guide](./docs/团队落地指南.md) | How to turn personal agent habits into team practice |
-| [Claude Code source walkthrough](./docs/Claude%20Code%20源码拆解：从启动到多%20Agent%20扩展层.md) | What real agent runtimes teach about harness design |
+| [Code is cheap. Don't write any.](./docs/code-is-cheap.md) | Why AI coding shifts engineering value from producing code to controlling goals, context, checkpoints, validation, and risk |
+| [Hands-on AI Coding Harness](./docs/ai-coding-harness-guide.md) | How to slice tasks, control context, use codemap, validate output, and leave recoverable state |
+| [Team adoption guide](./docs/team-adoption-guide.md) | How to turn personal agent habits into team practice |
+| [Claude Code source walkthrough](./docs/claude-code-runtime.md) | What real agent runtimes teach about harness design |
+
+Further viewpoint:
+
+- [General-purpose agents are a trap](./docs/general-purpose-agents-are-a-trap.md): why capability-specific agents, explicit flows, business APIs, and necessary hardcode often solve real user problems more reliably than vague universality.
 
 ## Core Claim
 
