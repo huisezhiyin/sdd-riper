@@ -1,52 +1,43 @@
 # 文档阅读地图
 
-这个目录只保留少数一线入口。旧文章没有删除，而是放进 `archive/`，作为历史思考和素材库。
+这个目录只保留三篇定位互补的长文。历史稿不再放在工作树里；如需追溯，可以从 Git 历史恢复。
 
-## 当前推荐阅读
+## 三篇文章
 
-| 文档 | 适合谁 | 读完应该获得什么 |
+| 文档 | 适合谁 | 回答什么问题 |
 | --- | --- | --- |
-| [Code is cheap. Don't write any.——AI Native，程序员如何提升五倍coding效率](./code-is-cheap.md) | 公众号读者、宣讲场、入门读者 | 一篇精炼主文掌握 Harness 全套：水流理论（堤坝/水闸/漫溢/夺淮入海/溃堤）+ 最小混沌单元 + 6 种 checkpoint 动作 + 4 入口 skill + 8 步操作卡片 |
-| [手把手学会 AI Coding Harness：从任务拆分到上下文控盘](./ai-coding-harness-guide.md) | 工程师、架构师，需要深度方法论 | 用两个真实开源 Harness 项目深度学习任务拆分、上下文控盘、codemap 代码地形索引、目标驱动执行、验收和留痕 |
-| [团队落地指南](./team-adoption-guide.md) | TL、主管、团队推广者 | 设计团队默认入口、试点路径、检查点、验收与效果指标 |
-| [Claude Code 源码拆解：从启动到多 Agent 扩展层](./claude-code-runtime.md) | 想看真实 agent runtime 的人 | 理解工具、权限、任务、多 agent 与 skill 扩展层如何支撑 Harness |
+| [Code is cheap. Don't write any.](./code-is-cheap.md) | 入门读者、工程师、宣讲场 | 为什么代码廉价后，控制面必须上移到目标、上下文、checkpoint、证据和风险 |
+| [一套可复制的 AI Coding Harness 工作法](./ai-coding-harness-guide.md) | 准备把方法用于真实任务的人 | 怎样切任务、准备上下文、设置边界、推进、验收和交接 |
+| [为什么通用 Agent 是饮鸩止渴](./general-purpose-agents-are-a-trap.md) | Agent 产品与平台建设者 | 为什么具体能力、显式 Flow、业务接口和必要的 hardcode 往往更可靠 |
+
+## 最短阅读路径
+
+如果你只想开始使用：
+
+1. 先读 [`sdd-riper-one-light` 快速说明](../skills/sdd-riper-one-light/README.md)；
+2. 用快速模板跑一个真实任务；
+3. 遇到问题时再读 Harness 实战指南。
+
+如果你想理解方法论：
+
+1. 读 `Code is cheap`；
+2. 读 Harness 实战指南；
+3. 做 Agent 产品或业务自动化时，再读通用 Agent 观点文。
 
 ## 一句话主线
-
-这个仓库现在的主线是：
 
 ```text
 人负责目标、边界、checkpoint、验收和沉淀；
 模型负责探索、实现和推进；
-spec 作为持久化真相源，不作为反复塞满上下文的巨大 prompt。
+spec 保存持久化事实，活跃上下文只读取下一步需要的最小切片。
 ```
 
-日常任务先用 `sdd-riper-one-light`。陌生老项目、大模块、跨仓任务先用 `codemap` 建代码地形索引。需要训练、审计、交接、高风险控制时，再切到 `sdd-riper-one`。
-
-## 延伸观点
-
-| 文档 | 核心观点 |
-| --- | --- |
-| [从 Agent Flow 到 AI Native：为什么通用 Agent 是饮鸩止渴](./general-purpose-agents-are-a-trap.md) | 通用 Agent 不是目标；从真实问题出发，用 Flow、Agent Node、业务接口和必要的 hardcode 组成可靠链路，才更接近 AI Native |
-
-## 归档文章
-
-以下文章保留在 [archive/](./archive/) 中。它们记录了方法论形成过程，也能作为写作素材，但不再作为新读者的默认入口。
-
-| 文章 | 当前定位 |
-| --- | --- |
-| [从传统编程转向大模型编程](./archive/从传统编程转向大模型编程.md) | 早期“为什么要转”的入门文章 |
-| [AI 原生研发范式：从代码中心到文档驱动](<./archive/AI 原生研发范式：从“代码中心”到“文档驱动”的演进.md>) | 早期 SDD / 文档驱动长文 |
-| [从玩具到生产力：Harness Engineering](<./archive/从玩具到生产力：用真实项目讲透 AI Agent 的 Harness Engineering.md>) | Harness 工程化案例素材 |
-| [把工程任务交给 Agent](<./archive/把工程任务交给 Agent：大模型时代程序员的身份与能力往哪迁移.md>) | 工程师身份迁移素材 |
-| [大模型时代的超级个体：不是 Prompt，而是 Harness 能力](<./archive/大模型时代的超级个体：真正拉开差距的不是 Prompt，而是 Harness 能力.md>) | 短篇观点稿素材 |
-| [Harness 大道至简：最小混沌单元与水流理论](./archive/Harness%20大道至简：从最小混沌单元到%20sdd-riper-one-light.md) | 已被主文吸收的进阶理论素材 |
-| [如何快速从零开始落地大模型编程](<./archive/如何快速从零开始落地大模型编程 -- 手把手教程.md>) | 已被主文和团队指南吸收的早期上手教程 |
+日常任务使用 `sdd-riper-one-light`。陌生代码、大模块和跨仓任务先用 `codemap`。高风险、训练和审计场景切到 `sdd-riper-one`。长暂停、交接和上下文重置使用 `new-chat-ready`。
 
 ## 维护原则
 
-- 新读者入口不超过 4 篇。
-- 当前推荐阅读和延伸观点使用小写英文 `kebab-case` 文件名；中文标题保留在一级标题和链接文案中，归档文章不强制追溯迁移。
-- 新思想优先合并进 Harness 主文或团队指南，不再无限新增同主题长文。
-- 历史文章可以保留，但默认从 README 与本文档降级到 archive。
-- 如果一篇文章只是重复说明“人要控制边界、模型负责执行”，优先合并，不再新增。
+- 长文固定为“核心判断、实践工作法、延伸观点”三个位置。
+- 新思想优先合并进现有文章；只有出现新的、无法合并的问题域时才新增长文。
+- 不在公开文章中保留缺少来源的效率数字、特定模型推荐或已经不存在的命令。
+- 历史稿由 Git 保存，不在仓库里维护第二套 archive。
+- 文章里的 Skill 名称、链接和行为必须与当前仓库一致。
