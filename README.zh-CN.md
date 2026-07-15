@@ -101,100 +101,107 @@ SDD-RIPER 是为这个控制问题准备的一组轻量、项目原生的 Harnes
 读上下文 -> 复述目标和风险 -> checkpoint -> 执行 -> 验证 -> 反向同步
 ```
 
-Harness 保留少数硬规则：
+Harness 保留少数硹�}��G����ƭyշ�程纪律不重要”。恰恰相反：当代码像水一样大量涌入，工程纪律必须从逐行生产代码，上移到控制水往哪里流。
 
-- **Restate First**：计划或改文件前先复述任务。
-- **No Spec, No Code**：实现前先形成或更新最小真相源。
-- **No Approval, No Execute**：代码修改或高影响动作前等明确批准。
-- **Done by Evidence**：完成必须由测试、日志、截图、人工验收或等价证据证明。
-- **Reverse Sync**：把已验证结论按需回写到 spec、handoff、文档或项目记忆。
+![人类不再牵着 Agent 走每一步，而是在关键位置控制方向](./assets/agent-rider-horse.png)
 
-## Spec 与记忆边界
+## 两个绕不开的事实
 
-有三层东西，不要混写。
+第一，大模型是概率系统。同一个任务可以走出不同路径，小偏差也会在长链路里累积。复杂任务不是不能交给模型，而是不能只靠一句大 Prompt，然后期待它一路正确到底。
 
-| 层级 | 用途 | 常见位置 |
-| --- | --- | --- |
-| Feature spec / handoff | 当前任务真相、决策、进度、验证、恢复状态 | `mydocs/specs/*`、`mydocs/handoff/*` 或项目约定 |
-| Project knowledge / memory | 稳定事实、反复踩坑、可复用验证命令、项目级规则 | `PROJECT_KNOWLEDGE.md`、`PROJECT_SPEC.md`、`PROJECT_MEMORY.md`、`mydocs/project/*` 或 `AGENTS.md` 索引的文件 |
-| 系统级默认规则 | 个人或团队通用 agent 路由和安全边界 | 系统 `AGENTS.md`、[`examples/global-agents.md`](./examples/global-agents.md) |
+第二，上下文不是越多越好。窗口再大，目标、旧结论、新约束和无关细节混在一起，模型也会逐渐失焦。真正要节约的不是 Token，而是上下文里的注意力。
 
-隐私边界：
+这两个事实共同决定了一件事：我们需要的不是更多提示词，而是一套围绕模型搭起来的控制面。
 
-- 知识拓扑由项目或人定义；SDD 只负责识别 `Project Sync Candidate`，并按 `AGENTS.md` 或用户明确指令分流。
-- Agent 可以主动发现可复用知识，并提出 `Project Sync Candidate`。
-- Agent 默认不得暂存或提交系统级知识、feature spec、handoff、项目记忆或用户偏好记忆。
-- 只有用户明确要求提交，目标仓库合适，并且内容已按目标仓库脱敏确认后，才可以提交这些文件。
+## 水流理论：不要替模型挖完整条河
 
-## 仓库卫生
+传统编程像挖水渠：路径先由人设计清楚，代码按确定路径运行。
 
-这个仓库是公开、可复用的 agent workspace，提交前要保持干净：
+和强模型协作更像治水。人不需要预先决定每一步，也不应该在每一行代码上微操。人真正需要做的是：
 
-- 不提交运行数据：`.agent-memory/`、`.expcap/`、SQLite、Milvus Lite、trace、episode、candidate、asset、本地缓存目录。
-- 不提交 `.env`、凭据、token、API key、私有日志、个人路径或用户数据。
-- 不为了强行提交本地运行产物而改 `.gitignore`。
-- 示例提交前必须脱敏：保留问题形态和推理过程，移除私有名称、URL、ID、日志、密钥和用户数据。
-- 使用 `expcap` 时优先放在用户缓存，例如 `EXPCAP_STORAGE_PROFILE=user-cache` 和 `EXPCAP_HOME="$HOME/.expcap"`。
+- 定义水最终应该去哪里，也就是目标和验收标准；
+- 标出不能淹的地方，也就是边界、权限和风险；
+- 在关键位置设置水闸，也就是 checkpoint；
+- 发现方向不对时阻止、绕道或回炉；
+- 到终点后检查结果和证据，而不是只听模型说“完成了”。
 
-## 多仓库任务
+模型负责找路，人负责河床、闸门和验收。这就是 Harness 的核心分工。
 
-前后端联动或微服务任务里，不要让模型一次性吞掉所有仓库。
+## 最小混沌单元：每次只放出一段可回收的水
 
-先建立 Project Registry：
+水流理论回答“怎么协作”，最小混沌单元回答“这次让模型跑多远”。
+
+一个合适的任务单元应该同时满足四个条件：
+
+1. 目标可以复述清楚；
+2. 边界和明确不做的事情可见；
+3. 模型可以自主完成一段有意义的闭环；
+4. 人类可以用证据验收，失败后也能局部重来。
+
+它不是越小越好。把任务切成几十个机械步骤，会重新把人变成模型的鼠标；把整个季度需求一次性交出去，又会让偏差失去控制。好的切分点，是**足够大，可以自治；足够小，可以验收。**
+
+![从陌生地形进入可验证任务闭环](./assets/agent-terrain-flow.png)
+
+## Checkpoint 不是审批表演
+
+Checkpoint 的目的不是让模型频繁停下，而是在风险真正变化的地方保留控制权。
+
+模型到达 checkpoint 后，人通常只需要做六种动作：
+
+| 动作 | 什么时候用 |
+| --- | --- |
+| 放行 | 路径合理、风险可控，继续推进 |
+| 阻止 | 即将越过权限、安全或任务边界 |
+| 绕道 | 目标不变，但当前路径成本过高或走不通 |
+| 回炉 | 对目标、事实或方案的理解已经错了 |
+| 追问 | 证据不足，不能判断是否应继续 |
+| 加料 | 缺少一段关键上下文、日志或约束 |
+
+低风险任务可以只在实施前和验收前设闸；高风险任务则要在数据迁移、权限变化、外部写入、发布和不可逆动作前增加 checkpoint。控制密度应该跟风险走，而不是跟流程模板走。
+
+## Spec 是外部真相源，不是巨大 Prompt
+
+Spec 的第一受众是人。它记录目标、边界、关键决策、当前状态和验收证据，让任务可以暂停、恢复、交接，也让团队知道为什么这样做。
+
+对模型来说，Spec 是一个索引和注意力锚点。需要决策时读取相关切片，不需要每一轮把整份文档重新塞进上下文。稳定信息落在聊天外，活跃上下文只保留下一步真正需要的内容。
+
+这也是为什么任务变长后，换一个干净的新对话往往比继续压缩旧对话更可靠：旧会话留下噪音，新会话通过 Spec 和 handoff 恢复事实。
+
+## 质量控制正在上移
+
+代码廉价以后，工程师的价值不会消失，而是从“亲手写出多少代码”迁移到更高的控制面：
+
+- 工程师切任务、判断路径、设计验证；
+- TL 定目标、边界和风险等级；
+- 架构师设计 Harness、上下文入口和恢复机制；
+- QA 设计端到端证据、回归、灰度与事故兜底。
+
+![软件生产者的价值从写代码上移到控制与验收](./assets/programmer-role-shift.png)
+
+“我不逐行看所有代码”只能发生在边界清楚、自动化验证完整、可灰度、可回滚的地形里。支付、权限、安全、数据删除、基础设施核心和缺少测试的老系统，仍然需要更高密度的人工审查。代码可以廉价，后果不能廉价。
+
+## 四个入口，一套控制面
+
+SDD-RIPER 把这套方法拆成四个互补入口：
+
+- [`sdd-riper-one-light`](../skills/sdd-riper-one-light/)：日常默认 Harness，用最小 spec、checkpoint、验证和 reverse sync 控制任务。
+- [`sdd-riper-one`](../skills/sdd-riper-one/)：适合训练、审计、复杂重构和高风险任务的显式重型入口。
+- [`codemap`](../skills/codemap/)：把陌生代码整理成面向 Agent 的地形索引，避免无目的地吞整个仓库。
+- [`new-chat-ready`](../skills/new-chat-ready/)：在新对话、长暂停和交接时生成可恢复状态，让任务摆脱腐烂的旧上下文。
+
+如果只带走一张操作卡片，就是下面八步：
 
 ```text
-MULTI / 多项目
-
-当前 workspace 下有多个仓库。
-请先发现项目，生成 Project Registry。
-不要一次性读取所有代码。
-先判断主项目、相关项目、active_project 和 change_scope。
-默认 local；需要跨项目修改时先 checkpoint，等我批准。
+1. 读地形     -> 历史 spec / AGENTS.md / codemap
+2. 切任务     -> 足够自治，也能局部验收
+3. 做任务包   -> 目标 / 边界 / 风险 / checkpoint / Done Contract
+4. 让模型推进 -> 不微操实现路径
+5. 关键处设闸 -> 放行 / 阻止 / 绕道 / 回炉 / 追问 / 加料
+6. 用证据验收 -> 测试、日志、接口、截图、人工检查
+7. 风险外移   -> 灰度、监控、回滚与独立 Review
+8. 回写状态   -> spec / handoff / 项目知识
 ```
 
-完整规则见 [`skills/sdd-riper-one/references/multi-project.md`](./skills/sdd-riper-one/references/multi-project.md)。
+代码越来越便宜以后，真正稀缺的不是写代码的人，而是能让模型在正确边界里大胆流动，又能把端到端结果安全收回来的人。
 
-## 仓库地图
-
-| 路径 | 作用 |
-| --- | --- |
-| [`AGENTS.md`](./AGENTS.md) | 本仓项目级 agent 规则 |
-| [`examples/global-agents.md`](./examples/global-agents.md) | 系统级 / 个人级 `AGENTS.md` 模板 |
-| [`skills/sdd-riper-one-light`](./skills/sdd-riper-one-light/) | 日常默认 Harness |
-| [`skills/sdd-riper-one`](./skills/sdd-riper-one/) | 严格控盘协议 |
-| [`skills/codemap`](./skills/codemap/) | 代码地形索引 skill |
-| [`skills/new-chat-ready`](./skills/new-chat-ready/) | 新对话交接与项目记忆同步 skill |
-| [`docs/README.md`](./docs/README.md) | 文档地图与阅读路径 |
-| [`docs/archive/`](./docs/archive/) | 历史长文和写作素材 |
-| [`protocols/`](./protocols/) | 早期协议参考 |
-
-## 阅读路径
-
-最短可用路径：
-
-1. 读 [`skills/sdd-riper-one-light/README.md`](./skills/sdd-riper-one-light/README.md)。
-2. 用快速开始模板跑一个真实任务。
-3. 陌生代码先用 [`codemap`](./skills/codemap/SKILL.md)。
-4. 需要强门禁时读 [`skills/sdd-riper-one/README.md`](./skills/sdd-riper-one/README.md)。
-5. 需要长文再看 [`docs/README.md`](./docs/README.md)。
-
-当前长文保留四篇主入口。完整索引和历史文章见[文档地图](./docs/README.md)。
-
-| 文档 | 核心问题 |
-| --- | --- |
-| [Code is cheap. Don't write any.](./docs/code-is-cheap.md) | 为什么代码变廉价后，工程价值会转向目标、上下文、checkpoint、验收与风险控制 |
-| [手把手学会 AI Coding Harness](./docs/ai-coding-harness-guide.md) | 如何切任务、控上下文、用 codemap、验收输出、留下可恢复状态 |
-| [团队落地指南](./docs/team-adoption-guide.md) | 如何把个人 agent 习惯变成团队实践 |
-| [Claude Code 源码拆解](./docs/claude-code-runtime.md) | 从真实 agent runtime 看 Harness 设计 |
-
-延伸观点：
-
-- [从 Agent Flow 到 AI Native：为什么通用 Agent 是饮鸩止渴](./docs/general-purpose-agents-are-a-trap.md)：为什么面向具体能力的 Agent、显式 Flow、业务接口和必要的 hardcode，往往比模糊的通用能力更可靠地解决真实问题。
-
-## 核心判断
-
-真正重要的不是把 AI 管成更听话的代码助手。
-
-真正重要的是：承认模型已经可以推进事件，然后为这种主体性建立控制面。
-
-这就是 SDD-RIPER Light 的目的。
+下一步如何实际跑一个任务，见[《一套可复制的 AI Coding Harness 工作法》](./ai-coding-harness-guide.md)。

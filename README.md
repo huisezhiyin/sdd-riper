@@ -165,7 +165,6 @@ See [`skills/sdd-riper-one/references/multi-project.md`](./skills/sdd-riper-one/
 | [`skills/codemap`](./skills/codemap/) | Code terrain indexing skill |
 | [`skills/new-chat-ready`](./skills/new-chat-ready/) | New-chat handoff and project-memory sync skill |
 | [`docs/README.md`](./docs/README.md) | Docs map and reading path |
-| [`docs/archive/`](./docs/archive/) | Historical essays and writing material |
 | [`protocols/`](./protocols/) | Older protocol references |
 
 ## Reading Path
@@ -178,18 +177,13 @@ If you want the shortest useful path:
 4. Read [`skills/sdd-riper-one/README.md`](./skills/sdd-riper-one/README.md) when you need stricter gates.
 5. Use [`docs/README.md`](./docs/README.md) only when you want the long-form articles.
 
-The current long-form reading path has four front-door documents. See the [docs map](./docs/README.md) for the complete index and archive.
+The long-form reading path contains three documents with distinct roles. See the [docs map](./docs/README.md) for the maintained index.
 
 | Document | Core Question |
 | --- | --- |
 | [Code is cheap. Don't write any.](./docs/code-is-cheap.md) | Why AI coding shifts engineering value from producing code to controlling goals, context, checkpoints, validation, and risk |
 | [Hands-on AI Coding Harness](./docs/ai-coding-harness-guide.md) | How to slice tasks, control context, use codemap, validate output, and leave recoverable state |
-| [Team adoption guide](./docs/team-adoption-guide.md) | How to turn personal agent habits into team practice |
-| [Claude Code source walkthrough](./docs/claude-code-runtime.md) | What real agent runtimes teach about harness design |
-
-Further viewpoint:
-
-- [General-purpose agents are a trap](./docs/general-purpose-agents-are-a-trap.md): why capability-specific agents, explicit flows, business APIs, and necessary hardcode often solve real user problems more reliably than vague universality.
+| [General-purpose agents are a trap](./docs/general-purpose-agents-are-a-trap.md) | Why capability-specific agents, explicit flows, business APIs, and necessary hardcode often solve real user problems more reliably than vague universality |
 
 ## Core Claim
 
