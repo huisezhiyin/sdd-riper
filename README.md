@@ -177,13 +177,14 @@ If you want the shortest useful path:
 4. Read [`skills/sdd-riper-one/README.md`](./skills/sdd-riper-one/README.md) when you need stricter gates.
 5. Use [`docs/README.md`](./docs/README.md) only when you want the long-form articles.
 
-The long-form reading path contains three documents with distinct roles. See the [docs map](./docs/README.md) for the maintained index.
+The long-form reading path contains four documents with distinct roles. See the [docs map](./docs/README.md) for the maintained index.
 
 | Document | Core Question |
 | --- | --- |
 | [Code is cheap. Don't write any.](./docs/code-is-cheap.md) | Why AI coding shifts engineering value from producing code to controlling goals, context, checkpoints, validation, and risk |
 | [Hands-on AI Coding Harness](./docs/ai-coding-harness-guide.md) | How to slice tasks, control context, use codemap, validate output, and leave recoverable state |
 | [General-purpose agents are a trap](./docs/general-purpose-agents-are-a-trap.md) | Why capability-specific agents, explicit flows, business APIs, and necessary hardcode often solve real user problems more reliably than vague universality |
+| [Super Individuals and Individual Superpowers](./docs/super-individual.md) | How LLMs expand the capability boundary of rare high-cognition individuals, and why organizations need new ways to recognize and use them |
 
 ## Core Claim
 

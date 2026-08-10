@@ -177,13 +177,14 @@ MULTI / 多项目
 4. 需要强门禁时读 [`skills/sdd-riper-one/README.md`](./skills/sdd-riper-one/README.md)。
 5. 需要长文再看 [`docs/README.md`](./docs/README.md)。
 
-当前长文只保留三个定位互补的入口。维护中的完整索引见[文档地图](./docs/README.md)。
+当前长文只保留四个定位互补的入口。维护中的完整索引见[文档地图](./docs/README.md)。
 
 | 文档 | 核心问题 |
 | --- | --- |
 | [Code is cheap. Don't write any.](./docs/code-is-cheap.md) | 为什么代码变廉价后，工程价值会转向目标、上下文、checkpoint、验收与风险控制 |
 | [手把手学会 AI Coding Harness](./docs/ai-coding-harness-guide.md) | 如何切任务、控上下文、用 codemap、验收输出、留下可恢复状态 |
 | [为什么通用 Agent 是饮鸩止渴](./docs/general-purpose-agents-are-a-trap.md) | 为什么具体能力、显式 Flow、业务接口和必要的 hardcode 往往比模糊的通用能力更可靠 |
+| [超级个体与个体超级](./docs/super-individual.md) | 大模型如何扩大少数强认知者的能力边界，以及组织为什么需要改变识别和使用他们的方式 |
 
 ## 核心判断
 
