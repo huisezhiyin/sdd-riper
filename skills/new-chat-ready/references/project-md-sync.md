@@ -73,7 +73,9 @@ Otherwise propose candidates and ask before editing.
 
 Project MD Sync files may contain internal project facts, feature-level context, user preferences, or private operational knowledge. Updating a file is not the same as committing it.
 
-- Do not stage or commit system-level knowledge, feature specs, handoffs, Project Memory, Project Spec, or user preference memory by default.
+A local new-chat safety snapshot is different from publication. When the user explicitly requests a protected new-chat transition, a dedicated local snapshot commit may include safe handoff/spec/project-memory changes if repository policy allows it. This does not authorize a remote push. Ask before including sensitive or policy-restricted files, and record anything intentionally excluded.
+
+- Outside an explicitly authorized local new-chat snapshot, do not stage or commit system-level knowledge, feature specs, handoffs, Project Memory, Project Spec, or user preference memory by default.
 - Before committing any memory/spec/handoff/project-knowledge file, confirm that the user wants it committed and that the content is sanitized for the target repository.
 - For public repositories, default to reporting candidates or keeping local artifacts uncommitted unless the user explicitly approves publication.
 - If privacy risk is unclear, skip the write or leave the file untracked and report the reason.

@@ -1,20 +1,20 @@
 ---
 name: new-chat-ready
-version: 0.2.1
-description: Prepare seamless new-chat handoff packs when a user wants to start a fresh chat, continue elsewhere, pause a long task, recover from context decay, recover a lost conversation from local Codex or Claude Code logs, preserve reusable project knowledge in Markdown, or hand work to another agent. Generates a durable handoff document, optional project-level Markdown updates such as AGENTS.md/README.md/PROJECT_SPEC.md/PROJECT_MEMORY.md, and a paste-ready next-chat prompt grounded in current task state, local conversation records, source files, specs, codemaps, validation evidence, open risks, and constraints.
+version: 0.3.0
+description: Prepare safe, compact new-chat handoffs when a user wants a fresh chat, resume pack, context reset, recovery, or agent handoff. Before creating a new conversation, preserve durable project knowledge and protect dirty Git work with a verified local snapshot branch and commit; optionally push that branch when explicitly authorized. Create the next Codex thread directly when supported, otherwise provide a paste-ready fallback prompt.
 ---
 
 # New Chat Ready
 
 ## Core Position
 
-This skill turns an active or recoverable past conversation into an execution handoff, first checks whether the current agent can start the next Codex conversation itself, and preserves durable project knowledge without bloating the next context window.
+This skill turns an active or recoverable past conversation into an execution handoff, protects the current Git state before any thread transition, and starts the next Codex conversation when the runtime supports it.
 
 It is not a generic chat summary. It should preserve only the next agent's operating context: the current goal, latest recap checkpoint, workspace, decisions, files, validation evidence, risks, constraints, and the exact next action.
 
 Use it as a cross-cutting handoff layer with SDD-RIPER, CodeMap, expcap, ordinary coding tasks, local conversation recovery, and project-level Markdown sync. SDD skills may route to this skill, but the handoff, recovery, and project sync format lives here.
 
-Project-level sync is part of the core job, not an optional afterthought. Every new-chat handoff should reduce future context load by moving stable project and task knowledge into the right long-lived files, while keeping transient state in the handoff/spec. When a project exposes long-lived knowledge files such as root `PROJECT_KNOWLEDGE.md`, `PROJECT_MEMORY.md`, `PROJECT_SPEC.md`, or equivalents indexed from `AGENTS.md`, prefer those files for stable project truth and reusable memory. Use `AGENTS.md` for routing, boundaries, validation expectations, and safety rules.
+Project-level sync and Git protection are core gates, not optional afterthoughts. Move stable knowledge into the right long-lived files, keep transient state in the handoff/spec, then capture the resulting worktree in a recoverable local Git commit before creating the next conversation.
 
 ## Trigger
 
@@ -36,11 +36,11 @@ For detailed trigger boundaries, read `references/trigger-policy.md`.
 Before generating any manual prompt, explicitly check whether the current agent/runtime can create or continue Codex conversations itself. Prefer the lowest-friction continuation path that the current runtime actually supports:
 
 1. **Capability check**: in Codex, discover thread tools such as `create_thread` and `send_message_to_thread` with `tool_search` when they are not already loaded. Record whether direct creation is `available`, `unavailable`, or `skipped for safety`.
-2. **Direct Codex continuation**: if direct creation is available and the user wants a new chat / handoff / resume continuation, create the new conversation yourself after the handoff/prompt is ready. Send the compact next-chat prompt into that thread so the user does not need to paste it manually.
+2. **Direct Codex continuation**: if direct creation is available and the user wants a new chat / handoff / resume continuation, create the new conversation only after the handoff, project sync scan, and Git snapshot gate pass. Send the compact continuation prompt into that thread.
 3. **Paste-ready fallback**: generate a manual prompt only when thread tools are unavailable, blocked, unsafe for the current content, or the user explicitly wants a reusable prompt/document instead of a created thread.
 4. **Inline-only fallback**: if writing files is not appropriate, provide an inline handoff and compact prompt, and state that no file or new conversation was created.
 
-Never invent tool availability, and do not skip the capability check merely because a paste-ready prompt would be easier. If direct creation succeeds, still provide the created thread identifier or link required by the host UI and keep the final visible summary short.
+Never invent tool availability. Prefer the same local project environment; do not allocate another worktree merely to create a fresh chat. If direct creation succeeds, provide the created thread identifier or link required by the host UI and keep the visible summary short.
 
 ## Workflow
 
@@ -75,11 +75,18 @@ Never invent tool availability, and do not skip the capability check merely beca
    - prefer small scoped edits or candidate notes over dumping task history into project docs;
    - report `Synced`, `Candidates not synced`, and `Skipped` even when no files are updated;
    - propose `Project MD Sync Candidates` before editing durable project docs unless the user explicitly asked to update them or current approval includes reverse sync;
-   - never stage or commit system-level knowledge, feature specs, handoffs, Project Memory, or user preference memory by default; these may contain private/internal content and require explicit user approval plus sanitization before committing;
+   - distinguish a local safety snapshot from publication: follow repository rules before committing specs, handoffs, project memory, or user preferences locally, and never push such content without explicit approval plus sanitization;
    - update only scoped sections in project-level Markdown, not task execution logs.
-8. Produce a compact next-chat prompt using `references/new-chat-prompt-template.md`. Treat this as the payload for direct thread creation first, and as a manual paste artifact only as fallback.
-9. If direct Codex continuation is available and appropriate, create the new thread and send the compact prompt there. Otherwise provide the prompt for manual paste and explain the fallback reason in one line.
-10. If expcap is available and the project asks for durable experience capture, run the appropriate finish/save step after the handoff is correct. Do not make expcap a dependency for the handoff.
+8. Run `Git Snapshot Protection` before any new thread is created:
+   - read `references/git-snapshot-protection.md`;
+   - if the repository is clean, record the current branch and `HEAD`;
+   - if it is dirty, create or reuse a `codex/new-chat-snapshot-*` branch and make a reviewed local snapshot commit;
+   - treat staging without a commit as incomplete protection;
+   - push the snapshot branch only when explicitly authorized; remote protection is optional;
+   - if the local snapshot cannot be verified, stop before thread creation and report the blocker.
+9. Produce a compact next-chat prompt using `references/new-chat-prompt-template.md`. Treat this as the direct-thread payload first and a manual paste artifact only as fallback.
+10. If direct Codex continuation is available and the Git snapshot gate passed, create the new thread in the same local project environment and send the compact prompt there. Otherwise provide the prompt for manual paste and explain the fallback reason in one line.
+11. If expcap is available and the project asks for durable experience capture, run the appropriate finish/save step after the handoff is correct. Do not make expcap a dependency for the handoff.
 
 ## Output Rules
 
@@ -93,6 +100,7 @@ Never invent tool availability, and do not skip the capability check merely beca
 - Preserve dirty-work awareness: list existing uncommitted changes, and mark which ones were made by the current agent if known.
 - Prefer recap-first handoff: begin with the shortest accurate state summary, then expand only the details needed for continuity.
 - Project MD Sync scan is mandatory for every handoff; Project MD Sync write is conditional. Separate durable project knowledge from task-specific state; keep edits small, cited, and reviewable. If no durable knowledge exists, say so explicitly.
+- Git protection is mandatory before direct thread creation in a repository. A dirty worktree requires a verified local snapshot commit; remote push remains optional.
 - Keep both handoff and prompt compact. Default targets: handoff under about 120 lines, next-chat prompt under about 60 lines. Exceed these only when the next agent would otherwise be unable to continue safely.
 - Always report the `New Chat Capability Check` result: direct thread created, direct creation unavailable, or direct creation skipped with reason.
 - The final next-chat prompt must be directly pasteable even when it is also sent into a created Codex thread. It should tell the next agent what to read first and what to do next, not retell the whole conversation.
@@ -102,5 +110,6 @@ Never invent tool availability, and do not skip the capability check merely beca
 - `references/trigger-policy.md`: when to proactively offer or create a new-chat handoff.
 - `references/recovery-from-local-logs.md`: how to recover a lost or stale conversation from local Codex / Claude Code records.
 - `references/project-md-sync.md`: how to update project-level Markdown so future chats avoid repeated learning and repeated correction.
+- `references/git-snapshot-protection.md`: how to protect dirty work on a local snapshot branch before creating another conversation.
 - `references/handoff-template.md`: durable handoff document shape.
 - `references/new-chat-prompt-template.md`: paste-ready prompt for the next chat.

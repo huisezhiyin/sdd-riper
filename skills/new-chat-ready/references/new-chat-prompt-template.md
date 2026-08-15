@@ -38,6 +38,9 @@ Current state:
 Files and dirty state:
 - <path>: <state and why it matters>
 
+Git protection:
+- <snapshot branch>@<commit SHA>; <remote status>; <remaining excluded dirty paths>
+
 Validation so far:
 - <command/evidence>: <result and coverage>
 
@@ -52,5 +55,5 @@ Next action:
 2. <second concrete action>
 3. <validation/checkpoint>
 
-Important: preserve existing user changes, do not revert unrelated work, and update the handoff/spec after making progress.
+Important: continue in the protected local snapshot branch, preserve existing user changes, do not create/delete worktrees or branches unless explicitly requested, and update the handoff/spec after making progress.
 ```

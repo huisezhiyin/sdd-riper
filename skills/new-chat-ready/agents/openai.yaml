@@ -1,6 +1,6 @@
 interface:
   display_name: "New Chat Ready"
-  short_description: "生成可续接的交接包，可恢复丢失对话，并同步项目级 Markdown 记忆。"
-  default_prompt: "Use $new-chat-ready to create a concise handoff document, preserve reusable project knowledge in Markdown when appropriate, and continue in a fresh chat. First check whether the current agent can create/send to a Codex thread directly. If Codex thread tools are available and safe, create the new conversation and send the compact continuation prompt there; produce a paste-ready prompt only as fallback. If current context is missing or stale, recover relevant state from local Codex or Claude Code logs before summarizing."
+  short_description: "精简交接、Git 快照保护并安全续开新对话。"
+  default_prompt: "Use $new-chat-ready to compact the handoff and project knowledge, protect dirty Git work with a verified local snapshot commit, then create the next Codex conversation directly when supported; treat remote push as optional and use a paste-ready prompt only as fallback."
 policy:
   allow_implicit_invocation: true

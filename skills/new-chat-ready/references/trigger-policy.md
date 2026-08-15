@@ -14,6 +14,8 @@ Create a handoff pack when the user explicitly says to:
 
 Before choosing the delivery shape, run a new-chat capability check. In Codex, first look for thread-management tools such as `create_thread` and `send_message_to_thread`. If they are available and safe for the current content, direct thread creation is the preferred delivery mode.
 
+Before calling a thread-creation tool, finish the compact handoff and project sync scan, then pass the Git snapshot gate from `git-snapshot-protection.md`. Do not create a new conversation while task-bearing dirty work exists only in a disposable worktree.
+
 ## Offer Proactively
 
 Offer a handoff, and create it if the user agrees, when:
@@ -39,6 +41,8 @@ Do not create a new Codex conversation directly when:
 - the prompt contains private material that should be reviewed before being sent elsewhere;
 - the user asked only for a reusable handoff document or paste-ready prompt;
 - the target workspace or branch for the new thread is ambiguous and the choice changes safety.
+- a dirty repository has not been protected by a verified local snapshot commit;
+- the runtime would require another worktree and the user did not explicitly request one.
 
 ## Disambiguation
 

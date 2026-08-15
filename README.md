@@ -57,8 +57,9 @@ For a fresh-chat handoff:
 ```text
 Use new-chat-ready.
 Create a concise resume pack.
-First check whether this agent can create a Codex thread directly. If it can, create the new conversation and send the compact continuation prompt there; otherwise give me a paste-ready fallback prompt.
 Also scan and tidy reusable project knowledge so future chats stay small, but do not commit memory/spec/handoff files unless I explicitly approve.
+Before creating the conversation, protect dirty work on a local `codex/new-chat-snapshot-*` branch with a verified commit. Remote push is optional and requires explicit approval.
+First check whether this agent can create a Codex thread directly. After the knowledge and Git protection gates pass, create the new conversation and send the compact continuation prompt there; otherwise give me a paste-ready fallback prompt.
 ```
 
 ## Which Skill To Use
@@ -70,7 +71,7 @@ These four skills share the same context principle: keep active context small, p
 | [`sdd-riper-one-light`](./skills/sdd-riper-one-light/) | Daily coding, docs, bugfixes, ordinary refactors, strong-model work | Same core controls with low-friction checkpoints, minimal spec, validation, reverse sync |
 | [`sdd-riper-one`](./skills/sdd-riper-one/) | High-risk work, multi-file refactors, audit, training, complex handoff | Same core controls with explicit RIPER gates, fuller spec, denser artifacts, stronger blocking |
 | [`codemap`](./skills/codemap/) | Unfamiliar codebases, legacy systems, large modules, cross-repo tasks | Agent-facing code terrain index |
-| [`new-chat-ready`](./skills/new-chat-ready/) | New chat, resume pack, handoff, context compression, recovered sessions | Compact handoff, optional direct Codex thread creation, next-chat prompt, project-memory sync scan |
+| [`new-chat-ready`](./skills/new-chat-ready/) | New chat, resume pack, handoff, context compression, recovered sessions | Compact handoff, local Git snapshot protection, optional direct Codex thread creation, project-memory sync scan |
 
 ## Minimal Agent Setup
 

@@ -97,8 +97,8 @@ System-level knowledge, feature specs, handoffs, Project Memory, Project Spec, a
   - Heavy implementation of the same core controls: restate, spec truth, checkpoint, approval, validation, reverse sync, handoff, and end-to-end closure.
   - Best for complex, high-risk, cross-module, audit, training, handoff-heavy work, or tasks that need denser artifacts.
 - `skills/new-chat-ready/`
-  - Cross-cutting handoff layer for fresh chats, resume packs, paste-ready continuation prompts, and project-level Markdown memory sync.
-  - Best when context is long, a task pauses, another agent/session must continue without losing state, or durable knowledge should be synchronized.
+  - Cross-cutting handoff layer for compact resume packs, project-level Markdown sync, Git snapshot protection, and direct or paste-ready continuation.
+  - Before creating a new conversation, protect dirty task state with a verified local snapshot commit; remote push remains optional.
 
 ## Safety And Hygiene
 

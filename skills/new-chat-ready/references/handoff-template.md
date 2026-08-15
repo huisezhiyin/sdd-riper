@@ -7,6 +7,10 @@ Keep this document concise. Default target: under about 120 lines. Link to specs
 - Active Skill / Workflow: `<skill or workflow>`
 - Recovery Sources: `<current chat | local logs | mixed>` with source paths if recovered
 - New Chat Capability Check: `<available | unavailable | skipped for safety>` with tool names or reason
+- Git Protection: `<clean anchor | local snapshot | local + remote snapshot | skipped | failed>`
+- Snapshot Ref: `<original branch -> snapshot branch @ commit SHA>`
+- Remote Protection: `<not requested | skipped | failed | remote/ref>`
+- Remaining Dirty State: `<clean | explicitly excluded paths and reason>`
 - Delivery Mode: `<created Codex thread | paste-ready prompt | inline-only>` with thread id/link if created
 - Current Goal: <one sentence>
 - Status: `<not-started | in-progress | blocked | validating | complete>`
